@@ -22,29 +22,29 @@ module.exports = class Led
     this.add_event_listener('digital_write_on')
     this.add_event_listener('digital_write_off')
 
-  on: ->
+  turn_on: ->
     @is_on = true
     @is_off = false
 
     @adaptor.digital_write(@pin, 1)
 
-  off: ->
+  turn_off: ->
     @is_on = true
     @is_off = false
 
     @adaptor.digital_write(@pin, 0)
 
   when_on: (callback) ->
-    @event_emitter.on("on", callback)
+    @event_emitter.on("turn_on", callback)
 
   when_off: (callback) ->
-    @event_emitter.on("off", callback)
+    @event_emitter.on("turn_off", callback)
 
   add_event_listener: (event_name) ->
     switch event_name
       when 'digital_write_on'
-        @adaptor.event_emitter.on('digital_write_on', => @event_emitter.emit("on") )
+        @adaptor.event_emitter.on('digital_write_on', => @event_emitter.emit("turn_on") )
       when 'digital_write_off'
-        @adaptor.event_emitter.on('digital_write_off', => @event_emitter.emit("off") )
+        @adaptor.event_emitter.on('digital_write_off', => @event_emitter.emit("turn_off") )
 
 
