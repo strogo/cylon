@@ -7,11 +7,10 @@
 ###
 
 'use strict';
-events = require('events')
+EventEmitter = require('events').EventEmitter
 Adaptor = require('../adaptor.coffee')
 
-module.exports = class Led
-  event_emitter: new events.EventEmitter()
+module.exports = class Led extends EventEmitter
   adaptor: new Adaptor()
   pin: 0
   is_on: false
@@ -19,8 +18,9 @@ module.exports = class Led
 
   constructor: (pin) ->
     @pin = pin
-    this.add_event_listener('digital_write_on')
-    this.add_event_listener('digital_write_off')
+
+    this.register_event('digital_write_on')
+    this.register_event('digital_write_off')
 
   turn_on: ->
     @is_on = true
@@ -34,17 +34,12 @@ module.exports = class Led
 
     @adaptor.digital_write(@pin, 0)
 
-  when_on: (callback) ->
-    @event_emitter.on("turn_on", callback)
-
-  when_off: (callback) ->
-    @event_emitter.on("turn_off", callback)
-
-  add_event_listener: (event_name) ->
+  register_event: (event_name) ->
     switch event_name
       when 'digital_write_on'
-        @adaptor.event_emitter.on('digital_write_on', => @event_emitter.emit("turn_on") )
+        @adaptor.on('digital_write_on', => this.emit("turn_on") )
       when 'digital_write_off'
-        @adaptor.event_emitter.on('digital_write_off', => @event_emitter.emit("turn_off") )
+        @adaptor.on('digital_write_off', => this.emit("turn_off") )
 
-
+#Led.prototype.__proto__ = EventEmitter.prototype
+#util.inherits(Led, EventEmitter)
