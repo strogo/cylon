@@ -7,7 +7,7 @@
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 <meta name="description">
 <meta content="The Hybrid Group" name="author">
-<title>Artoo - ARDrone Navigation Driver</title>
+<title>Cylon.js - ARDrone Navigation Driver</title>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700" rel="stylesheet" type="text/css">
 <link href="/stylesheets/style.css" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
@@ -31,15 +31,13 @@
               <a href="/">Cylon</a>
             </h1>
           </div>
-          <div class="github-menu">
-            <a target="blanck" href="https://github.com/hybridgroup/cylon/">Github Repo </a>
-          </div>
           <span class="menu">
+            <a href="/documentation" class="item">Docs</a>
+            <a href="/hardware" class="item">Hardware</a>
             
             
             
-            
-            
+            <a target="blanck" class="github-menu" href="https://github.com/hybridgroup/cylon/">Github</a>
           </span>
         </header>
 </div>
@@ -59,163 +57,69 @@
                 <p>
                   Communication with the ARDrone's navigation data interface takes place using a WiFi connection. The ARDrone is a WiFi access point, so it normally can be the only device you connect to, without some additional effort to reconfigure the drone itself to put it into infrastructure mode.
                 </p>
-                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
-connection <span class="symbol">:navigation</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:ardrone_navigation</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">192.168.1.1:5554</span><span class="delimiter">'</span></span>
-device <span class="symbol">:nav</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:ardrone_navigation</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:navigation</span>
+                <pre class="CodeRay"><span class="constant">Cylon</span> = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>)
+
+<span class="constant">Cylon</span>.robot
+  <span class="key">connection</span>:
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">ardrone</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">ardrone</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">192.168.1.1</span><span class="delimiter">'</span></span>
+
+  <span class="key">devices</span>:
+    [
+      {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">drone</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">ardrone</span><span class="delimiter">'</span></span>},
+      {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">nav</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">ardroneNav</span><span class="delimiter">'</span></span>}
+    ]
 </pre>
-              </section><section class="public-methods"><h2>Public driver events</h2>
-                <h3>navdata</h3>
-                <p>
-                  Gets triggered every time interval amount of time passes, returns and lets you access a NavData object containing the attributes described below:
-                </p>
+              </section><section class="public-methods"><h2>Events</h2>
                 <ul>
 <li>
-                    <b>navdata.sequence_number</b>
-                    → String (returns the sequence number)
+                    <h3>update</h3>
+                    <small>
+                      This event will contain one of the following events.
+                      <br>
+                      You can also subscribe to one of the specific events, if that is the information you are interested in.
+                    </small>
                   </li>
                   <li>
-                    <b>navdata.vision_flag</b>
-                    → String (returns the sequence number)
+                    <h3>navdata</h3>
+                    <p>coming soon</p>
                   </li>
                   <li>
-                    <b>navdata.flying?</b>
-                    → Boolean (is the ardrone flying?)
+                    <h3>landing</h3>
+                    <p>coming soon</p>
                   </li>
                   <li>
-                    <b>navdata.communication_lost?</b>
-                    → Boolean (is communication lost?)
+                    <h3>landed</h3>
+                    <p>coming soon</p>
                   </li>
                   <li>
-                    <b>navdata.com_watchdog_problem?</b>
-                    → Boolean (is there a watchdog problem?)
+                    <h3>takeoff</h3>
+                    <p>coming soon</p>
                   </li>
                   <li>
-                    <b>navdata.bootstrap?</b>
-                    → Boolean (boostrap navigation setup?)
-                  </li>
-                </ul>
-<h3>demo</h3>
-                <p>
-                  Gets triggered every time interval amount of time passes, returns and lets you access a NavOptionDemo object containing navigation data as described below:
-                </p>
-                <ul>
-<li>
-                    <b>nav_option_demo.control_state_name</b>
-                    → String (returns control state name)
+                    <h3>hovering</h3>
+                    <p>coming soon</p>
                   </li>
                   <li>
-                    <b>nav_option_demo.control_state</b>
-                    → Integer (returns control state)
+                    <h3>flying</h3>
+                    <p>coming soon</p>
                   </li>
                   <li>
-                    <b>nav_option_demo.battery_level</b>
-                    → Integer
+                    <h3>lowBattery</h3>
+                    <p>coming soon</p>
                   </li>
                   <li>
-                    <b>nav_option_demo.pitch</b>
-                    → float (returns the current pitch)
+                    <h3>batteryChange</h3>
+                    <p>coming soon</p>
                   </li>
                   <li>
-                    <b>nav_option_demo.roll</b>
-                    → float (returns the current roll)
+                    <h3>altitudeChange</h3>
+                    <p>coming soon</p>
                   </li>
                   <li>
-                    <b>nav_option_demo.yaw</b>
-                    → float (returns the current yaw)
+                    <h3>start</h3>
+                    <p>Sent when the device has been started and is ready to use.</p>
                   </li>
-                  <li>
-                    <b>nav_option_demo.altitude</b>
-                    → float (returns the current altitude)
-                  </li>
-                  <li>
-                    <b>nav_option_demo.vx</b>
-                    → float (returns the current velocity on X axis)
-                  </li>
-                  <li>
-                    <b>nav_option_demo.vy</b>
-                    → float (returns the current velocity on Y axis)
-                  </li>
-                  <li>
-                    <b>nav_option_demo.vz</b>
-                    → float (returns the current velocity on Z axis)
-                  </li>
-                </ul>
-<h3>vision_detect</h3>
-                <p>
-                  Gets triggered every time interval amount of time passes, returns and lets you access a NavOptionVisionDetect object containing the following data:
-                </p>
-                <ul>
-<li>
-                    <b>nav_option_vision_detect.detected_count</b>
-                    → Integer (Number of devices detected)
-                  </li>
-                  <li>
-                    <b>nav_option_vision_detect.type</b>
-                    → String
-                  </li>
-                  <li>
-                    <b>nav_option_vision_detect.name</b>
-                    → String
-                  </li>
-                  <li>
-                    <b>nav_option_vision_detect.x</b>
-                    → integer
-                  </li>
-                  <li>
-                    <b>nav_option_vision_detect.y</b>
-                    → integer
-                  </li>
-                  <li>
-                    <b>nav_option_vision_detect.width</b>
-                    → integer
-                  </li>
-                  <li>
-                    <b>nav_option_vision_detect.height</b>
-                    → integer
-                  </li>
-                  <li>
-                    <b>nav_option_vision_detect.distance</b>
-                    → integer
-                  </li>
-                  <li>
-                    <b>nav_option_vision_detect.orientation_angle</b>
-                    → float
-                  </li>
-                  <li>
-                    <b>nav_option_vision_detect.camera_source</b>
-                    → integer
-                  </li>
-                </ul>
-<h3>How to use events and call them on your drivers</h3>
-                <p>Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:</p>
-                <pre class="CodeRay">on nav, <span class="symbol">:navdata</span> =&gt; proc { |caller, navdata| puts <span class="string"><span class="delimiter">"</span><span class="content">Sequence number: </span><span class="inline"><span class="inline-delimiter">#{</span> navdata.sequence_number <span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span> }
-on nav, <span class="symbol">:demo</span> =&gt; proc { |caller, navdata, nav_option_demo| 
-  puts <span class="string"><span class="delimiter">"</span><span class="content">Ardrone pitch: </span><span class="inline"><span class="inline-delimiter">#{</span> nav_option_demo.pitch <span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
-  puts <span class="string"><span class="delimiter">"</span><span class="content">Ardrone roll:  </span><span class="inline"><span class="inline-delimiter">#{</span> nav_option_demo.roll <span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
-  puts <span class="string"><span class="delimiter">"</span><span class="content">Ardrone yaw:   </span><span class="inline"><span class="inline-delimiter">#{</span> nav_option_demo.yaw <span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
-}
-on nav, <span class="symbol">:vision_detect</span> =&gt; proc { |caller, navdata, nav_option_vision_detect|
-  puts <span class="string"><span class="delimiter">"</span><span class="content">Vision detect count: </span><span class="inline"><span class="inline-delimiter">#{</span> nav_option_vision_detect.detected_count <span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
-  puts <span class="string"><span class="delimiter">"</span><span class="content">Vision detect type: </span><span class="inline"><span class="inline-delimiter">#{</span> nav_option_vision_detect.type <span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
-  puts <span class="string"><span class="delimiter">"</span><span class="content">Vision detect name: </span><span class="inline"><span class="inline-delimiter">#{</span> nav_option_vision_detect.name <span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
-}
-</pre>
-              </section><section class="how-to"><h2>How to use</h2>
-                <h3>Example of receiving navigation data from an ARDrone.</h3>
-                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
-
-connection <span class="symbol">:navigation</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:ardrone_navigation</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">192.168.1.1:5554</span><span class="delimiter">'</span></span>
-device <span class="symbol">:nav</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:ardrone_navigation</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:navigation</span>
-
-work <span class="keyword">do</span>
-  on nav, <span class="symbol">:navdata</span> =&gt; <span class="symbol">:nav_update</span>
-<span class="keyword">end</span>
-
-<span class="keyword">def</span> <span class="function">nav_update</span>(*data)
-  p data[<span class="integer">1</span>].inspect
-<span class="keyword">end</span>
-</pre>
-              </section><section class="compatability hardware"><h2>Works with:</h2>
+                </ul></section><section class="compatability hardware"><h2>Works with:</h2>
                 <div class="devices">
                   <a class="device" href="/documentation/platforms/ardrone" title="AR Drone">
                     <img src="/images/ardrone.jpg"></a>
@@ -231,11 +135,6 @@ work <span class="keyword">do</span>
           © Copyright 2012-2013
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
-        <div class="artoo">
-          Want to use Ruby on robots? Check out our sister project Artoo
-          <a target="blanck" href="http://artoo.io">(http://artoo.io)</a>
-        </div>
-        <div class="clear"></div>
       </div>
     </footer>
 </body>

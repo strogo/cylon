@@ -5,9 +5,9 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-<meta content="Artoo Platforms" name="description">
+<meta content="Cylon.js Getting Started" name="description">
 <meta content="The Hybrid Group" name="author">
-<title>Artoo Platforms</title>
+<title>Cylon.js Getting Started</title>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700" rel="stylesheet" type="text/css">
 <link href="/stylesheets/style.css" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
@@ -31,15 +31,13 @@
               <a href="/">Cylon</a>
             </h1>
           </div>
-          <div class="github-menu">
-            <a target="blanck" href="https://github.com/hybridgroup/cylon/">Github Repo </a>
-          </div>
           <span class="menu">
+            <a href="/documentation" class="item">Docs</a>
+            <a href="/hardware" class="item">Hardware</a>
             
             
             
-            
-            
+            <a target="blanck" class="github-menu" href="https://github.com/hybridgroup/cylon/">Github</a>
           </span>
         </header>
 </div>
@@ -51,153 +49,139 @@
       </div>
       <div class="container">
         <div class="main" role="main">
-          <section class="content full"><section class="intro"><h2>What is artoo?</h2>
+          <section class="content full"><section class="intro"><h2>What is Cylon.js?</h2>
               <p>
-                Artoo is a micro-framework for robotics. It provides a simple, but powerful Domain-Specific Language (DSL) for robots and physical computing.
+                Cylon.js is a JavaScript framework for robotics and physical computing using node.js.
+              </p>
+              <p>
+                It provides a simple, yet powerful way to create solutions that incorporate multiple, different hardware devices at the same time.
+              </p>
+              <p>
+                Want to use Ruby on robots? Check out our sister project Artoo
                 <a target="black" href="http://artoo.io">(http://artoo.io)</a>
               </p>
-              <p>
-                With Artoo, you can easily connect multiple, different hardware devices together at the same time into a single solution.
-                Artoo makes telling robots what to do incredibly simple and fun.
-              </p>
-              <p>
-                Ruby versions supported: Ruby 2.0, Ruby 1.9.3, JRuby 1.7.4, and Rubinius 2.0
-                Artoo is conceptualy influenced by Sinatra (
-                <a href="https://github.com/sinatra/sinatra">Sinatra</a>
-                ) as well as borrowing some code from it.
-                Artoo provides a robust actor-based messaging architecture, that can support fully multi-threaded
-                operation and high-concurrency, as long as it is supported by the Ruby version in which it is executing.
-              </p>
-              <p>
-                This means you will need to use JRuby or Rubinius for maximum concurrency.
-                To a large extent, this is due to being built on top of Celluloid (
-                <a href="https://github.com/celluloid/celluloid">Celluloid</a>
-                ), Celluloid::IO (
-                <a href="https://github.com/celluloid/celluloid-io">Celluloid::IO</a>
-                ), and Reel (
-                <a href="https://github.com/celluloid/reel">Reel</a>
-                ).
-              </p>
-            </section><section class="how-to"><h2>How to setup your ruby environment</h2>
-              <p>
-                First thing you'll need to do, to be able to run artoo is install ruby. For first time users we recomend using ruby MRI 2.0 or above,
-                we also recomend using RVM to handle ruby installations (most of use it on a daily basis), you can install RVM and ruby using the following terminal commands.
-              </p>
-              <h3>How to install RVM</h3>
-              <p>
-                First we need to install RVM, you can do it by following the instructions below or for more detailed instructions go to
-                <a href="https://rvm.io/rvm/install">https://rvm.io/rvm/install</a>
-              </p>
-              <pre class="CodeRay">\curl -L https://get.rvm.io | bash -s stable
+            </section><section class="how-to"><h2>How to Install Node.js</h2>
+              <h3>OSX</h3>
+              <p></p>
+              Go to the Node.js downloads page at
+              <a href="http://nodejs.org/download/">http://nodejs.org/download/</a>
+              download the installer file and run it.
+              <h3>Ubuntu</h3>
+              <p></p>
+              Follow the installation instructions at
+              <a href="https://github.com/joyent/node/wiki/Installation">https://github.com/joyent/node/wiki/Installation</a>
+              to install the latest Node.js
+              <h3>Windows</h3>
+              <p></p>
+              Go to the Node.js downloads page at
+              <a href="http://nodejs.org/download/">http://nodejs.org/download/</a>
+              download the installer file and run it.
+            </section><section class="cylon-installation"><h2>How to Install Cylon.js</h2>
+              <p>In order to use Cylon.js, you must install the Cylon.js node modules needed to control your particular hardware setup. For example, to use Cylon.js with an Arduino, you will need to install the <code>cylon-firmata</code> module. Check out these examples:</p>
+              <h3>OSX</h3>
+              <pre class="CodeRay">npm install cylon
+npm install cylon-firmata
 </pre>
-              <p>
-                Once the installation is complete, close your terminal and open a new one, you can make sure your RVM is installed
-                correctly by running the following command "type rvm | head -n 1", you should see the "rvm is a function" output.
-              </p>
-              <pre class="CodeRay">type rvm | head -n 1
-rvm is a function
+              <h3>Ubuntu</h3>
+              <pre class="CodeRay">npm install cylon
+npm install cylon-firmata
 </pre>
-              <h3>How to install ruby 2.0</h3>
+              <h3>Windows</h3>
               <p>
-                Using RVM it is pretty easy to install and manage different ruby versions, to install ruby 2.0.0
+                Windows setup for cylon.
               </p>
-              <pre class="CodeRay">rvm install 2.0.0
+              <section class="cylon-running"></section><h2>Cylon.js Robots</h2>
+              <h3>Writing your robot code:</h3>
+              <p></p>
+              Now you are ready to write your own code. Take a look at the examples below, or go to the
+              <a href="https://github.com/hybridgroup/cylon/tree/master/examples">examples</a>
+              directory for a whole bunch of code you can use to help get started. We recommend using Test-Driven Robotics (TDR) with your preferred test frameworks.
+              <h3>Running your robot:</h3>
+              <pre class="CodeRay">node robotfilename.js
 </pre>
-              <h3>How to install rubinius 2.0</h3>
-              <p>
-                If you need to control multiple robots, microcontrollers or devices at the same time you should be using Rubinius 2.0-rc1
-                or higher. It is pretty easy to isntall using
-                <a href="https://rvm.io/">RVM.</a>
-              </p>
-              <pre class="CodeRay">rvm install rbx-2.0.0
+              <p>or</p>
+              <pre class="CodeRay">coffee robotfilename.coffee
 </pre>
-              <section class="hardware"><div class="devices">
-                  <a class="device" href="/documentation/platforms/ardrone" title="AR Drone">
-                    <img src="/images/ardrone.jpg"></a>
-                  <a class="device" href="/documentation/platforms/arduino" title="Arduino">
-                    <img src="/images/arduino.jpg"></a>
-                  <a class="device" href="/documentation/platforms/beaglebone" title="BeagleBone">
-                    <img src="/images/beaglebone.jpg"></a>
-                  <a class="device" href="/documentation/platforms/crazyflie" title="Crazyflie">
-                    <img src="/images/crazyflie.jpg"></a>
-                  <a class="device" href="/documentation/platforms/digispark" title="Digispark">
-                    <img src="/images/digispark.jpg"></a>
-                  <a class="device" href="/documentation/platforms/joystick" title="Joystick">
-                    <img src="/images/joystick.jpg"></a>
-                  <a class="device" href="/documentation/platforms/leapmotion" title="Leap Motion">
-                    <img src="/images/leap_motion.jpg"></a>
-                  <a class="device" href="/documentation/platforms/pebble" title="Pebble">
-                    <img src="/images/pebble.jpg"></a>
-                  <a class="device" href="/documentation/platforms/raspberry-pi" title="Raspberry Pi">
-                    <img src="/images/raspi.jpg"></a>
-                  <a class="device" href="/documentation/platforms/roomba" title="Roomba">
-                    <img src="/images/roomba.jpg"></a>
-                  <a class="device" href="/documentation/platforms/sphero" title="Sphero">
-                    <img src="/images/sphero.jpg"></a>
-                </div>
-              </section><p>
-                Artoo also has support for devices that can work across multiple hardware platforms.
-                </p>
-<ul>
-<li>
-                    General Purpose Input/Output (GPIO) devices &lt;==&gt;
-                    <a href="/documentation/drivers/">Drivers</a>
-                  </li>
-                  <li>
-                    i2c devices &lt;==&gt;
-                    <a href="/documentation/drivers/">Drivers</a>
-                  </li>
-                </ul>
-<p>
-                Do you have some hardware that is not yet supported by Artoo? We want to help you, help us, help them! Get in touch...
-              </p>
-            </section><section class="artoo-code"><h2>Code to control robots with Artoo</h2>
+            </section><section class="cylon-code"><h2>Cylon.js Code Examples</h2>
               <h3>Example: Arduino with LED and a button</h3>
-              <pre class="CodeRay"><span class="comment"># ./my_robot.rb</span>
-require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+              <p>To use this example, you must first run <code>npm install cylon-firmata</code></p>
+              <h4>Javascript</h4>
+              <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
-<span class="comment"># Circuit and schematic here: http://arduino.cc/en/tutorial/button</span>
-connection <span class="symbol">:arduino</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:firmata</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>
-device <span class="symbol">:led</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:led</span>, <span class="symbol">:pin</span> =&gt; <span class="integer">13</span>
-device <span class="symbol">:button</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:button</span>, <span class="symbol">:pin</span> =&gt; <span class="integer">2</span>
+Cylon.robot({
+  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span> },
+  <span class="key">devices</span>: [{<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">13</span>},
+            {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">2</span>}],
 
-work <span class="keyword">do</span>
-  on button, <span class="symbol">:push</span> =&gt; proc {led.toggle}
-<span class="keyword">end</span>
+  <span class="function">work</span>: <span class="keyword">function</span>(my) {
+    my.button.on(<span class="string"><span class="delimiter">'</span><span class="content">push</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {my.led.toggle()});
+  }
+}).start();
+</pre>
+              <h4>CoffeeScript</h4>
+              <pre class="CodeRay">Cylon = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
+
+Cylon.robot
+  connection:
+    name: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>
+
+  devices:
+    [
+      {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">13</span>},
+      {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">2</span>}
+    ]
+
+  work: (my) -&gt;
+    my.button.on <span class="string"><span class="delimiter">'</span><span class="content">push</span><span class="delimiter">'</span></span>, -&gt; my.led.toggle()
+
+.start()
 </pre>
               <h3>Parrot ARDrone 2.0</h3>
-              <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+              <p>To use this example, you must first run <code>npm install cylon-ardrone</code></p>
+              <h4>Javascript</h4>
+              <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
-connection <span class="symbol">:ardrone</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:ardrone</span>
-device <span class="symbol">:drone</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:ardrone</span>
+Cylon.robot({
+  <span class="key">connection</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">ardrone</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">ardrone</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">192.168.1.1</span><span class="delimiter">'</span></span>},
+  <span class="key">device</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">drone</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">ardrone</span><span class="delimiter">'</span></span>},
+  <span class="function">work</span>: <span class="keyword">function</span>(my) {
+    my.drone.takeoff();
 
-work <span class="keyword">do</span>
-  drone.start
-  drone.take_off
+    after((<span class="integer">10</span>).seconds(), <span class="keyword">function</span>() {
+      my.drone.land();
+    }
 
-  after(<span class="integer">25</span>.seconds) { drone.hover.land }
-  after(<span class="integer">30</span>.seconds) { drone.stop }
-<span class="keyword">end</span>
+    after((<span class="integer">15</span>).seconds(), <span class="keyword">function</span>() {
+      my.drone.stop();
+    }
+  }
+}).start();
 </pre>
-            </section><section class="installation"><h3>Installation</h3>
-              <pre class="CodeRay">gem install artoo
-</pre>
-              <p>
-                Then install the gems required by the hardware you want to use. For
-                example, if you wanted to use an XBox360 controller to fly your ARDrone:
-              </p>
-              <pre class="CodeRay">gem install artoo-joystick
-gem install artoo-ardrone
-</pre>
-              <h3>Writing your robot code:</h3>
-              <p>Now you are ready to write your own code. Take a look at the examples directory for a whole bunch of code you can use to help get started. We recommend using Test-Driven Robotics (TDR) with your preferred test frameworks.</p>
-              <h3>Running your robot:</h3>
-              <pre class="CodeRay">ruby myrobot.rb
+              <h4>CoffeeScript</h4>
+              <pre class="CodeRay">Cylon = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
+
+Cylon.robot
+  connection:
+    name: <span class="string"><span class="delimiter">'</span><span class="content">ardrone</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">ardrone</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">192.168.1.1</span><span class="delimiter">'</span></span>
+
+  device:
+    name: <span class="string"><span class="delimiter">'</span><span class="content">drone</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">ardrone</span><span class="delimiter">'</span></span>
+
+  work: (my) -&gt;
+    my.drone.takeoff()
+
+    after <span class="integer">10</span>.seconds(), -&gt;
+      my.drone.land()
+
+    after <span class="integer">15</span>.seconds(), -&gt;
+      my.drone.stop()
+
+.start()
 </pre>
             </section><section class="contributing"><h2>Contributing</h2>
               <p>
-                You can help artoo grow by contributing your code, new drivers or platforms to the project, check the Github page
-                <a href="https://github.com/hybridgroup/artoo">artoo on github.</a>
+                You can help cylon grow by contributing your code, new drivers or platforms to the project, check the Github page
+                <a href="https://github.com/hybridgroup/cylon">cylon on github.</a>
               </p>
               <ul>
 <li>Fork it</li>
@@ -214,11 +198,6 @@ gem install artoo-ardrone
           © Copyright 2012-2013
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
-        <div class="artoo">
-          Want to use Ruby on robots? Check out our sister project Artoo
-          <a target="blanck" href="http://artoo.io">(http://artoo.io)</a>
-        </div>
-        <div class="clear"></div>
       </div>
     </footer>
 </body>

@@ -7,7 +7,7 @@
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 <meta name="description">
 <meta content="The Hybrid Group" name="author">
-<title>Artoo - Sphero Driver</title>
+<title>Cylon.js - Sphero Driver</title>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700" rel="stylesheet" type="text/css">
 <link href="/stylesheets/style.css" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
@@ -31,15 +31,13 @@
               <a href="/">Cylon</a>
             </h1>
           </div>
-          <div class="github-menu">
-            <a target="blanck" href="https://github.com/hybridgroup/cylon/">Github Repo </a>
-          </div>
           <span class="menu">
+            <a href="/documentation" class="item">Docs</a>
+            <a href="/hardware" class="item">Hardware</a>
             
             
             
-            
-            
+            <a target="blanck" class="github-menu" href="https://github.com/hybridgroup/cylon/">Github</a>
           </span>
         </header>
 </div>
@@ -60,79 +58,59 @@
                   That is pretty simple once the Sphero is ready (connected and listening), you just need three lines of code and you are set,
                   Artoo and the Sphero driver take care of the rest.
                 </p>
-                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
-connection <span class="symbol">:sphero</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:sphero</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:8023</span><span class="delimiter">'</span></span>
-device <span class="symbol">:sphero</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:sphero</span>
+                <pre class="CodeRay"><span class="constant">Cylon</span> = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>)
+
+<span class="constant">Cylon</span>.robot
+  <span class="key">connection</span>:
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/rfcomm0</span><span class="delimiter">'</span></span>
+
+  <span class="key">device</span>:
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>
 </pre>
-              </section><section class="public-methods"><h2>Public instance methods:</h2>
-                <h3>roll(speed, direction) → true | nil</h3>
+              </section><section class="public-methods"><h2>Commands:</h2>
+                <h3>roll(speed, direction)</h3>
                 <p>
                   Starts the sphero rolling at the provided speed (value between 0 and 255) and direction (value between 0 and 360).
                 </p>
-                <h3>stop → true | nil</h3>
+                <h3>setRGB(color, persist)</h3>
                 <p>
-                  Stops the sphero.
+                  Coming soon
                 </p>
-                <h3>detect_collissions → true | nil</h3>
-                <p>
-                  REVISION PENDING: Sets the sphero to detect collisions and report them.
-                </p>
-                <h3>messages → [sphero_event]</h3>
-                <p>
-                  REVISION PENDING: Returns an array of sphero events, the messages reported by the sphero.
-                </p>
-                <h3>color(:color_symbol | [red, green, blue]) → [red_int, green_int, blue_int]</h3>
-                <p>
-                  REVISION PENDING: You can pass a color as a symbol or an array containing RGB colors from 0 to 255 ([255, 0, 0] == red),
-                  if passed a symbol returns the array of RGB corresponding to the color, if passed an array of colors it returns the same array
-                  (used when setting colors to the sphero).
-                </p>
-                <h3>set_color([red, green, blue]) → true | nil</h3>
-                <p>
-                  REVISION PENDING: You can either use it in tandem with color to set the color of the sphero or just pass an array containing RGB colors
-                  on the range 0 to 255 ([255, 0, 0] == red).
-                </p>
-              </section><section class="public-events"><h2>Public driver events:</h2>
-                <p>
-                  Public events are triggered when something occurs to your sphero, when this occurs you can execute some code
-                  to respond accordingly, depending on the event triggered, you can access
-                  the following public events when programming the Sphero.
-                </p>
-                <h3>:colission</h3>
-                <p>
-                  Gets triggered when the sphero hits something or falls from a step.
-                </p>
-                <h3>How to use events and call them on your drivers</h3>
-                <p>
-                  Pretty simple, when the connection and the driver have been setup (as explained above)
-                  you can call events on the sphero driver as follows:
-                </p>
-                <pre class="CodeRay"><span class="comment"># :contact is the name of a previously defined method containing the code to execute.</span>
-on sphero, <span class="symbol">:collision</span> =&gt; <span class="symbol">:contact</span>
-</pre>
-              </section><section class="how-to"><h2>How to use</h2>
-                <h3>Example to roll the sphero in a random direction and change direction every 3 seconds.</h3>
-                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
-
-connection <span class="symbol">:sphero</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:sphero</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:4567</span><span class="delimiter">'</span></span>
-device <span class="symbol">:sphero</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:sphero</span>
-
-work <span class="keyword">do</span>
-  <span class="instance-variable">@rolling</span> = <span class="predefined-constant">false</span>
-
-  every(<span class="integer">3</span>.seconds) <span class="keyword">do</span>
-    puts <span class="string"><span class="delimiter">"</span><span class="content">Rolling...</span><span class="delimiter">"</span></span>
-    <span class="keyword">unless</span> <span class="instance-variable">@rolling</span>
-      sphero.roll <span class="integer">90</span>, rand(<span class="integer">360</span>)
-      <span class="instance-variable">@rolling</span> = <span class="predefined-constant">true</span>
-    <span class="keyword">else</span>
-      sphero.stop
-      <span class="instance-variable">@rolling</span> = <span class="predefined-constant">false</span>
-    <span class="keyword">end</span>
-  <span class="keyword">end</span>
-<span class="keyword">end</span>
-</pre>
-              </section><section class="compatability hardware"><h2>Works with:</h2>
+                <h3>detectCollisions</h3>
+                <p>REVISION PENDING: Sets the sphero to detect collisions and report them.</p>
+                <h3>stop</h3>
+                <p>Stops the sphero.</p>
+              </section><section class="public-events"><h2>Events:</h2>
+                <ul>
+<li>
+                    <h3>update</h3>
+                    <small>
+                      This event will contain one of the following events.
+                      <br>
+                      You can also subscribe to one of the specific events, if that is the information you are interested in.
+                    </small>
+                  </li>
+                  <li>
+                    <h3>collision</h3>
+                    <p>Gets triggered when the sphero hits something or falls from a step.</p>
+                  </li>
+                  <li>
+                    <h3>messages</h3>
+                    <p>coming soon</p>
+                  </li>
+                  <li>
+                    <h3>notifications</h3>
+                    <p>coming soon</p>
+                  </li>
+                  <li>
+                    <h3>connect</h3>
+                    <p>coming soon</p>
+                  </li>
+                  <li>
+                    <h3>start</h3>
+                    <p>Sent when the device has been started and is ready to use.</p>
+                  </li>
+                </ul></section><section class="compatability hardware"><h2>Works with:</h2>
                 
                 <div class="devices">
                   <a class="device" href="/documentation/platforms/sphero" title="Sphero">
@@ -149,11 +127,6 @@ work <span class="keyword">do</span>
           © Copyright 2012-2013
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
-        <div class="artoo">
-          Want to use Ruby on robots? Check out our sister project Artoo
-          <a target="blanck" href="http://artoo.io">(http://artoo.io)</a>
-        </div>
-        <div class="clear"></div>
       </div>
     </footer>
 </body>
