@@ -107,23 +107,29 @@
             <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 <span class="comment">// Initialize the robot</span>
-Cylon.robot({
+<span class="keyword">var</span> robot = Cylon.robot({
 </pre>
             
             <p>Then tell the robot code about your hardware to hook it up:</p>
             
-            <pre class="CodeRay">connection: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/rfcomm0</span><span class="delimiter">'</span></span>},
+            <pre class="CodeRay">  connection: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/rfcomm0</span><span class="delimiter">'</span></span>},
 
-<span class="key">device</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">ball</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>},
+  <span class="key">device</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">ball</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>},
 </pre>
             
-            <p>And tell it what work to do!</p>
+            <p>And tell it what work to do. This code tells the Sphero that every second, it should roll around in a random direction:</p>
             
-            <pre class="CodeRay"><span class="function">work</span>: <span class="keyword">function</span>(my) {
-  every((<span class="integer">1</span>).second(), <span class="keyword">function</span>() { 
-    my.ball.roll(<span class="integer">60</span>, Math.floor(Math.random() * <span class="integer">360</span>));
-  });
-}
+            <pre class="CodeRay">  <span class="function">work</span>: <span class="keyword">function</span>(my) {
+    every((<span class="integer">1</span>).second(), <span class="keyword">function</span>() { 
+      my.ball.roll(<span class="integer">60</span>, Math.floor(Math.random() * <span class="integer">360</span>));
+    });
+  }
+});
+</pre>
+            
+            <p>Last, tell the robot to start. That's it!</p>
+            
+            <pre class="CodeRay">robot.start();
 </pre>
             
             <h2 id="getting-started">Getting Started</h2>
@@ -137,17 +143,17 @@ Cylon.robot({
 <li>
                   <a href="http://www.arduino.cc/">Arduino</a>
                   &lt;==&gt;
-                  <a href="https://github.com/hybridgroup/cylon-firmata">Cylon.js For Firmata Adaptor</a>
+                  <a href="https://github.com/hybridgroup/cylon-firmata">Cylon.js for Firmata (Adaptor)</a>
                 </li>
                 <li>
                   <a href="http://ardrone2.parrot.com/">Ardrone</a>
                   &lt;==&gt;
-                  <a href="https://github.com/hybridgroup/cylon-ardrone">Cylon.js for ARDrone Adaptor/Drivers</a>
+                  <a href="https://github.com/hybridgroup/cylon-ardrone">Cylon.js for ARDrone (Adaptor/Drivers)</a>
                 </li>
                 <li>
                   <a href="http://www.gosphero.com/">Sphero</a>
                   &lt;==&gt;
-                  <a href="https://github.com/hybridgroup/cylon-sphero">Cylon.js For Sphero Adaptor/Driver</a>
+                  <a href="https://github.com/hybridgroup/cylon-sphero">Cylon.js for Sphero (Adaptor/Driver)</a>
                 </li>
               </ul>
 <p>Support for common shared device drivers, is provded using the General Purpose Input/Output (GPIO) module:</p>
@@ -155,7 +161,7 @@ Cylon.robot({
 <li>
                 <a href="https://en.wikipedia.org/wiki/General_Purpose_Input/Output">GPIO</a>
                 &lt;==&gt;
-                <a href="https://github.com/hybridgroup/cylon-gpio">Cylon.js For GPIO Drivers</a>
+                <a href="https://github.com/hybridgroup/cylon-gpio">Cylon.js for GPIO (Drivers)</a>
               </li>
             </ul>
 <p>More platforms and drivers are coming soon...</p>

@@ -1348,28 +1348,29 @@ a {
 
 /* line 10, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
 .github-menu {
-  padding: 7px 10px 10px 40px;
+  padding: 10px 10px 10px 40px;
+  font-weight: bold;
   background: url(../../images/github-mark.png) top left no-repeat; }
   /* line 11, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
   .github-menu a {
     color: #580a25; }
-  /* line 15, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
+  /* line 16, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
   .github-menu:hover {
     color: #ee274a;
     text-decoration: underline; }
 
-/* line 19, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
+/* line 20, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
 .app-header {
   margin: 16px 0 15px 0; }
-  /* line 22, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
+  /* line 23, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
   .app-header .artoo-logo, .app-header .display, .app-header .subtitle, .app-header .menu, .app-header h1 {
     vertical-align: middle;
     margin: 0;
     display: inline-block; }
-  /* line 27, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
+  /* line 28, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
   .app-header .display {
     margin: -1px 0 0 0; }
-  /* line 30, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
+  /* line 31, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
   .app-header .subtitle {
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
@@ -1377,10 +1378,10 @@ a {
     color: #505252;
     padding: 8px 0 0 15px;
     width: 200px; }
-  /* line 35, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
+  /* line 36, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
   .app-header .easter {
     display: none; }
-  /* line 38, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
+  /* line 39, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
   .app-header .heart {
     color: red;
     font-size: 20px;
@@ -1389,59 +1390,60 @@ a {
     display: inline-block;
     width: 38px;
     text-align: center; }
-  /* line 47, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
+  /* line 48, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
   .app-header .menu {
     width: 510px;
     text-align: right;
     display: inline-block;
-    margin: 3px 0 0 0; }
-    /* line 53, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
+    margin: 3px 0 0 0;
+    float: right; }
+    /* line 55, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
     .app-header .menu .active {
       color: #cc3300; }
-    /* line 56, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
+    /* line 58, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
     .app-header .menu .item {
       font-size: 15px;
       font-weight: bold;
       margin: 10px;
       padding: 8px 4px; }
-      /* line 62, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
+      /* line 64, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
       .app-header .menu .item, .app-header .menu .item:visited {
         color: #505252; }
-      /* line 65, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
+      /* line 67, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
       .app-header .menu .item:hover {
         color: #cc3300; }
-      /* line 68, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
+      /* line 70, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
       .app-header .menu .item:active {
         color: #cc3300; }
     @media only screen and (min-width: 767px) and (max-width: 964px) {
-      /* line 47, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
+      /* line 48, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
       .app-header .menu {
         width: 360px;
         padding: 0; }
-        /* line 74, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
+        /* line 76, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
         .app-header .menu .item {
           margin: 0;
           padding: 0 5px; } }
   @media only screen and (max-width: 767px) {
-    /* line 19, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
+    /* line 20, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
     .app-header {
       width: 100%;
       text-align: center; }
-      /* line 81, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
+      /* line 83, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
       .app-header .artoo-logo, .app-header .subtitle {
         width: 100%;
         display: block;
         margin: 0 0 5px 0; }
-      /* line 85, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
+      /* line 87, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
       .app-header .subtitle {
         font-size: 19px;
         line-height: 15px;
         padding: 0; }
-      /* line 89, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
+      /* line 91, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
       .app-header .menu {
         width: 100%;
         text-align: center; }
-        /* line 92, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
+        /* line 94, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
         .app-header .menu .item {
           margin: 0;
           padding: 0 2px; } }
