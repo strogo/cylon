@@ -55,7 +55,16 @@
                 </p>
               </section><section class="how-to"><h2>How to establish a connection and setup the driver</h2>
                 <h3>For Arduino:</h3>
-                <pre class="CodeRay"><span class="constant">Cylon</span> = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>)
+                <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
+
+Cylon.robot({
+  <span class="key">connection</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>},
+
+  <span class="key">device</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">motor</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">motor</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">3</span>},
+
+  ...
+</pre>
+                <pre class="CodeRay"><span class="constant">Cylon</span> = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
 
 <span class="constant">Cylon</span>.robot
   <span class="key">connection</span>:
@@ -63,6 +72,8 @@
 
   <span class="key">device</span>:
     <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">motor</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">motor</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">3</span>
+
+  ...
 </pre>
               </section><section class="public-methods"><h2>Commands:</h2>
                 <dl class="methods">
@@ -83,25 +94,38 @@
                   <dd>Sent when the device has been started and is ready to use.</dd>
                 </dl></section><section class="how-to"><h2>How to use</h2>
                 <h3>Example of a dc motor with speed changes using PWM.</h3>
-                <pre class="CodeRay">  Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>)
+                <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
-  Cylon.robot
-    connection:
-      name: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>
+Cylon.robot({
+  <span class="key">connection</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>},
 
-    device:
-      name: <span class="string"><span class="delimiter">'</span><span class="content">motor</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">motor</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">3</span>
+  <span class="key">device</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">motor</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">motor</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">3</span>},
 
-    work: (my) -&gt;
-      speed = <span class="integer">0</span>
-      increment = <span class="integer">5</span>
-      every <span class="float">0.05</span>.seconds(), -&gt;
-        speed += increment
-        my.motor.speed(speed)
-        console.log(<span class="string"><span class="delimiter">"</span><span class="content">current speed =&gt; #{ my.motor.currentSpeed() }</span><span class="delimiter">"</span></span>)
-        increment = -increment <span class="keyword">if</span> (speed is <span class="integer">0</span>) or (speed is <span class="integer">255</span>)
+  <span class="function">work</span>: <span class="keyword">function</span>(my) {
+    my.motor.speed(<span class="integer">100</span>);
 
-  .start()
+    after((<span class="integer">5</span>).seconds(), <span class="keyword">function</span>(my) {
+      my.motor.stop();
+    });
+  }
+}).start();
+</pre>
+                <pre class="CodeRay">Cylon = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
+
+Cylon.robot
+  connection:
+    name: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>
+
+  device:
+    name: <span class="string"><span class="delimiter">'</span><span class="content">motor</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">motor</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">3</span>
+
+  work: (my) -&gt;
+    my.motor.speed <span class="integer">100</span>
+    
+    after <span class="integer">5</span>.seconds(), -&gt;
+      my.motor.stop()
+
+.start()
 </pre>
                 <h2>Circuit and Schematic</h2>
                 <p>

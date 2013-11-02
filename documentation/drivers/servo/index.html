@@ -54,14 +54,25 @@
                 </p>
               </section><section class="how-to"><h2>How to establish a connection and setup the driver</h2>
                 <h3>For Arduino:</h3>
-                <pre class="CodeRay"><span class="constant">Cylon</span> = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>)
+                <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
-<span class="constant">Cylon</span>.robot
-  <span class="key">connection</span>:
-    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>
+Cylon.robot({
+  <span class="key">connection</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>},
 
-  <span class="key">device</span>:
-    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">servo</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">servo</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">3</span>
+  <span class="key">device</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">servo</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">servo</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">3</span>},
+
+...
+</pre>
+                <pre class="CodeRay">Cylon = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
+
+Cylon.robot
+  connection:
+    name: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>
+
+  device:
+    name: <span class="string"><span class="delimiter">'</span><span class="content">servo</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">servo</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">3</span>
+
+...
 </pre>
               </section><section class="public-methods"><h2>Commands:</h2>
                 <dl class="methods">
@@ -75,24 +86,43 @@
 <dt>start</dt>
                   <dd>Sent when the device has been started and is ready to use.</dd>
                 </dl></section><section class="how-to"><h2>How to use</h2>
-                <h3>Example moves a servo from angle 0 to 90 to 180.</h3>
-                <pre class="CodeRay"><span class="constant">Cylon</span> = require(<span class="string"><span class="delimiter">'</span><span class="content">..</span><span class="delimiter">'</span></span>)
+                <h3>Example moves a servo from angle 45 to 90 to 135.</h3>
+                <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
-<span class="constant">Cylon</span>.robot
-  <span class="key">connection</span>:
-    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>
+Cylon.robot({
+  <span class="key">connection</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>},
 
-  <span class="key">device</span>:
-    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">servo</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">servo</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">3</span>
+  <span class="key">device</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">servo</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">servo</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">3</span>},
 
-  <span class="key">work</span>: (my) -&gt;
-    angle = <span class="integer">0</span>
-    increment = <span class="integer">90</span>
-    every <span class="integer">1</span>.seconds(), -&gt;
-      angle += increment
-      my.servo.angle(angle)
-      console.log(<span class="string"><span class="delimiter">"</span><span class="content">Current Angle =&gt; </span><span class="inline"><span class="inline-delimiter">#{</span> my.servo.currentAngle() <span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>)
-      increment = -increment <span class="keyword">if</span> (angle is <span class="integer">0</span>) <span class="keyword">or</span> (angle is <span class="integer">180</span>)
+  <span class="function">work</span>: <span class="keyword">function</span>(my) {
+    <span class="keyword">var</span> angle = <span class="integer">45</span> ;
+    my.servo.angle(angle);
+    every((<span class="integer">1</span>).second(), <span class="keyword">function</span>() {
+      angle = angle + <span class="integer">45</span> ;
+      <span class="keyword">if</span> (angle &gt; <span class="integer">135</span>) {
+        angle = <span class="integer">45</span>
+      }
+      my.servo.angle(angle);
+    });
+  }
+}).start();
+</pre>
+                <pre class="CodeRay">Cylon = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
+
+Cylon.robot
+  connection:
+    name: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>
+
+  device:
+    name: <span class="string"><span class="delimiter">'</span><span class="content">servo</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">servo</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">3</span>
+
+  work: (my) -&gt;
+    angle = <span class="integer">45</span>
+    my.servo.angle angle
+    every <span class="integer">1</span>.second(), -&gt;
+      angle += <span class="integer">45</span>
+      angle = <span class="integer">45</span> <span class="keyword">if</span> angle &gt; <span class="integer">135</span>
+      my.servo.angle angle
 
 .start()
 </pre>

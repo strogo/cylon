@@ -54,16 +54,25 @@
                 </p>
               </section><section class="how_to"><h2>How to establish a connection and setup the driver</h2>
                 <h3>For Arduino:</h3>
-                <pre class="CodeRay"><span class="constant">Cylon</span> = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>)
+                <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
-<span class="constant">Cylon</span>.robot
-  <span class="key">connection</span>:
-    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>
+Cylon.robot({
+  <span class="key">connection</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>},
 
-  <span class="key">devices</span>:
-    [
-      {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">2</span>}
-    ]
+  <span class="key">device</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">2</span>},
+
+  ...
+</pre>
+                <pre class="CodeRay">Cylon = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
+
+Cylon.robot
+  connection:
+    name: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>
+
+  device:
+    name: <span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">2</span>
+
+  ...
 </pre>
               </section><section class="public-methods"><h2>Commands:</h2>
                 <dl class="methods">
@@ -85,7 +94,37 @@
                   <dd>This event gets triggered when the button changes state from pushed to released.</dd>
                   <dt>start</dt>
                   <dd>Sent when the device has been started and is ready to use.</dd>
-                </dl></section><section class="circuit"><h2>Circuit and Schematic</h2>
+                </dl></section><section class="how-to"><h2>How to use</h2>
+                <h3>Example detecting when a button has been pushed</h3>
+                <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
+
+Cylon.robot({
+  <span class="key">connection</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>},
+
+  <span class="key">device</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">2</span>},
+
+  <span class="function">work</span>: <span class="keyword">function</span>(my) {
+    my.button.on(<span class="string"><span class="delimiter">'</span><span class="content">push</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+      Logger.info(<span class="string"><span class="delimiter">"</span><span class="content">Button pushed!</span><span class="delimiter">"</span></span>);
+    });
+  }
+}).start();
+</pre>
+                <pre class="CodeRay">Cylon = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
+
+Cylon.robot
+  connection:
+    name: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>
+
+  device:
+    name: <span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">button</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">2</span>
+
+  work: (my) -&gt;
+    my.button.on <span class="string"><span class="delimiter">'</span><span class="content">push</span><span class="delimiter">'</span></span>, -&gt; Logger.info <span class="string"><span class="delimiter">"</span><span class="content">Button pushed!</span><span class="delimiter">"</span></span>
+
+.start()
+</pre>
+              </section><section class="circuit"><h2>Circuit and Schematic</h2>
                 <a href="http://arduino.cc/en/tutorial/button">http://arduino.cc/en/tutorial/button</a>
               </section><section class="compatability hardware"><h2>Works with:</h2>
                 
