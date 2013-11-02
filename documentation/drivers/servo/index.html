@@ -36,8 +36,7 @@
             <a href="/hardware" class="item">Hardware</a>
             
             
-            
-            <a target="blanck" class="github-menu" href="https://github.com/hybridgroup/cylon/">Github</a>
+            <a class="item" target="blanck" href="https://github.com/hybridgroup/cylon/">Github</a>
           </span>
         </header>
 </div>
@@ -51,7 +50,7 @@
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
               <section class="intro"><img class="display" src="/images/servo.jpg"><p>
-                  Provides an interface for making servos easy to work and interact with from Artoo.
+                  Provides an interface for making servos easy to work and interact with from Cylon.js.
                 </p>
               </section><section class="how-to"><h2>How to establish a connection and setup the driver</h2>
                 <h3>For Arduino:</h3>
@@ -65,17 +64,17 @@
     <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">servo</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">servo</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">3</span>
 </pre>
               </section><section class="public-methods"><h2>Commands:</h2>
-                <h3>angle</h3>
-                <p>Moves the servo to the specified angle, angle must be an integer value between 0 and 180.</p>
-                <h3>currentAngle</h3>
-                <p>Returns the current angle of the servo, an integer value between 0 and 180.</p>
-                <h2>Events</h2>
-                <ul>
-<li>
-                    <h3>start</h3>
-                    <p>Sent when the device has been started and is ready to use.</p>
-                  </li>
-                </ul></section><section class="how-to"><h2>How to use</h2>
+                <dl class="methods">
+<dt>angle</dt>
+                  <dd>Moves the servo to the specified angle, angle must be an integer value between 0 and 180.</dd>
+                  <dt>currentAngle → integer_value (0 - 180)</dt>
+                  <dd>Returns the current angle of the servo, an integer value between 0 and 180.</dd>
+                </dl>
+<h2>Events</h2>
+                <dl class="methods">
+<dt>start</dt>
+                  <dd>Sent when the device has been started and is ready to use.</dd>
+                </dl></section><section class="how-to"><h2>How to use</h2>
                 <h3>Example moves a servo from angle 0 to 90 to 180.</h3>
                 <pre class="CodeRay"><span class="constant">Cylon</span> = require(<span class="string"><span class="delimiter">'</span><span class="content">..</span><span class="delimiter">'</span></span>)
 

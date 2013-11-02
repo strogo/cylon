@@ -36,8 +36,7 @@
             <a href="/hardware" class="item">Hardware</a>
             
             
-            
-            <a target="blanck" class="github-menu" href="https://github.com/hybridgroup/cylon/">Github</a>
+            <a class="item" target="blanck" href="https://github.com/hybridgroup/cylon/">Github</a>
           </span>
         </header>
 </div>
@@ -51,12 +50,12 @@
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
               <section class="intro"><img class="display" src="/images/sphero.jpg"><p>
-                  Allows user to interact with the Sphero robotic sphero using Artoo.
+                  Allows user to interact with the Sphero robotic sphero using Cylon.js.
                 </p>
               </section><section class="how-to"><h2>How to establish a connection and setup the driver</h2>
                 <p>
                   That is pretty simple once the Sphero is ready (connected and listening), you just need three lines of code and you are set,
-                  Artoo and the Sphero driver take care of the rest.
+                  Cylon.js and the Sphero driver take care of the rest.
                 </p>
                 <pre class="CodeRay"><span class="constant">Cylon</span> = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>)
 
@@ -68,49 +67,399 @@
     <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>
 </pre>
               </section><section class="public-methods"><h2>Commands:</h2>
-                <h3>roll(speed, direction)</h3>
-                <p>
-                  Starts the sphero rolling at the provided speed (value between 0 and 255) and direction (value between 0 and 360).
-                </p>
-                <h3>setRGB(color, persist)</h3>
-                <p>
-                  Coming soon
-                </p>
-                <h3>detectCollisions</h3>
-                <p>REVISION PENDING: Sets the sphero to detect collisions and report them.</p>
-                <h3>stop</h3>
-                <p>Stops the sphero.</p>
-              </section><section class="public-events"><h2>Events:</h2>
-                <ul>
-<li>
-                    <h3>update</h3>
-                    <small>
-                      This event will contain one of the following events.
-                      <br>
-                      You can also subscribe to one of the specific events, if that is the information you are interested in.
-                    </small>
-                  </li>
-                  <li>
-                    <h3>collision</h3>
-                    <p>Gets triggered when the sphero hits something or falls from a step.</p>
-                  </li>
-                  <li>
-                    <h3>messages</h3>
-                    <p>coming soon</p>
-                  </li>
-                  <li>
-                    <h3>notifications</h3>
-                    <p>coming soon</p>
-                  </li>
-                  <li>
-                    <h3>connect</h3>
-                    <p>coming soon</p>
-                  </li>
-                  <li>
-                    <h3>start</h3>
-                    <p>Sent when the device has been started and is ready to use.</p>
-                  </li>
-                </ul></section><section class="compatability hardware"><h2>Works with:</h2>
+                <dl class="methods">
+<dt>abortMacro() → (ID code , command number)</dt>
+                  <dd></dd>
+                  <dt>abortOrbBasicProgram()</dt>
+                  <dd></dd>
+                  <dt>appendMacroChunck(MACRO Chunk)</dt>
+                  <dd></dd>
+                  <dt>appendOrbBasicFragment(Area, Program Code)</dt>
+                  <dd></dd>
+                  <dt>configureCollisionDetection(Meth,(Xt, Yt),(Xspd, Yspd),Dead)</dt>
+                  <dd>Sets the sphero to detect collisions and report them.</dd>
+                  <dt>configureLocator(flag, x, y, Yaw Tare)</dt>
+                  <dd></dd>
+                  <dt>detectCollisions()</dt>
+                  <dd></dd>
+                  <dt>eraseOrbBasicStorage(Area)</dt>
+                  <dd></dd>
+                  <dt>executeOrbBasicProgram(Area, Start Line, Start Line)</dt>
+                  <dd></dd>
+                  <dt>getApplicationConfigurationBlock()</dt>
+                  <dd></dd>
+                  <dt>getConfigurationBlock(ID)</dt>
+                  <dd></dd>
+                  <dt>getDeviceMode() → (Mode), options: 00h (Normal mode) | 01h (User Hack mode)</dt>
+                  <dd></dd>
+                  <dt>getMacroStatus() → (ID code , cmd number, cmd number)</dt>
+                  <dd></dd>
+                  <dt>getPermanentOptionFlags() → (FLAGS), options: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 6-31</dt>
+                  <dd></dd>
+                  <dt>getRGB() → (red,green,blue) | (color)</dt>
+                  <dd></dd>
+                  <dt>getTemporaryOptionFlags() → (FLAGS), options: 0 | 1-31</dt>
+                  <dd></dd>
+                  <dt>reInitializeMacroExecutive()</dt>
+                  <dd></dd>
+                  <dt>readLocator() → (XPOS, YPOS, XVEL, YVEL, SOG)</dt>
+                  <dd></dd>
+                  <dt>roll(speed, heading, state)</dt>
+                  <dd>This commands Sphero to roll along the provided vector. Both a speed and a heading are required; the latter is considered relative to the last calibrated direction.</dd>
+                  <dt>runMacro(SEQ, DLEN, ID)</dt>
+                  <dd></dd>
+                  <dt>saveMacro(data)</dt>
+                  <dd></dd>
+                  <dt>saveTemporaryMacro(data)</dt>
+                  <dd></dd>
+                  <dt>selfLevel(Options, Angle Limit, Timeout, True Time), options: ((0 | 1 | 2 |3 ), (0 | 1 to 90), (0 | 1 to 255), (0 | 1 to 255)</dt>
+                  <dd></dd>
+                  <dt>setAccelerometerRange(Range Idx), options: 0 | 1 | 2 | 3</dt>
+                  <dd></dd>
+                  <dt>setApplicationConfigurationBlock()</dt>
+                  <dd></dd>
+                  <dt>setBackLED(BRIGHT)</dt>
+                  <dd></dd>
+                  <dt>setBoostWithTime(STATE)</dt>
+                  <dd></dd>
+                  <dt>setColor(color)</dt>
+                  <dd>This allows you to set the color of the sphero, just pass an array containing RGB hex or a string with one of the color names of the list.</dd>
+                  <dt>setConfigurationBlock(value)</dt>
+                  <dd></dd>
+                  <dt>setDataStreaming(N, M, MASK, PCNT, MASK2)</dt>
+                  <dd></dd>
+                  <dt>setDeviceMode(MODE)</dt>
+                  <dd></dd>
+                  <dt>setHeading(HEADING)</dt>
+                  <dd></dd>
+                  <dt>setMacroParameter(Param, Val1, Val2)</dt>
+                  <dd></dd>
+                  <dt>setMotionTimeout(TIME)</dt>
+                  <dd></dd>
+                  <dt>setPermanentOptionFlags(FLAGS)</dt>
+                  <dd></dd>
+                  <dt>setRGB(color, persist)</dt>
+                  <dd>This allows you to set the RGB LED color, just pass an array containing RGB hex or a string with one of the color names of the list.</dd>
+                  <dt>setRawMotorValues(L-MODE, L-POWER, R-MODE, R-POWER)</dt>
+                  <dd></dd>
+                  <dt>setRotationRate(RATE)</dt>
+                  <dd></dd>
+                  <dt>setStabalisation(bool)</dt>
+                  <dd></dd>
+                  <dt>setTemporaryOptionFlags(FLAGS)</dt>
+                  <dd></dd>
+                  <dt>stop()</dt>
+                  <dd>Stops the sphero.</dd>
+                  <dt>submitValueToInputStatement(VAL)</dt>
+                  <dd></dd>
+                </dl></section><section class="public-events"><h2>Events:</h2>
+                <dl class="methods">
+<dt>update</dt>
+                  <dd>
+                    This event will contain one of the following events.
+                    <br>
+                    You can also subscribe to one of the specific events, if that is the information you are interested in.
+                  </dd>
+                  <dt>collision</dt>
+                  <dd>Gets triggered when the sphero hits something or falls from a step.</dd>
+                  <dt>messages(data)</dt>
+                  <dd></dd>
+                  <dt>notifications(data)</dt>
+                  <dd></dd>
+                  <dt>connect</dt>
+                  <dd>Opens the connection to Sphero.</dd>
+                  <dt>start</dt>
+                  <dd>Sent when the device has been started and is ready to use.</dd>
+                </dl></section><section><h2>Sphero Colors</h2>
+                <dl class="colors">
+<dt>aliceblue</dt>
+                  <dd>0xF0F8FF</dd>
+                  <dt>antiquewhite</dt>
+                  <dd>0xFAEBD7</dd>
+                  <dt>aqua</dt>
+                  <dd>0x00FFFF</dd>
+                  <dt>aquamarine</dt>
+                  <dd>0x7FFFD4</dd>
+                  <dt>azure</dt>
+                  <dd>0xF0FFFF</dd>
+                  <dt>beige</dt>
+                  <dd>0xF5F5DC</dd>
+                  <dt>bisque</dt>
+                  <dd>0xFFE4C4</dd>
+                  <dt>black</dt>
+                  <dd>0x000000</dd>
+                  <dt>blanchedalmond</dt>
+                  <dd>0xFFEBCD</dd>
+                  <dt>blue</dt>
+                  <dd>0x0000FF</dd>
+                  <dt>blueviolet</dt>
+                  <dd>0x8A2BE2</dd>
+                  <dt>brown</dt>
+                  <dd>0xA52A2A</dd>
+                  <dt>burlywood</dt>
+                  <dd>0xDEB887</dd>
+                  <dt>cadetblue</dt>
+                  <dd>0x5F9EA0</dd>
+                  <dt>chartreuse</dt>
+                  <dd>0x7FFF00</dd>
+                  <dt>chocolate</dt>
+                  <dd>0xD2691E</dd>
+                  <dt>coral</dt>
+                  <dd>0xFF7F50</dd>
+                  <dt>cornflowerblue</dt>
+                  <dd>0x6495ED</dd>
+                  <dt>cornsilk</dt>
+                  <dd>0xFFF8DC</dd>
+                  <dt>crimson</dt>
+                  <dd>0xDC143C</dd>
+                  <dt>cyan</dt>
+                  <dd>0x00FFFF</dd>
+                  <dt>darkblue</dt>
+                  <dd>0x00008B</dd>
+                  <dt>darkcyan</dt>
+                  <dd>0x008B8B</dd>
+                  <dt>darkgoldenrod</dt>
+                  <dd>0xB8860B</dd>
+                  <dt>darkgray</dt>
+                  <dd>0xA9A9A9</dd>
+                  <dt>darkgreen</dt>
+                  <dd>0x006400</dd>
+                  <dt>darkkhaki</dt>
+                  <dd>0xBDB76B</dd>
+                  <dt>darkmagenta</dt>
+                  <dd>0x8B008B</dd>
+                  <dt>darkolivegreen</dt>
+                  <dd>0x556B2F</dd>
+                  <dt>darkorange</dt>
+                  <dd>0xFF8C00</dd>
+                  <dt>darkorchid</dt>
+                  <dd>0x9932CC</dd>
+                  <dt>darkred</dt>
+                  <dd>0x8B0000</dd>
+                  <dt>darksalmon</dt>
+                  <dd>0xE9967A</dd>
+                  <dt>darkseagreen</dt>
+                  <dd>0x8FBC8F</dd>
+                  <dt>darkslateblue</dt>
+                  <dd>0x483D8B</dd>
+                </dl>
+<dl class="colors">
+<dt>darkslategray</dt>
+                  <dd>0x2F4F4F</dd>
+                  <dt>darkturquoise</dt>
+                  <dd>0x00CED1</dd>
+                  <dt>darkviolet</dt>
+                  <dd>0x9400D3</dd>
+                  <dt>deeppink</dt>
+                  <dd>0xFF1493</dd>
+                  <dt>deepskyblue</dt>
+                  <dd>0x00BFFF</dd>
+                  <dt>dimgray</dt>
+                  <dd>0x696969</dd>
+                  <dt>dodgerblue</dt>
+                  <dd>0x1E90FF</dd>
+                  <dt>firebrick:</dt>
+                  <dd>0xB22222</dd>
+                  <dt>floralwhite</dt>
+                  <dd>0xFFFAF0</dd>
+                  <dt>forestgreen</dt>
+                  <dd>0x228B22</dd>
+                  <dt>fuchsia</dt>
+                  <dd>0xFF00FF</dd>
+                  <dt>gainsboro</dt>
+                  <dd>0xDCDCDC</dd>
+                  <dt>ghostwhite</dt>
+                  <dd>0xF8F8FF</dd>
+                  <dt>gold</dt>
+                  <dd>0xFFD700</dd>
+                  <dt>goldenrod</dt>
+                  <dd>0xDAA520</dd>
+                  <dt>gray</dt>
+                  <dd>0x808080</dd>
+                  <dt>green</dt>
+                  <dd>0x008000</dd>
+                  <dt>greenyellow</dt>
+                  <dd>0xADFF2F</dd>
+                  <dt>honeydew</dt>
+                  <dd>0xF0FFF0</dd>
+                  <dt>hotpink</dt>
+                  <dd>0xFF69B4</dd>
+                  <dt>indianred</dt>
+                  <dd>0xCD5C5C</dd>
+                  <dt>indigo</dt>
+                  <dd>0x4B0082</dd>
+                  <dt>ivory</dt>
+                  <dd>0xFFFFF0</dd>
+                  <dt>khaki</dt>
+                  <dd>0xF0E68C</dd>
+                  <dt>lavender</dt>
+                  <dd>0xE6E6FA</dd>
+                  <dt>lavenderblush</dt>
+                  <dd>0xFFF0F5</dd>
+                  <dt>lawngreen</dt>
+                  <dd>0x7CFC00</dd>
+                  <dt>lemonchiffon</dt>
+                  <dd>0xFFFACD</dd>
+                  <dt>lightblue</dt>
+                  <dd>0xADD8E6</dd>
+                  <dt>lightcoral</dt>
+                  <dd>0xF08080</dd>
+                  <dt>lightcyan</dt>
+                  <dd>0xE0FFFF</dd>
+                  <dt>lightgoldenrodyellow</dt>
+                  <dd>0xFAFAD2</dd>
+                  <dt>lightgreen</dt>
+                  <dd>0x90EE90</dd>
+                  <dt>lightgrey</dt>
+                  <dd>0xD3D3D3</dd>
+                  <dt>lightpink</dt>
+                  <dd>0xFFB6C1</dd>
+                </dl>
+<dl class="colors">
+<dt>lightsalmon</dt>
+                  <dd>0xFFA07A</dd>
+                  <dt>lightseagreen</dt>
+                  <dd>0x20B2AA</dd>
+                  <dt>lightskyblue</dt>
+                  <dd>0x87CEFA</dd>
+                  <dt>lightslategray</dt>
+                  <dd>0x778899</dd>
+                  <dt>lightsteelblue</dt>
+                  <dd>0xB0C4DE</dd>
+                  <dt>lightyellow</dt>
+                  <dd>0xFFFFE0</dd>
+                  <dt>lime</dt>
+                  <dd>0x00FF00</dd>
+                  <dt>limegreen</dt>
+                  <dd>0x32CD32</dd>
+                  <dt>linen</dt>
+                  <dd>0xFAF0E6</dd>
+                  <dt>magenta</dt>
+                  <dd>0xFF00FF</dd>
+                  <dt>maroon</dt>
+                  <dd>0x800000</dd>
+                  <dt>mediumaquamarine</dt>
+                  <dd>0x66CDAA</dd>
+                  <dt>mediumblue</dt>
+                  <dd>0x0000CD</dd>
+                  <dt>mediumorchid</dt>
+                  <dd>0xBA55D3</dd>
+                  <dt>mediumpurple</dt>
+                  <dd>0x9370DB</dd>
+                  <dt>mediumseagreen</dt>
+                  <dd>0x3CB371</dd>
+                  <dt>mediumslateblue</dt>
+                  <dd>0x7B68EE</dd>
+                  <dt>mediumspringgreen</dt>
+                  <dd>0x00FA9A</dd>
+                  <dt>mediumturquoise</dt>
+                  <dd>0x48D1CC</dd>
+                  <dt>mediumvioletred</dt>
+                  <dd>0xC71585</dd>
+                  <dt>midnightblue</dt>
+                  <dd>0x191970</dd>
+                  <dt>mintcream</dt>
+                  <dd>0xF5FFFA</dd>
+                  <dt>mistyrose</dt>
+                  <dd>0xFFE4E1</dd>
+                  <dt>moccasin</dt>
+                  <dd>0xFFE4B5</dd>
+                  <dt>navajowhite</dt>
+                  <dd>0xFFDEAD</dd>
+                  <dt>navy</dt>
+                  <dd>0x000080</dd>
+                  <dt>oldlace</dt>
+                  <dd>0xFDF5E6</dd>
+                  <dt>olive</dt>
+                  <dd>0x808000</dd>
+                  <dt>olivedrab</dt>
+                  <dd>0x6B8E23</dd>
+                  <dt>orange</dt>
+                  <dd>0xFFA500</dd>
+                  <dt>orangered</dt>
+                  <dd>0xFF4500</dd>
+                  <dt>orchid</dt>
+                  <dd>0xDA70D6</dd>
+                  <dt>palegoldenrod</dt>
+                  <dd>0xEEE8AA</dd>
+                  <dt>palegreen</dt>
+                  <dd>0x98FB98</dd>
+                  <dt>paleturquoise</dt>
+                  <dd>0xAFEEEE</dd>
+                </dl>
+<dl class="colors">
+<dt>palevioletred</dt>
+                  <dd>0xDB7093</dd>
+                  <dt>papayawhip</dt>
+                  <dd>0xFFEFD5</dd>
+                  <dt>peachpuff</dt>
+                  <dd>0xFFDAB9</dd>
+                  <dt>peru</dt>
+                  <dd>0xCD853F</dd>
+                  <dt>pink</dt>
+                  <dd>0xFFC0CB</dd>
+                  <dt>plum</dt>
+                  <dd>0xDDA0DD</dd>
+                  <dt>powderblue</dt>
+                  <dd>0xB0E0E6</dd>
+                  <dt>purple</dt>
+                  <dd>0x800080</dd>
+                  <dt>red</dt>
+                  <dd>0xFF0000</dd>
+                  <dt>rosybrown</dt>
+                  <dd>0xBC8F8F</dd>
+                  <dt>royalblue</dt>
+                  <dd>0x4169E1</dd>
+                  <dt>saddlebrown</dt>
+                  <dd>0x8B4513</dd>
+                  <dt>salmon</dt>
+                  <dd>0xFA8072</dd>
+                  <dt>sandybrown</dt>
+                  <dd>0xF4A460</dd>
+                  <dt>seagreen</dt>
+                  <dd>0x2E8B57</dd>
+                  <dt>seashell</dt>
+                  <dd>0xFFF5EE</dd>
+                  <dt>sienna</dt>
+                  <dd>0xA0522D</dd>
+                  <dt>silver</dt>
+                  <dd>0xC0C0C0</dd>
+                  <dt>skyblue:</dt>
+                  <dd>0x87CEEB</dd>
+                  <dt>slateblue</dt>
+                  <dd>0x6A5ACD</dd>
+                  <dt>slategray</dt>
+                  <dd>0x708090</dd>
+                  <dt>snow</dt>
+                  <dd>0xFFFAFA</dd>
+                  <dt>springgreen</dt>
+                  <dd>0x00FF7F</dd>
+                  <dt>steelblue</dt>
+                  <dd>0x4682B4</dd>
+                  <dt>tan</dt>
+                  <dd>0xD2B48C</dd>
+                  <dt>teal</dt>
+                  <dd>0x008080</dd>
+                  <dt>thistle</dt>
+                  <dd>0xD8BFD8</dd>
+                  <dt>tomato</dt>
+                  <dd>0xFF6347</dd>
+                  <dt>turquoise</dt>
+                  <dd>0x40E0D0</dd>
+                  <dt>violet</dt>
+                  <dd>0xEE82EE</dd>
+                  <dt>wheat</dt>
+                  <dd>0xF5DEB3</dd>
+                  <dt>white</dt>
+                  <dd>0xFFFFFF</dd>
+                  <dt>whitesmoke</dt>
+                  <dd>0xF5F5F5</dd>
+                  <dt>yellow</dt>
+                  <dd>0xFFFF00</dd>
+                  <dt>yellowgreen</dt>
+                  <dd>0x9ACD32</dd>
+                </dl></section><div class="clear"></div>
+              <section class="compatability hardware"><h2>Works with:</h2>
                 
                 <div class="devices">
                   <a class="device" href="/documentation/platforms/sphero" title="Sphero">

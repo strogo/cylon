@@ -1298,7 +1298,7 @@ ol.CodeRay li {
 /* line 1, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_base.sass */
 body {
   background-color: #f8f4ef;
-  background-image: url("../images/bg-artoo.png");
+  background-image: url("../images/bg-Cylon.js.png");
   background-repeat: no-repeat;
   background-position: top; }
 
@@ -1309,7 +1309,7 @@ body {
 
 /* line 11, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_base.sass */
 h3, h4, h5, ul, ol {
-  color: #3d4a52; }
+  color: #523d47; }
 
 /* line 14, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_base.sass */
 a {
@@ -1363,7 +1363,7 @@ a {
 .app-header {
   margin: 16px 0 15px 0; }
   /* line 23, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
-  .app-header .artoo-logo, .app-header .display, .app-header .subtitle, .app-header .menu, .app-header h1 {
+  .app-header .Cylon.js-logo, .app-header .display, .app-header .subtitle, .app-header .menu, .app-header h1 {
     vertical-align: middle;
     margin: 0;
     display: inline-block; }
@@ -1430,7 +1430,7 @@ a {
       width: 100%;
       text-align: center; }
       /* line 83, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_headers.sass */
-      .app-header .artoo-logo, .app-header .subtitle {
+      .app-header .Cylon.js-logo, .app-header .subtitle {
         width: 100%;
         display: block;
         margin: 0 0 5px 0; }
@@ -1453,9 +1453,9 @@ a {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   font-size: 12px;
-  color: #d6e0e6;
+  color: #e6d6d6;
   line-height: 39px;
-  background: #292c31;
+  background: #510922;
   font-weight: normal; }
 
 /* line 1, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_coderay.sass */
@@ -1511,7 +1511,7 @@ a {
       clear: both; }
     /* line 34, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/layouts/_home.sass */
     .main[role="main"] .content h1, .main[role="main"] .content h2 {
-      color: #bc2a1b; }
+      color: #971542; }
     /* line 37, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/layouts/_home.sass */
     .main[role="main"] .content h1 {
       font-size: 1.9em;
@@ -1558,7 +1558,7 @@ a {
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
     font-size: 47px;
-    color: #f1f7fa;
+    color: #fafaf1;
     line-height: 54px;
     width: 100%;
     clear: both;
@@ -1762,7 +1762,7 @@ a {
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
     font-size: 33px;
-    color: #f1f7fa;
+    color: #fafaf1;
     line-height: 28px;
     width: 100%;
     clear: both;
@@ -1773,7 +1773,7 @@ a {
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
     font-size: 21px;
-    color: #bfd5e2;
+    color: #b39f89;
     font-weight: 550;
     opacity: 0.94;
     margin: 0;
@@ -1829,3 +1829,35 @@ a {
 /* line 29, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_documentation.sass */
 .image-size-300 {
   width: 200px; }
+
+/* line 33, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_documentation.sass */
+.methods dt {
+  font-weight: bold;
+  background: white;
+  padding: 5px 10px;
+  display: inline-block;
+  margin-bottom: 10px;
+  font-family: Inconsolata, Menlo, Monaco, "Bitstream Vera Sans Mono", "Courier New", monospace;
+  font-size: 17px;
+  border: aliceblue; }
+/* line 42, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_documentation.sass */
+.methods dd {
+  margin-bottom: 29px;
+  padding-left: 10px; }
+
+/* line 46, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_documentation.sass */
+.colors {
+  width: 23%;
+  float: left; }
+  /* line 49, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_documentation.sass */
+  .colors dt {
+    font-weight: bold;
+    padding: 5px;
+    display: inline-block;
+    font-family: Inconsolata, Menlo, Monaco, "Bitstream Vera Sans Mono", "Courier New", monospace;
+    font-size: 15px;
+    border: aliceblue; }
+  /* line 56, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_documentation.sass */
+  .colors dd {
+    margin-bottom: 5px;
+    padding-left: 5px; }

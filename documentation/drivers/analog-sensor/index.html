@@ -36,8 +36,7 @@
             <a href="/hardware" class="item">Hardware</a>
             
             
-            
-            <a target="blanck" class="github-menu" href="https://github.com/hybridgroup/cylon/">Github</a>
+            <a class="item" target="blanck" href="https://github.com/hybridgroup/cylon/">Github</a>
           </span>
         </header>
 </div>
@@ -68,37 +67,26 @@
     ]
 </pre>
               </section><section class="public-methods"><h2>Commands:</h2>
-                <h3>analogRead</h3>
-                <p>
-                  coming soon
-                </p>
-              </section><section class="public-events"><h2>Events:</h2>
-                <ul>
-<li>
-                    <h3>update</h3>
-                  </li>
-                  <small>
+                <dl class="methods">
+<dt>analogRead(pin_number) → integer_value</dt>
+                  <dd>Returns an integer value that represents the analog read from the sensor.</dd>
+                </dl></section><section class="public-events"><h2>Events:</h2>
+                <dl class="methods">
+<dt>update</dt>
+                  <dd>
                     This event will contain one of the following events.
                     <br>
                     You can also subscribe to one of the specific events, if that is the information you are interested in.
-                  </small>
-                  <li>
-                    <h3>analogRead</h3>
-                    <p>coming soon</p>
-                  </li>
-                  <li>
-                    <h3>upperLimit</h3>
-                    <p>coming soon</p>
-                  </li>
-                  <li>
-                    <h3>lowerLimit</h3>
-                    <p>coming soon</p>
-                  </li>
-                  <li>
-                    <h3>start</h3>
-                    <p>Sent when the device has been started and is ready to use.</p>
-                  </li>
-                </ul></section><section class="circuit"><h2>Circuit and Schematic</h2>
+                  </dd>
+                  <dt>analogRead</dt>
+                  <dd></dd>
+                  <dt>upperLimit</dt>
+                  <dd>Gets triggered if the value read by the sensor is greater or equal to upperLimit (value passed when setting up the sensor).</dd>
+                  <dt>lowerLimit</dt>
+                  <dd>Gets triggered if the value read by the sensor is less or equal to lowerLimit (value passed when setting up the sensor).</dd>
+                  <dt>start</dt>
+                  <dd>Sent when the device has been started and is ready to use.</dd>
+                </dl></section><section class="circuit"><h2>Circuit and Schematic</h2>
                 <p>
                   Circuit for analog sensors is pretty much the same as the button circuit, you just need to substitute
                   the button for a photoresistor.

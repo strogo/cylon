@@ -36,8 +36,7 @@
             <a href="/hardware" class="item">Hardware</a>
             
             
-            
-            <a target="blanck" class="github-menu" href="https://github.com/hybridgroup/cylon/">Github</a>
+            <a class="item" target="blanck" href="https://github.com/hybridgroup/cylon/">Github</a>
           </span>
         </header>
 </div>
@@ -45,7 +44,7 @@
         <div class="w">
           <h1 class="title">BeagleBone</h1>
           <h2 class="subtitle">
-<a href="https://github.com/hybridgroup/artoo-beaglebone" class="repository">Repository</a> <a class href="https://github.com/hybridgroup/artoo-beaglebone/issues">Issues</a>
+<a href="https://github.com/hybridgroup/Cylon.js-beaglebone" class="repository">Repository</a> <a class href="https://github.com/hybridgroup/Cylon.js-beaglebone/issues">Issues</a>
 </h2>
         </div>
       </div>
@@ -58,20 +57,20 @@
                   <a target="blank" href="http://beagleboard.org/Products/BeagleBone">here</a>.
                 </p>
                 <p>
-                  We have created a bootable image of Arch Linux that contains the needed drivers to use the Beaglebone Black with Artoo. You can download it from
-                  <a target="blank" href="https://s3.amazonaws.com/artoo-images/beaglebone/artoo-arch-armv7-1380751200.tar.xz">here</a>.
+                  We have created a bootable image of Arch Linux that contains the needed drivers to use the Beaglebone Black with Cylon.js. You can download it from
+                  <a target="blank" href="https://s3.amazonaws.com/Cylon.js-images/beaglebone/Cylon.js-arch-armv7-1380751200.tar.xz">here</a>.
                 </p>
               </section><section class="how-to"><h2>How to install</h2>
                 <p>
-                  Installing artoo for beaglebone is pretty easy using ruby gems.
+                  Installing Cylon.js for beaglebone is pretty easy using ruby gems.
                 </p>
-                <pre class="CodeRay">gem install artoo-beaglebone
+                <pre class="CodeRay">gem install Cylon.js-beaglebone
 </pre>
                 <h2>How to use</h2>
                 <p>
                   This small program causes an LED to blink.
                 </p>
-                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">artoo</span><span class="delimiter">'</span></span>
+                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">Cylon.js</span><span class="delimiter">'</span></span>
 
 connection <span class="symbol">:beaglebone</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:beaglebone</span>
 device <span class="symbol">:led</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:led</span>, <span class="symbol">:pin</span> =&gt; <span class="symbol">:P9_12</span>
@@ -83,7 +82,7 @@ work <span class="keyword">do</span>
 <span class="keyword">end</span>
 </pre>
               </section><section class="drivers"><h2>Drivers</h2>
-                <p>All Artoo digital GPIO and i2c drivers listed below should work with the BeagleBone:</p>
+                <p>All Cylon.js digital GPIO and i2c drivers listed below should work with the BeagleBone:</p>
                 <div class="hardware">
                   <div class="devices">
                     <a class="device" href="/documentation/drivers/button" title="Button">
