@@ -53,16 +53,16 @@
                   Provides an interface for making servos easy to work and interact with from Cylon.js.
                 </p>
               </section><section class="how-to"><h2>How to establish a connection and setup the driver</h2>
-                <h3>For Arduino:</h3>
+                <h3>JavaScript</h3>
                 <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
   <span class="key">connection</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>},
 
   <span class="key">device</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">servo</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">servo</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">3</span>},
-
 ...
 </pre>
+                <h3>CoffeeScript</h3>
                 <pre class="CodeRay">Cylon = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
 
 Cylon.robot
@@ -71,7 +71,6 @@ Cylon.robot
 
   device:
     name: <span class="string"><span class="delimiter">'</span><span class="content">servo</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">servo</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">3</span>
-
 ...
 </pre>
               </section><section class="public-methods"><h2>Commands:</h2>
@@ -86,7 +85,10 @@ Cylon.robot
 <dt>start</dt>
                   <dd>Sent when the device has been started and is ready to use.</dd>
                 </dl></section><section class="how-to"><h2>How to use</h2>
-                <h3>Example moves a servo from angle 45 to 90 to 135.</h3>
+                <p>
+                  This example moves a servo from angle 45 to 90 to 135.
+                </p>
+                <h3>JavaScript</h3>
                 <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
@@ -107,6 +109,7 @@ Cylon.robot({
   }
 }).start();
 </pre>
+                <h3>CoffeeScript</h3>
                 <pre class="CodeRay">Cylon = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
 
 Cylon.robot

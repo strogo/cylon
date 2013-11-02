@@ -54,16 +54,16 @@
                   The value received from an analog input read from the sensor goes from 0 to 1027.
                 </p>
               </section><section class="how_to"><h2>How to establish a connection and setup the driver</h2>
-                <h3>For Arduino:</h3>
+                <h3>JavaScript</h3>
                 <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
   <span class="key">connection</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>},
 
   <span class="key">device</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">sensor</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">analogSensor</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">0</span>, <span class="key">lowerLimit</span>: <span class="integer">100</span>, <span class="key">upperLimit</span>: <span class="integer">900</span>},
-
   ...
 </pre>
+                <h3>CoffeeScript</h3>
                 <pre class="CodeRay">Cylon = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
 
 Cylon.robot
@@ -72,7 +72,6 @@ Cylon.robot
 
   device:
     name: <span class="string"><span class="delimiter">'</span><span class="content">sensor</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">analogSensor</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">0</span>, <span class="key">lowerLimit</span>: <span class="integer">100</span>, <span class="key">upperLimit</span>: <span class="integer">900</span>
-
   ...
 </pre>
               </section><section class="public-methods"><h2>Commands:</h2>
@@ -96,7 +95,10 @@ Cylon.robot
                   <dt>start</dt>
                   <dd>Sent when the device has been started and is ready to use.</dd>
                 </dl></section><section class="how-to"><h2>How to use</h2>
-                <h3>Example detecing lower and upper limits on a photoresistor sensor</h3>
+                <p>
+                  This example detects lower and upper limits on a photoresistor sensor.
+                </p>
+                <h3>JavaScript</h3>
                 <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
@@ -114,6 +116,7 @@ Cylon.robot({
   }
 }).start();
 </pre>
+                <h3>CoffeeScript</h3>
                 <pre class="CodeRay">Cylon = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
 
 Cylon.robot
