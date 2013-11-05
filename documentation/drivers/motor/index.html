@@ -76,15 +76,15 @@ Cylon.robot({
 </pre>
               </section><section class="public-methods"><h2>Commands:</h2>
                 <dl class="methods">
-<dt>turnOn</dt>
+<dt>turnOn → true | nil</dt>
                   <dd>Starts the motor.</dd>
-                  <dt>turnOff</dt>
+                  <dt>turnOff → true | nil</dt>
                   <dd>Stops the motor.</dd>
-                  <dt>toggle</dt>
+                  <dt>toggle → true | nil</dt>
                   <dd>Sets the state of the motor to the oposite of the current state, if motor is on then sets it to off.</dd>
-                  <dt>speed(speed_value)</dt>
+                  <dt>speed(speed_value) → true | nil</dt>
                   <dd>Sets the speed of the motor to the value provided in the speed param, speed value must be an integer between 0 and 255.</dd>
-                  <dt>currentSpeed</dt>
+                  <dt>currentSpeed → speed</dt>
                   <dd>Returns the current speed of the motor as an integer between 0 and 255.</dd>
                 </dl>
 <h2>Events</h2>
@@ -132,7 +132,7 @@ Cylon.robot
 </pre>
                 <h2>Circuit and Schematic</h2>
                 <p>
-                  <a href="http://learn.adafruit.com/adafruit-arduino-lesson-13-dc-motors/breadboard-layout">http://learn.adafruit.com/adafruit-arduino-lesson-13-dc-motors/breadboard-layout</a>
+                  <a target="_blank" href="http://learn.adafruit.com/adafruit-arduino-lesson-13-dc-motors/breadboard-layout">http://learn.adafruit.com/adafruit-arduino-lesson-13-dc-motors/breadboard-layout</a>
                 </p>
               </section><section class="compatability hardware"><h2>Works with:</h2>
                 

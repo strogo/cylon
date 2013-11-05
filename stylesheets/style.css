@@ -1298,41 +1298,40 @@ ol.CodeRay li {
 /* line 1, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_base.sass */
 body {
   background-color: #f8f4ef;
-  background-image: url("../images/bg-Cylon.js.png");
   background-repeat: no-repeat;
   background-position: top; }
 
-/* line 7, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_base.sass */
+/* line 6, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_base.sass */
 .app {
   min-height: 100%;
   margin-bottom: -38px; }
 
-/* line 11, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_base.sass */
+/* line 10, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_base.sass */
 h3, h4, h5, ul, ol {
   color: #523d47; }
 
-/* line 14, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_base.sass */
+/* line 13, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_base.sass */
 a {
   color: #580a25; }
-  /* line 16, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_base.sass */
+  /* line 15, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_base.sass */
   a, a:visited {
     color: #9e162e; }
 
 @media only screen and (max-width: 767px) {
-  /* line 18, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_base.sass */
+  /* line 17, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_base.sass */
   pre {
     white-space: pre;
     overflow: scroll;
     word-wrap: normal; } }
 
-/* line 22, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_base.sass */
+/* line 21, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_base.sass */
 .anchors-blue, .app-footer a, .hero a, .page-title a, .anchors-blue:active, .app-footer a:active, .hero a:active, .page-title a:active, .anchors-blue:visited, .app-footer a:visited, .hero a:visited, .page-title a:visited {
   color: #fffbda; }
-/* line 24, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_base.sass */
+/* line 23, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_base.sass */
 .anchors-blue:hover, .app-footer a:hover, .hero a:hover, .page-title a:hover {
   color: white; }
 
-/* line 27, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_base.sass */
+/* line 26, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_base.sass */
 .notice {
   background: white;
   padding: 20px 25px; }
@@ -1856,8 +1855,580 @@ a {
     display: inline-block;
     font-family: Inconsolata, Menlo, Monaco, "Bitstream Vera Sans Mono", "Courier New", monospace;
     font-size: 15px;
-    border: aliceblue; }
-  /* line 56, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_documentation.sass */
+    border: aliceblue;
+    margin-top: 15px; }
+  /* line 57, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_documentation.sass */
   .colors dd {
-    margin-bottom: 5px;
+    margin-bottom: 20px;
     padding-left: 5px; }
+    /* line 60, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_documentation.sass */
+    .colors dd p {
+      float: left;
+      margin-left: 5px; }
+
+/* line 2, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.square {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #cccccc;
+  float: left; }
+
+/* line 7, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.aliceblue {
+  background: aliceblue; }
+
+/* line 9, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.antiquewhite {
+  background: antiquewhite; }
+
+/* line 11, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.aqua {
+  background: cyan; }
+
+/* line 13, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.aquamarine {
+  background: aquamarine; }
+
+/* line 15, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.azure {
+  background: azure; }
+
+/* line 17, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.beige {
+  background: beige; }
+
+/* line 19, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.bisque {
+  background: bisque; }
+
+/* line 21, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.black {
+  background: black; }
+
+/* line 23, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.blanchedalmond {
+  background: blanchedalmond; }
+
+/* line 25, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.blue {
+  background: blue; }
+
+/* line 27, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.blueviolet {
+  background: blueviolet; }
+
+/* line 29, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.brown {
+  background: brown; }
+
+/* line 31, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.burlywood {
+  background: burlywood; }
+
+/* line 33, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.cadetblue {
+  background: cadetblue; }
+
+/* line 35, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.chartreuse {
+  background: chartreuse; }
+
+/* line 37, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.chocolate {
+  background: chocolate; }
+
+/* line 39, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.coral {
+  background: coral; }
+
+/* line 41, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.cornflowerblue {
+  background: cornflowerblue; }
+
+/* line 43, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.cornsilk {
+  background: cornsilk; }
+
+/* line 45, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.crimson {
+  background: crimson; }
+
+/* line 47, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.cyan {
+  background: cyan; }
+
+/* line 49, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.darkblue {
+  background: darkblue; }
+
+/* line 51, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.darkcyan {
+  background: darkcyan; }
+
+/* line 53, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.darkgoldenrod {
+  background: darkgoldenrod; }
+
+/* line 55, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.darkgray {
+  background: darkgrey; }
+
+/* line 57, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.darkgreen {
+  background: darkgreen; }
+
+/* line 59, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.darkkhaki {
+  background: darkkhaki; }
+
+/* line 61, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.darkmagenta {
+  background: darkmagenta; }
+
+/* line 63, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.darkolivegreen {
+  background: darkolivegreen; }
+
+/* line 65, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.darkorange {
+  background: darkorange; }
+
+/* line 67, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.darkorchid {
+  background: darkorchid; }
+
+/* line 69, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.darkred {
+  background: darkred; }
+
+/* line 71, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.darksalmon {
+  background: darksalmon; }
+
+/* line 73, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.darkseagreen {
+  background: darkseagreen; }
+
+/* line 75, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.darkslateblue {
+  background: darkslateblue; }
+
+/* line 77, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.darkslategray {
+  background: darkslategrey; }
+
+/* line 79, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.darkturquoise {
+  background: darkturquoise; }
+
+/* line 81, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.darkviolet {
+  background: darkviolet; }
+
+/* line 83, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.deeppink {
+  background: deeppink; }
+
+/* line 85, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.deepskyblue {
+  background: deepskyblue; }
+
+/* line 87, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.dimgray {
+  background: dimgrey; }
+
+/* line 89, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.dodgerblue {
+  background: dodgerblue; }
+
+/* line 91, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.firebrick {
+  background: firebrick; }
+
+/* line 93, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.floralwhite {
+  background: floralwhite; }
+
+/* line 95, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.forestgreen {
+  background: forestgreen; }
+
+/* line 97, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.fuchsia {
+  background: magenta; }
+
+/* line 99, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.gainsboro {
+  background: gainsboro; }
+
+/* line 101, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.ghostwhite {
+  background: ghostwhite; }
+
+/* line 103, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.gold {
+  background: gold; }
+
+/* line 105, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.goldenrod {
+  background: goldenrod; }
+
+/* line 107, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.gray {
+  background: gray; }
+
+/* line 109, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.green {
+  background: green; }
+
+/* line 111, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.greenyellow {
+  background: greenyellow; }
+
+/* line 113, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.honeydew {
+  background: honeydew; }
+
+/* line 115, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.hotpink {
+  background: hotpink; }
+
+/* line 117, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.indianred {
+  background: indianred; }
+
+/* line 119, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.indigo {
+  background: indigo; }
+
+/* line 121, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.ivory {
+  background: ivory; }
+
+/* line 123, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.khaki {
+  background: khaki; }
+
+/* line 125, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.lavender {
+  background: lavender; }
+
+/* line 127, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.lavenderblush {
+  background: lavenderblush; }
+
+/* line 129, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.lawngreen {
+  background: lawngreen; }
+
+/* line 131, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.lemonchiffon {
+  background: lemonchiffon; }
+
+/* line 133, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.lightblue {
+  background: lightblue; }
+
+/* line 135, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.lightcoral {
+  background: lightcoral; }
+
+/* line 137, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.lightcyan {
+  background: lightcyan; }
+
+/* line 139, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.lightgoldenrodyellow {
+  background: lightgoldenrodyellow; }
+
+/* line 141, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.lightgreen {
+  background: lightgreen; }
+
+/* line 143, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.lightgrey {
+  background: lightgrey; }
+
+/* line 145, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.lightpink {
+  background: lightpink; }
+
+/* line 147, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.lightsalmon {
+  background: lightsalmon; }
+
+/* line 149, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.lightseagreen {
+  background: lightseagreen; }
+
+/* line 151, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.lightskyblue {
+  background: lightskyblue; }
+
+/* line 153, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.lightslategray {
+  background: lightslategrey; }
+
+/* line 155, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.lightsteelblue {
+  background: lightsteelblue; }
+
+/* line 157, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.lightyellow {
+  background: lightyellow; }
+
+/* line 159, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.lime {
+  background: lime; }
+
+/* line 161, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.limegreen {
+  background: limegreen; }
+
+/* line 163, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.linen {
+  background: linen; }
+
+/* line 165, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.magenta {
+  background: magenta; }
+
+/* line 167, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.maroon {
+  background: maroon; }
+
+/* line 169, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.mediumaquamarine {
+  background: mediumaquamarine; }
+
+/* line 171, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.mediumblue {
+  background: mediumblue; }
+
+/* line 173, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.mediumorchid {
+  background: mediumorchid; }
+
+/* line 175, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.mediumpurple {
+  background: mediumpurple; }
+
+/* line 177, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.mediumseagreen {
+  background: mediumseagreen; }
+
+/* line 179, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.mediumslateblue {
+  background: mediumslateblue; }
+
+/* line 181, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.mediumspringgreen {
+  background: mediumspringgreen; }
+
+/* line 183, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.mediumturquoise {
+  background: mediumturquoise; }
+
+/* line 185, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.mediumvioletred {
+  background: mediumvioletred; }
+
+/* line 187, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.midnightblue {
+  background: midnightblue; }
+
+/* line 189, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.mintcream {
+  background: mintcream; }
+
+/* line 191, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.mistyrose {
+  background: mistyrose; }
+
+/* line 193, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.moccasin {
+  background: moccasin; }
+
+/* line 195, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.navajowhite {
+  background: navajowhite; }
+
+/* line 197, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.navy {
+  background: navy; }
+
+/* line 199, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.oldlace {
+  background: oldlace; }
+
+/* line 201, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.olive {
+  background: olive; }
+
+/* line 203, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.olivedrab {
+  background: olivedrab; }
+
+/* line 205, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.orange {
+  background: orange; }
+
+/* line 207, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.orangered {
+  background: orangered; }
+
+/* line 209, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.orchid {
+  background: orchid; }
+
+/* line 211, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.palegoldenrod {
+  background: palegoldenrod; }
+
+/* line 213, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.palegreen {
+  background: palegreen; }
+
+/* line 215, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.paleturquoise {
+  background: paleturquoise; }
+
+/* line 217, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.palevioletred {
+  background: palevioletred; }
+
+/* line 219, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.papayawhip {
+  background: papayawhip; }
+
+/* line 221, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.peachpuff {
+  background: peachpuff; }
+
+/* line 223, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.peru {
+  background: peru; }
+
+/* line 225, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.pink {
+  background: pink; }
+
+/* line 227, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.plum {
+  background: plum; }
+
+/* line 229, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.powderblue {
+  background: powderblue; }
+
+/* line 231, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.purple {
+  background: purple; }
+
+/* line 233, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.red {
+  background: red; }
+
+/* line 235, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.rosybrown {
+  background: rosybrown; }
+
+/* line 237, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.royalblue {
+  background: royalblue; }
+
+/* line 239, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.saddlebrown {
+  background: saddlebrown; }
+
+/* line 241, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.salmon {
+  background: salmon; }
+
+/* line 243, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.sandybrown {
+  background: sandybrown; }
+
+/* line 245, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.seagreen {
+  background: seagreen; }
+
+/* line 247, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.seashell {
+  background: seashell; }
+
+/* line 249, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.sienna {
+  background: sienna; }
+
+/* line 251, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.silver {
+  background: silver; }
+
+/* line 253, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.skyblue {
+  background: skyblue; }
+
+/* line 255, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.slateblue {
+  background: slateblue; }
+
+/* line 257, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.slategray {
+  background: slategrey; }
+
+/* line 259, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.snow {
+  background: snow; }
+
+/* line 261, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.springgreen {
+  background: springgreen; }
+
+/* line 263, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.steelblue {
+  background: steelblue; }
+
+/* line 265, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.tan {
+  background: tan; }
+
+/* line 267, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.teal {
+  background: teal; }
+
+/* line 269, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.thistle {
+  background: thistle; }
+
+/* line 271, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.tomato {
+  background: tomato; }
+
+/* line 273, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.turquoise {
+  background: turquoise; }
+
+/* line 275, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.violet {
+  background: violet; }
+
+/* line 277, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.wheat {
+  background: wheat; }
+
+/* line 279, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.white {
+  background: white; }
+
+/* line 281, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.whitesmoke {
+  background: whitesmoke; }
+
+/* line 283, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.yellow {
+  background: yellow; }
+
+/* line 285, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_sphero_colors.sass */
+.yellowgreen {
+  background: yellowgreen; }

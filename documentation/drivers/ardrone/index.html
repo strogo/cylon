@@ -78,38 +78,89 @@ Cylon.robot
 </pre>
               </section><section class="public-methods"><h2>Commands:</h2>
                 <dl class="methods">
-<dt>takeoff</dt>
-                  <dd>Causes the drone to take off, if already started.</dd>
-                  <dt>land</dt>
-                  <dd>Causes the drone to begin its landing sequence.</dd>
+<dt>takeoff(callback)</dt>
+                  <dd>
+                    <p>Sets the internal <code>fly</code> state to <code>true</code>, <code>callback</code> is invoked after the drone reports that it is hovering.</p>
+                  </dd>
+                  <dt>land(callback)</dt>
+                  <dd>
+                    <p>Sets the internal <code>fly</code> state to <code>false</code>, <code>callback</code> is invoked after the drone reports it has landed.</p>
+                  </dd>
                   <dt>stop</dt>
-                  <dd>Stops the drone.</dd>
-                  <dt>up</dt>
-                  <dd>Causes the drone to increase altitude.</dd>
-                  <dt>down</dt>
-                  <dd>Causes the drone to decrease altitude.</dd>
-                  <dt>left</dt>
-                  <dd>Causes the drone to bank to the left.</dd>
-                  <dt>right</dt>
-                  <dd>Causes the drone to bank to the right.</dd>
-                  <dt>front</dt>
-                  <dd></dd>
-                  <dt>back</dt>
-                  <dd></dd>
+                  <dd>
+                    <p>Sets all drone movement commands to <code>0</code>, making it effectively hover in place.</p>
+                  </dd>
+                  <dt>up(speed)</dt>
+                  <dd>
+                    Makes the drone gain altitude.
+                    <p><code>speed</code> can be a value from <code>0</code> to <code>1</code>.</p>
+                  </dd>
+                  <dt>down(speed)</dt>
+                  <dd>
+                    Makes the drone reduce altitude.
+                    <p><code>speed</code> can be a value from <code>0</code> to <code>1</code>.</p>
+                  </dd>
+                  <dt>left(speed)</dt>
+                  <dd>
+                    Causes the drone to bank to the left, controls the roll, which is a horizontal movement using the camera as a reference point.
+                    <p><code>speed</code> can be a value from <code>0</code> to <code>1</code>.</p>
+                  </dd>
+                  <dt>right(speed)</dt>
+                  <dd>
+                    Causes the drone to bank to the right, controls the roll, which is a horizontal movement using the camera as a reference point.
+                    <p><code>speed</code>can be a value from <code>0</code> to <code>1</code>.</p>
+                  </dd>
+                  <dt>front(speed)</dt>
+                  <dd>
+                    Causes the drone to bank to the front, controls the pitch, which a horizontal movement using the camera as a reference point.
+                    <p><code>speed</code> can be a value from <code>0</code> to <code>1</code>.</p>
+                  </dd>
+                  <dt>back(speed)</dt>
+                  <dd>
+                    Causes the drone to bank to the back, controls the pitch, which a horizontal movement using the camera as a reference point.
+                    <p><code>speed</code> can be a value from <code>0</code> to <code>1</code>.</p>
+                  </dd>
                   <dt>clockwise</dt>
-                  <dd></dd>
+                  <dd>
+                    Causes the drone to spin.
+                    <p><code>speed</code> can be a value from <code>0</code> to <code>1</code>.</p>
+                  </dd>
                   <dt>counterClockwise</dt>
-                  <dd></dd>
-                  <dt>calibrate</dt>
-                  <dd></dd>
-                  <dt>config</dt>
-                  <dd></dd>
-                  <dt>animate</dt>
-                  <dd></dd>
-                  <dt>animateLeds</dt>
-                  <dd></dd>
+                  <dd>
+                    Causes the drone to spin.
+                    <p><code>speed</code> can be a value from <code>0</code> to <code>1</code>.</p>
+                  </dd>
+                  <dt>calibrate(device_num)</dt>
+                  <dd>Asks the drone to calibrate a device.</dd>
+                  <dt>config(key, value, callback)</dt>
+                  <dd>
+                    Sends a config command to the drone.
+                  </dd>
+                  <dt>animate(animation, duration)</dt>
+                  <dd>
+                    <p>Performs a pre-programmed flight sequence for a given <code>duration</code> (in ms). 
+                    <code>animation</code> can be one of the following:</p>
+                    <pre class="CodeRay">[<span class="string"><span class="delimiter">'</span><span class="content">phiM30Deg</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">phi30Deg</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">thetaM30Deg</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">theta30Deg</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">theta20degYaw200deg</span><span class="delimiter">'</span></span>,
+<span class="string"><span class="delimiter">'</span><span class="content">theta20degYawM200deg</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">turnaround</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">turnaroundGodown</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">yawShake</span><span class="delimiter">'</span></span>,
+<span class="string"><span class="delimiter">'</span><span class="content">yawDance</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">phiDance</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">thetaDance</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">vzDance</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">wave</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">phiThetaMixed</span><span class="delimiter">'</span></span>,
+<span class="string"><span class="delimiter">'</span><span class="content">doublePhiThetaMixed</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">flipAhead</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">flipBehind</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">flipLeft</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">flipRight</span><span class="delimiter">'</span></span>]
+</pre>
+                  </dd>
+                  <dt>animateLeds(animation, hz, duration)</dt>
+                  <dd>
+                    <p>Performs a pre-programmed led sequence at given <code>hz</code> frequency and <code>duration</code> (in sec!). <code>animation</code> can be one of the following:</p>
+                    <pre class="CodeRay">[<span class="string"><span class="delimiter">'</span><span class="content">blinkGreenRed</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">blinkGreen</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">blinkRed</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">blinkOrange</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">snakeGreenRed</span><span class="delimiter">'</span></span>,
+<span class="string"><span class="delimiter">'</span><span class="content">fire</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">standard</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">red</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">green</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">redSnake</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">blank</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">rightMissile</span><span class="delimiter">'</span></span>,
+<span class="string"><span class="delimiter">'</span><span class="content">leftMissile</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">doubleMissile</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">frontLeftGreenOthersRed</span><span class="delimiter">'</span></span>,
+<span class="string"><span class="delimiter">'</span><span class="content">frontRightGreenOthersRed</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">rearRightGreenOthersRed</span><span class="delimiter">'</span></span>,
+<span class="string"><span class="delimiter">'</span><span class="content">rearLeftGreenOthersRed</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">leftGreenRightRed</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">leftRedRightGreen</span><span class="delimiter">'</span></span>,
+<span class="string"><span class="delimiter">'</span><span class="content">blinkStandard</span><span class="delimiter">'</span></span>]  
+</pre>
+                  </dd>
                   <dt>disableEmergency</dt>
-                  <dd></dd>
+                  <dd>
+                    <p>Causes the emergency REF bit to be set to 1 until <code>navdata.droneState.emergencyLanding is 0</code>. This recovers a drone that has flipped over and is showing red lights to be flyable again and show green lights. It is also done implicitly when creating a new high level client.</p>
+                  </dd>
                 </dl>
 <h2>Events</h2>
                 <dl class="methods">

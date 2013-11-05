@@ -53,29 +53,72 @@
                   Allows user to control BlinkM RGB LED via i2c interface.
                 </p>
               </section><section class="how-to"><h2>How to establish a connection and setup the driver</h2>
-                <h3>For Arduino:</h3>
-                <pre class="CodeRay">comming soon
+                <p>Install the module with <code>npm install cylon-i2c</code></p>
+                <h3>JavaScript</h3>
+                <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
+
+Cylon.robot({
+  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span> },
+  <span class="key">device</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">13</span>},
+  ...
 </pre>
-              </section><section class="public-events"><h2>Public instance methods:</h2>
-                <h3>rgb(red=0, green=0, blue=0) → nil</h3>
-                <p>
-                  Sets the color of the BlinkM RGB LED to the specified combination of RGB color provided (red, green and blue values should be between 0 and 255).
-                </p>
-                <h3>fade(red=0, green=0, blue=0) → nil</h3>
-                <p>
-                  Fades the color of the BlinkM RGB LED to the specified combination of RGB color provided (red, green and blue values should be between 0 and 255).
-                </p>
-                <h3>firmware_version → String</h3>
-                <p>
-                  Returns an sring describing the I2C firmware version being used.
-                </p>
-                <h3>color → [red, green, blue] (integer)</h3>
-                <p>
-                  Returns an array containing the RGB values for the current color (all integer between 0 and 255).
-                </p>
-              </section><section class="how-to"><h2>How to use</h2>
-                <h3>Example using a BlinkM.</h3>
-                <pre class="CodeRay">comming soon
+                <h3>CoffeeScript</h3>
+                <pre class="CodeRay">Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>)
+
+Cylon.robot
+  connection:
+    name: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>
+
+  device:
+    name: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">13</span>
+  ...
+</pre>
+              </section><section class="public-events"><h2>Commands:</h2>
+                <dl class="methods">
+<dt>off</dt>
+                  <dd>Turns BlinkM off.</dd>
+                  <dt>rgb → nil</dt>
+                  <dd>Sets the color of the BlinkM RGB LED to the specified combination of RGB color provided (red, green and blue values should be between 0 and 255).</dd>
+                  <dt>fade → nil</dt>
+                  <dd>Fades the color of the BlinkM RGB LED to the specified combination of RGB color provided (red, green and blue values should be between 0 and 255).</dd>
+                  <dt>color → [red, green, blue] (integer)</dt>
+                  <dd>Returns an array containing the RGB values for the current color (all integer between 0 and 255).</dd>
+                  <dt>version → String</dt>
+                  <dd>Returns an sring describing the I2C firmware version being used.</dd>
+                </dl>
+<h2>Events</h2>
+                <dl class="methods">
+<dt>start</dt>
+                  <dd>Sent when the device has been started and is ready to use.</dd>
+                </dl></section><section class="how-to"><h2>How to use</h2>
+                <p>Example using a BlinkM.</p>
+                <h3>JavaScript</h3>
+                <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
+
+Cylon.robot({
+  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span> },
+  <span class="key">device</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">13</span>},
+
+  <span class="function">work</span>: <span class="keyword">function</span>(my) {
+    every((<span class="integer">1</span>).seconds(), <span class="keyword">function</span>() {my.led.toggle()});
+  }
+}).start();
+</pre>
+                <h3>CoffeeScript</h3>
+                <pre class="CodeRay">Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>)
+
+Cylon.robot
+  connection:
+    name: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>
+
+  device:
+    name: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">13</span>
+
+  work: (my) -&gt;
+    <span class="error">#</span> we <span class="keyword">do</span> our thing here
+    every <span class="integer">1</span>.second(), -&gt; my.led.toggle()
+
+.start()
 </pre>
               </section><section class="circuit"><h2>Circuit and Schematic</h2>
                 <p>
