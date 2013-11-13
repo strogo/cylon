@@ -42,7 +42,7 @@ namespace 'Cylon.IO', ->
 
     close: ->
       FS.writeFile(@_unexportPath(), "#{ @pinNum }", (err) =>
-        @_closeCallback()
+        @_closeCallback(err)
       )
 
     closeSync: ->
