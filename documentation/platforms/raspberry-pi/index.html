@@ -7,7 +7,7 @@
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 <meta name="description">
 <meta content="The Hybrid Group" name="author">
-<title>Raspberry Pi with Artroo</title>
+<title>Raspberry Pi with Cylon.js</title>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700" rel="stylesheet" type="text/css">
 <link href="/stylesheets/style.css" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
@@ -44,7 +44,7 @@
         <div class="w">
           <h1 class="title">Raspberry Pi</h1>
           <h2 class="subtitle">
-<a href="https://github.com/hybridgroup/Cylon.js-raspi" class="repository">Repository</a> <a class href="https://github.com/hybridgroup/Cylon.js-raspi/issues">Issues</a>
+<a href="https://github.com/hybridgroup/cylon-raspi" class="repository">Repository</a> <a class href="https://github.com/hybridgroup/cylon-raspi/issues">Issues</a>
 </h2>
         </div>
       </div>
@@ -57,34 +57,54 @@
                   <a target="blank" href="http://www.raspberrypi.org/">http://www.raspberrypi.org/</a>.
                 </p>
               </section><section class="how-to"><h2>How to install</h2>
-                <p>If you do not have ruby installed, you'll need to do that first.</p>
                 <p>
-                  Then install the Cylon.js-raspi gem:
+                  Installing cylon.js with raspberri-pi support is pretty easy.
                 </p>
-                <pre class="CodeRay">sudo gem install Cylon.js-raspi
+                <pre class="CodeRay">npm install cylon-raspi
 </pre>
                 <h2>How to use</h2>
                 <p>
                   This small program causes an LED to blink.
                 </p>
-                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">Cylon.js</span><span class="delimiter">'</span></span>
+                <h3>JavaScript</h3>
+                <pre class="CodeRay">Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">..</span><span class="delimiter">'</span></span>);
 
-connection <span class="symbol">:raspi</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:raspi</span>
-device <span class="symbol">:led</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:led</span>, <span class="symbol">:pin</span> =&gt; <span class="integer">11</span>
-
-work <span class="keyword">do</span>
-  every <span class="integer">1</span>.second <span class="keyword">do</span>
-    led.toggle
-  <span class="keyword">end</span>
-<span class="keyword">end</span>
+Cylon.robot({
+  <span class="key">connection</span>: {
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">raspi</span><span class="delimiter">'</span></span>,
+    <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">raspi</span><span class="delimiter">'</span></span>
+  },
+  <span class="key">device</span>: {
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>,
+    <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>,
+    <span class="key">pin</span>: <span class="integer">11</span>
+  },
+  <span class="function">work</span>: <span class="keyword">function</span>(my) {
+    <span class="keyword">return</span> every(<span class="integer">1</span>..second(), <span class="keyword">function</span>() {
+      <span class="keyword">return</span> my.led.toggle();
+    });
+  }
+}).start();
 </pre>
-                <p>To run the examples, requires sudo access on the Raspberry Pi:</p>
-                <pre class="CodeRay">sudo ruby examples/raspi_led.rb
+                <h3>CoffeeScript</h3>
+                <pre class="CodeRay">Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>)
+
+Cylon.robot
+  connection:
+    name: <span class="string"><span class="delimiter">'</span><span class="content">raspi</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">raspi</span><span class="delimiter">'</span></span>
+
+  device:
+    name: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">11</span>
+
+  work: (my) -&gt;
+    every <span class="integer">1</span>.second(), -&gt; my.led.toggle()
+
+.start()
 </pre>
                 <h2>How to connect</h2>
                 <h3>Connecting to Raspberry Pi GPIO</h3>
                 <p>
-                  This gem only works on a real Raspberry Pi. Do not bother trying on any other kind of
+                  This module only works on a real Raspberry Pi. Do not bother trying on any other kind of
                   computer it will not work. Also note you will need to connect actual circuits to the Raspberry Pi's
                   GPIO pins.
                 </p>
@@ -118,12 +138,9 @@ i2c-dev
                       <img src="/images/motor.jpg"></a>
                     <a class="device" href="/documentation/drivers/blinkm" title="Wii Nunchuck">
                       <img src="/images/blinkm.jpg"></a>
-                    <a class="device" href="/documentation/drivers/hmc6352-compass" title="Wii Nunchuck">
-                      <img src="/images/hmc6352-compass.jpg"></a>
-                    <a class="device" href="/documentation/drivers/wiichuck" title="Wii Nunchuck">
-                      <img src="/images/wii-chuck.jpg"></a>
-                    <a class="device" href="/documentation/drivers/wiiclassic" title="Wii Classic Controller">
-                      <img src="/images/wii-classic-controller.jpg"></a>
+                    
+                    
+                    
                   </div>
                 </div>
               </section>
