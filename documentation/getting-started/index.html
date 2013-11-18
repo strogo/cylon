@@ -50,14 +50,10 @@
         <div class="main" role="main">
           <section class="content full"><section class="intro"><h2>What is Cylon.js?</h2>
               <p>
-                Cylon.js is a JavaScript framework for robotics and physical computing using node.js.
+                Cylon.js is a JavaScript framework for robotics and physical computing using Node.js.
               </p>
               <p>
                 It provides a simple, yet powerful way to create solutions that incorporate multiple, different hardware devices at the same time.
-              </p>
-              <p>
-                Want to use Ruby on robots? Check out our sister project Artoo
-                <a target="_blank" href="http://artoo.io">(http://artoo.io)</a>
               </p>
             </section><section class="how-to"><h2>How to Install Node.js</h2>
               <h3>OSX</h3>
@@ -75,20 +71,22 @@
               Go to the Node.js downloads page at
               <a target="blank" href="http://nodejs.org/download/">http://nodejs.org/download/</a>
               download the installer file and run it.
-            </section><section class="cylon-installation"><h2>How to Install Cylon.js</h2>
-              <p>In order to use Cylon.js, you must install the Cylon.js node modules needed to control your particular hardware setup. For example, to use Cylon.js with an Arduino, you will need to install the <code>cylon-firmata</code> module. Check out these examples:</p>
-              <h3>OSX</h3>
-              <pre class="CodeRay">npm install cylon
-npm install cylon-firmata
-</pre>
-              <h3>Ubuntu</h3>
-              <pre class="CodeRay">npm install cylon
-npm install cylon-firmata
-</pre>
-              <h3>Windows</h3>
+              <h2>How to Install CoffeeScript (Optional)</h2>
               <p>
-                Windows setup for cylon.
+                If you want to program Cylon.js using CoffeeScript, it is easy to install using NPM, the Node Package Manager:
               </p>
+              <pre class="CodeRay">npm install -g coffee-script
+</pre>
+              <p>
+                You might need to install under the 'root' user by running the above install command using `sudo`.
+              </p>
+            </section><section class="cylon-installation"><h2>How to Install Cylon.js</h2>
+              <p>
+                In order to use Cylon.js, you must install the Cylon.js node modules needed to control your particular hardware setup. For example, to use Cylon.js with an Arduino, you will need to install the `cylon-firmata` module. Check out this example:
+              </p>
+              <pre class="CodeRay">npm install cylon
+npm install cylon-firmata
+</pre>
               <section class="cylon-running"></section><h2>Cylon.js Robots</h2>
               <h3>Writing your robot code:</h3>
               <p></p>
@@ -102,9 +100,31 @@ npm install cylon-firmata
               <pre class="CodeRay">coffee robotfilename.coffee
 </pre>
             </section><section class="cylon-code"><h2>Cylon.js Code Examples</h2>
+              <h3>Example: Hello</h3>
+              <h4>JavaScript</h4>
+              <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
+
+Cylon.robot({
+  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">looped</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">loopback</span><span class="delimiter">'</span></span>},
+
+  <span class="function">work</span>: <span class="keyword">function</span>() {
+    every((<span class="integer">1</span>).second(), <span class="keyword">function</span>() { Logger.info(<span class="string"><span class="delimiter">"</span><span class="content">Hello, human!</span><span class="delimiter">"</span></span>); });
+  }
+}).start();
+</pre>
+              <h4>CoffeeScript</h4>
+              <pre class="CodeRay">Cylon = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
+
+Cylon.robot
+  work: -&gt;
+    every <span class="integer">1</span>.second(), -&gt;
+      Logger.info(<span class="string"><span class="delimiter">"</span><span class="content">Hello, human!</span><span class="delimiter">"</span></span>)
+
+.start()
+</pre>
               <h3>Example: Arduino with LED and a button</h3>
               <p>To use this example, you must first run <code>npm install cylon-firmata</code></p>
-              <h4>Javascript</h4>
+              <h4>JavaScript</h4>
               <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
@@ -137,7 +157,7 @@ Cylon.robot
 </pre>
               <h3>Parrot ARDrone 2.0</h3>
               <p>To use this example, you must first run <code>npm install cylon-ardrone</code></p>
-              <h4>Javascript</h4>
+              <h4>JavaScript</h4>
               <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
