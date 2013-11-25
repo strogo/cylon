@@ -2,13 +2,116 @@
 title: Travis with Cylon.js
 author: The Hybrid Group
 page_title: Travis with Sphero
-page_subtitle: "You can find the examples on this two repositories here:<br><a href='https://github.com/hybridgroup/cylon/blob/master/examples/travis.js' target='blanck' class='repository'>javascript</a><a href='https://github.com/hybridgroup/cylon/blob/master/examples/travis.coffee' target='blanck' class='repository'>coffeescript</a>"
+page_subtitle: "You can find the examples on this two repositories here:<br><a href='https://github.com/hybridgroup/cylon/blob/master/examples/travis.js' target='blanck' class='repository'>javascript</a><a href='https://github.com/hybridgroup/cylon/blob/master/examples/travis.coffee' target='blanck' class='repository'>coffeescript</a><a href='https://github.com/hybridgroup/cylon/blob/literate/examples/travis.litcoffee' target='blanck' class='repository'>litcoffee</a>"
 layout: page
 ---
 
 
 .documentation
   %section.intro
+    %h1 Cylon and Travis
+    %p For this Cylon example, we're going to check on a Travis build every ten seconds, and change the color of a Sphero depending on the result.
+    %p Before you run this, make sure you install the following dependencies:
+    %ul 
+      %li travis-ci (npm install travis-ci)
+      %li cylon-sphero (npm install cylon-sphero)
+    %p First of all, let's load up Cylon. We're going to load the version directly from the repo, since we're here already:
+    :markdown
+          :::javascript
+          Cylon = require '..'
+    %p 
+      Next, we'll set up Travis. We're going to be using the very useful 
+      =link_to "travis-ci", "https://github.com/pwmckenna/node-travis-ci", target: :blank 
+      module.
+    :markdown
+          :::javascript
+          Travis = require 'travis-ci'
+    %p Now that we've got our Travis module imported, let's set it up:
+    :markdown
+          :::javascript
+          travis = new Travis
+            version: '2.0.0'
+    %p Now we have a working interface to the Travis-CI API. Let's set up a username and repo to query Travis about later, as long as we're here. Feel free to change these if you want to try with your own repositories.
+    :markdown
+          :::javascript
+          user = "hybridgroup"
+          name = "cylon"
+    %h2 Robot
+    %p And with that last bit of setup done, let's start setting up our robot!
+    :markdown
+          :::javascript
+          Cylon.robot
+    %p 
+      :markdown
+        We use a connection to tell Cylon what port it can use to communicate with our Sphero, along with what adaptor it should require (`cylon-sphero`) to connect to it. We give it a name to make it easier to reference later on.
+    :markdown
+          :::javascript
+          connection:
+            name: 'sphero', adaptor: 'sphero', port: '/dev/rfcomm0'
+    %p Devices are set up in a similar fashion, but allow us to directly issue commands to the sphero. These are added to the robot's namespace directly to make them easy to access.
+    :markdown
+          :::javascript
+          device:
+            name: 'sphero', driver: 'sphero'
+    %p Now that we've told our robot what hardware it has access to, we can start telling it what it should do. The work function passes along one argument, a reference to the robot so we can access it's state and hardware.
+    :markdown
+          :::javascript
+            work: (me) ->
+    %p We'll define a function to check Travis and change the Sphero's color depending on the state of the last build.
+    :markdown
+          :::javascript
+              checkTravis = ->
+    %p First, it will log that it's checking Travis to the logger:
+    :markdown
+          :::javascript
+                Logger.info "Checking last build status for \#{user}/\#{name}"
+    %p Let's set the default color of the Sphero to blue until we know what the build status is:
+    :markdown
+          :::javascript
+                me.sphero.setColor 'blue', true
+    %p Now we'll fetch the Travis build status:
+    :markdown
+          :::javascript
+                travis.repos {
+                  owner_name: user
+                  name: name
+                }, (err, res) ->
+    %p If we were returned a response, we'll check the status of the build and use that to determine what color we should make the Sphero.
+    :markdown
+          :::javascript
+                  if res.repo
+                    switch res.repo.last_build_state
+    %p When the build state is passed, then we'll set the Sphero's color to green:
+    :markdown
+          :::javascript
+                      when 'passed' then me.sphero.setColor 'green', true
+    %p And if the build has failed, let's set the Sphero's color to red:
+    :markdown
+          :::javascript
+                      when 'failed' then me.sphero.setColor 'red', true
+    %p Otherwise, we'll just set it to blue:
+    :markdown
+          :::javascript
+                      else me.sphero.setColor 'blue', true
+    %p And if we didn't get a response from the server, let's just set it to blue.
+    :markdown
+          :::javascript
+                      else me.sphero.setColor 'blue', true
+    %p Now that we've got that function defined, let's call it to set the initial color of the Sphero:
+    :markdown
+          :::javascript
+              do checkTravis
+    %p And every ten seconds, let's keep checking Travis:
+    :markdown
+          :::javascript
+              every 10.seconds(), ->
+                do checkTravis
+    %p And now that we've got our work defined, let's start the robot!
+    :markdown
+          :::javascript
+          .start()
+
+
     %h2 Examples
     %h3 Javascript
     :markdown
