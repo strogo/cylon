@@ -1,0 +1,76 @@
+---
+title: Multiple Spheros with Cylon.js
+author: The Hybrid Group
+page_title: Multiple Spheros
+page_subtitle: "You can find the example here: <a href='https://github.com/hybridgroup/cylon/blob/literate/examples/sphero_multiple.litcoffee' target='blanck' class='repository'>litcoffee</a>"
+layout: page
+---
+
+.documentation
+  %section.intro
+    %h1 Multiple Spheros
+    %p Let's do an example of Cylon controlling multiple Spheros at the same time. The Spheros will both randomly roll around and change their colors every second.
+    :markdown
+      Before we run this example, make sure to have `cylon-sphero` installed (`npm install cylon-sphero`)
+    %p First, load up Cylon. Since we're in the Cylon repo, we can use the version already here:
+    :markdown
+          :::javascript
+          Cylon = require '..'
+    %p Since both of our Spheros are going to have faily similar behaviour, we can define a class to hold their attributes:
+    :markdown
+          :::javascript
+          class SpheroRobot
+    %p We'll define the Sphero's connection sans port, which we'll add later.
+    :markdown
+          :::javascript
+            connection:
+              name: 'Sphero', adaptor: 'sphero'
+    %p Both Spheros have the same device configuration
+    :markdown
+          :::javascript
+            device:
+              name: 'sphero', driver: 'sphero'
+    %p Now we can define the work for the Spheros. Every second, they'll print their name, change to a random color, and roll in a random direction.
+    :markdown
+          :::javascript
+            work: (my) ->
+              every 1.seconds(), ->
+                Logger.info my.name
+                my.sphero.setRandomColor()
+                my.sphero.roll 60, Math.floor(Math.random() * 360)
+    %p Next up, let's define what's different about our bots so we can tell them apart later on. We'll give them each a different name, and define their connection ports.
+    :markdown
+          :::javascript
+          bots = [
+            { name: "Thelma", port: "/dev/rfcomm0" },
+            { name: "Louise", port: "/dev/rfcomm1" }
+          ]
+    %p Now that the pieces are in place, we can start making our robots.
+    :markdown
+          :::javascript
+          for bot in bots
+    :markdown
+      We'll make a new instance of `SpheroRobot`, and modify it.
+    :markdown
+          :::javascript
+            robot = new SpheroRobot
+    %p Now we'll tell the robot what it's name is, and what it's connection port should be:
+    :markdown
+          :::javascript
+            robot.name = bot.name
+            robot.connection.port = bot.port
+    %p Now our robot's ready, and we can add it to Cylon's collection of robots.
+    :markdown
+          :::javascript
+            Cylon.robot robot
+    %p And now that our robots have all been set up, we can start them all at once:
+    :markdown
+          :::javascript
+          Cylon.start()
+
+
+
+
+
+
+
