@@ -53,89 +53,45 @@
                   Allows user to control a Roomba iRobot Create using Cylon.js.
                 </p>
               </section><section class="how-to"><h2>How to establish a connection and setup the driver</h2>
-                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">Cylon.js</span><span class="delimiter">'</span></span>
-connection <span class="symbol">:roomba</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:roomba</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyUSB0</span><span class="delimiter">'</span></span>
-device <span class="symbol">:roomba</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:roomba</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:roomba</span>
+                <pre class="CodeRay">...
 </pre>
-              </section><section class="public-methods"><h2>Public instance methods</h2>
-                <h3>start</h3>
-                <p>
-                  Puts roomba in start mode.
-                </p>
-                <h3>safe_mode</h3>
-                <p>
-                  Puts roomba in safe mode.
-                </p>
-                <h3>full_mode</h3>
-                <p>
-                  Puts roomba in full mode.
-                </p>
-                <h3>forward(seconds, speed=slow) → nil</h3>
-                <p>
-                  Moves roomba forward for &lt;seconds&gt; amount of time at &lt;speed&gt; (speed(int) between 0 and 500).
-                </p>
-                <h3>fast_forward(seconds) → nil</h3>
-                <p>
-                  Moves roomba forward for &lt;seconds&gt; amount of time at max speed.
-                </p>
-                <h3>stop</h3>
-                <p>
-                  Stops the roomba.
-                </p>
-                <h3>backwards(seconds) → nil</h3>
-                <p>
-                  Moves roomba backwards for &lt;seconds&gt; amount of time at default speed.
-                </p>
-                <h3>nudge_left</h3>
-                <p>
-                  Turns roomba a little bit to the left.
-                </p>
-                <h3>nudge_right</h3>
-                <p>
-                  Turns roomba a little bit to the right.
-                </p>
-                <h3>turn_left(seconds=1) → nil</h3>
-                <p>
-                  Turns roomba to the left the specefied amount of seconds.
-                </p>
-                <h3>turn_right(seconds=1) → nil</h3>
-                <p>
-                  Turns roomba to the right the specefied amount of seconds.
-                </p>
-                <h3>turn_around</h3>
-                <p>
-                  Turns roomba 180 degrees.
-                </p>
-                <h3>drive(speed, direction, seconds = 0)  → nil</h3>
-                <p>
-                  Drives the roomba at speed (from 0 to 500) and direction (straight=32768, clockwise=65535, counterclockwise=1) for the specefied amount of time (seconds).
-                </p>
-                <h3>play(song_number)  → nil</h3>
-                <p>
-                  Plays the song specified by song_numer.
-                </p>
-                <h3>song(notes[Collection], song_number[Integer])  → nil</h3>
-                <p>
-                  Stores a song in the roomba.
-                </p>
-                <h3>beep</h3>
-                <p>
-                  Makes roomba beep.
-                </p>
-              </section><section class="how-to"><h2>How to use</h2>
+              </section><section class="public-methods"><h2>Commands</h2>
+                <dl class="methods">
+<dt>start</dt>
+                  <dd>Puts roomba in start mode.</dd>
+                  <dt>safe_mode</dt>
+                  <dd>Puts roomba in safe mode.</dd>
+                  <dt>full_mode</dt>
+                  <dd>Puts roomba in full mode.</dd>
+                  <dt>forward(seconds, speed=slow) → nil</dt>
+                  <dd>Moves roomba forward for &lt;seconds&gt; amount of time at &lt;speed&gt; (speed(int) between 0 and 500).</dd>
+                  <dt>fast_forward(seconds) → nil</dt>
+                  <dd>Moves roomba forward for &lt;seconds&gt; amount of time at max speed.</dd>
+                  <dt>stop</dt>
+                  <dd>Stops the roomba.</dd>
+                  <dt>backwards(seconds) → nil</dt>
+                  <dd>Moves roomba backwards for &lt;seconds&gt; amount of time at default speed.</dd>
+                  <dt>nudge_left</dt>
+                  <dd>Turns roomba a little bit to the left.</dd>
+                  <dt>nudge_right</dt>
+                  <dd>Turns roomba a little bit to the right.</dd>
+                  <dt>turn_left(seconds=1) → nil</dt>
+                  <dd>Turns roomba to the left the specefied amount of seconds.</dd>
+                  <dt>turn_right(seconds=1) → nil</dt>
+                  <dd>Turns roomba to the right the specefied amount of seconds.</dd>
+                  <dt>turn_around</dt>
+                  <dd>Turns roomba 180 degrees.</dd>
+                  <dt>drive(speed, direction, seconds = 0)  → nil</dt>
+                  <dd>Drives the roomba at speed (from 0 to 500) and direction (straight=32768, clockwise=65535, counterclockwise=1) for the specefied amount of time (seconds).</dd>
+                  <dt>play(song_number)  → nil</dt>
+                  <dd>Plays the song specified by song_numer.</dd>
+                  <dt>song(notes[Collection], song_number[Integer])  → nil</dt>
+                  <dd>Stores a song in the roomba.</dd>
+                  <dt>beep</dt>
+                  <dd>Makes roomba beep.</dd>
+                </dl></section><section class="how-to"><h2>How to use</h2>
                 <h3>Example controlling a Roomba.</h3>
-                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">Cylon.js</span><span class="delimiter">'</span></span>
-
-connection <span class="symbol">:roomba</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:roomba</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyUSB0</span><span class="delimiter">'</span></span>
-device <span class="symbol">:roomba</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:roomba</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:roomba</span>
-
-work <span class="keyword">do</span>
-  roomba.safe_mode
-  roomba.nudge_left
-  roomba.nudge_right
-  roomba.nudge_right
-  roomba.nudge_left
-<span class="keyword">end</span>
+                <pre class="CodeRay">...
 </pre>
               </section><section class="compatability hardware"><h2>Works with:</h2>
                 <div class="devices">

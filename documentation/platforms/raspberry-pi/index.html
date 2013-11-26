@@ -57,15 +57,11 @@
                   <a target="blank" href="http://www.raspberrypi.org/">http://www.raspberrypi.org/</a>.
                 </p>
               </section><section class="how-to"><h2>How to install</h2>
-                <p>
-                  Installing cylon.js with raspberri-pi support is pretty easy.
-                </p>
+                <p>Installing cylon.js with raspberri-pi support is pretty easy.</p>
                 <pre class="CodeRay">npm install cylon-raspi
 </pre>
                 <h2>How to use</h2>
-                <p>
-                  This small program causes an LED to blink.
-                </p>
+                <p>This small program causes an LED to blink.</p>
                 <h3>JavaScript</h3>
                 <pre class="CodeRay">Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">..</span><span class="delimiter">'</span></span>);
 
@@ -103,11 +99,7 @@ Cylon.robot
 </pre>
                 <h2>How to connect</h2>
                 <h3>Connecting to Raspberry Pi GPIO</h3>
-                <p>
-                  This module only works on a real Raspberry Pi. Do not bother trying on any other kind of
-                  computer it will not work. Also note you will need to connect actual circuits to the Raspberry Pi's
-                  GPIO pins.
-                </p>
+                <p>This module only works on a real Raspberry Pi. Do not bother trying on any other kind of computer it will not work. Also note you will need to connect actual circuits to the Raspberry Pi's GPIO pins.</p>
                 <h3>Enabling the Raspberry Pi i2c on raspbian</h3>
                 <p>You must add these two entries in your /etc/modules</p>
                 <pre class="CodeRay">i2c-bcm2708
@@ -119,10 +111,7 @@ i2c-dev
 </pre>
                 <p>Now restart your raspberry pi.</p>
                 <h3>Enabling PWM output on GPIO pins.</h3>
-                <p>
-                  You need to install and have pi-blaster running in the raspberry-pi, you can follow
-                  the instructions for pi-blaster install on our repo here:
-                </p>
+                <p>You need to install and have pi-blaster running in the raspberry-pi, you can follow the instructions for pi-blaster install on our repo here:</p>
                 <a href="https://github.com/hybridgroup/pi-blaster">https://github.com/hybridgroup/pi-blaster</a>
               </section><section class="drivers"><h2>Drivers</h2>
                 <p>All Cylon.js digital and PWM GPIO, and i2c drivers listed below should work with the Raspberry Pi:</p>

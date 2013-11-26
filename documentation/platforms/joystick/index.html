@@ -51,52 +51,23 @@
       <div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/joystick.jpg"><p>
-                  You can use Cylon.js with a PS3 game controller, an XBox360 game controller, or any other USB joystick or game controller that is compatible with Simple DirectMedia Layer (SDL).
-                </p>
+              <section class="intro"><img class="display" src="/images/joystick.jpg"><p>You can use Cylon.js with a PS3 game controller, an XBox360 game controller, or any other USB joystick or game controller that is compatible with Simple DirectMedia Layer (SDL).</p>
                 <p>
                   For more info about Simple DirectMedia Layer (SDL) go to
                   <a target="blank" href="http://www.libsdl.org/">http://www.libsdl.org/</a>.
                 </p>
               </section><section class="how-to"><h2>How to install</h2>
-                <p>
-                  Installing Cylon.js with arduino support is pretty easy using ruby gems.
-                </p>
-                <pre class="CodeRay">gem install Cylon.js-joystick
+                <p>Installing Cylon.js with arduino support is pretty easy using ruby gems.</p>
+                <pre class="CodeRay">npm install Cylon-joystick
 </pre>
                 <h2>How to use</h2>
-                <p>
-                  This small program receives joystick and button press events from an XBox 360 game controller.
-                </p>
-                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">Cylon.js</span><span class="delimiter">'</span></span>
-
-connection <span class="symbol">:joystick</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:joystick</span>
-device <span class="symbol">:joystick</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:xbox360</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:joystick</span>, <span class="symbol">:interval</span> =&gt; <span class="float">0.1</span>
-
-work <span class="keyword">do</span>
-  on controller, <span class="symbol">:joystick</span> =&gt; proc { |*value|
-    puts <span class="string"><span class="delimiter">"</span><span class="content">joystick </span><span class="inline"><span class="inline-delimiter">#{</span>value[<span class="integer">1</span>][<span class="symbol">:s</span>]<span class="inline-delimiter">}</span></span><span class="content"> x:</span><span class="inline"><span class="inline-delimiter">#{</span>value[<span class="integer">1</span>][<span class="symbol">:x</span>]<span class="inline-delimiter">}</span></span><span class="content"> y:</span><span class="inline"><span class="inline-delimiter">#{</span>value[<span class="integer">1</span>][<span class="symbol">:y</span>]<span class="inline-delimiter">}</span></span><span class="delimiter">"</span></span>
-  }
-  on controller, <span class="symbol">:button_a</span> =&gt; proc { |*value|
-    puts <span class="string"><span class="delimiter">"</span><span class="content">ayyyy!</span><span class="delimiter">"</span></span>
-  }
-  on controller, <span class="symbol">:button_b</span> =&gt; proc { |*value|
-    puts <span class="string"><span class="delimiter">"</span><span class="content">bee!</span><span class="delimiter">"</span></span>
-  }
-  on controller, <span class="symbol">:button_x</span> =&gt; proc { |*value|
-    puts <span class="string"><span class="delimiter">"</span><span class="content">exxx!</span><span class="delimiter">"</span></span>
-  }
-  on controller, <span class="symbol">:button_y</span> =&gt; proc { |*value|
-    puts <span class="string"><span class="delimiter">"</span><span class="content">why!</span><span class="delimiter">"</span></span>
-  }
-<span class="keyword">end</span>
+                <p>This small program receives joystick and button press events from an XBox 360 game controller.</p>
+                <pre class="CodeRay">...
 </pre>
                 <h2>How to connect</h2>
                 <p>Plug your USB joystick or game controller into your USB port. If your device is supported by SDL, you are now ready.</p>
               </section><section class="drivers"><h2>Drivers</h2>
-                <p>
-                  There are 3 driver for different joysticks, as listed below:
-                </p>
+                <p>There are 3 driver for different joysticks, as listed below:</p>
                 <div class="hardware">
                   <div class="devices">
                     <a class="device" href="/documentation/drivers/joystick" title="Joystick">

@@ -51,33 +51,18 @@
       <div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/crazyflie.jpg"><p>
-                  You can use Cylon.js with the Crazyflie micro-quadcopter.
-                </p>
+              <section class="intro"><img class="display" src="/images/crazyflie.jpg"><p>You can use Cylon.js with the Crazyflie micro-quadcopter.</p>
                 <p>
                   For more info about Crazyflie click
                   <a target="blank" href="http://www.bitcraze.se/">here</a>.
                 </p>
               </section><section class="how_to"><h2>How to install</h2>
-                <p>
-                  Installing Cylon.js with arduino support is pretty easy using ruby gems.
-                </p>
-                <pre class="CodeRay">gem install Cylon.js-crazyflie
+                <p>Installing Cylon.js with arduino support is pretty easy using ruby gems.</p>
+                <pre class="CodeRay">npm install Cylon.js-crazyflie
 </pre>
                 <h2>How to use</h2>
-                <p>
-                  This small program causes the Crazyflie to 'hop' up in the air for 1 second.
-                </p>
-                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">Cylon.js</span><span class="delimiter">'</span></span>
-
-connection <span class="symbol">:crazyflie</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:crazyflie</span>
-device <span class="symbol">:drone</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:crazyflie</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:crazyflie</span>, <span class="symbol">:interval</span> =&gt; <span class="float">0.1</span>
-
-work <span class="keyword">do</span>
-  drone.forward(<span class="integer">0</span>)
-  drone.set_thrust_on
-  after(<span class="integer">1</span>.seconds) {drone.stop}
-<span class="keyword">end</span>
+                <p>This small program causes the Crazyflie to 'hop' up in the air for 1 second.</p>
+                <pre class="CodeRay">...
 </pre>
                 <h2>How to connect</h2>
                 <p>
@@ -97,18 +82,12 @@ work <span class="keyword">do</span>
                   <a href="https://bitbucket.org/omwdunkley/crazyflie-firmware/downloads/cflie.bin">https://bitbucket.org/omwdunkley/crazyflie-firmware/downloads/cflie.bin</a>
                   and then use the Crazyflie PC tools to update the Crazyflie firmware.
                 </p>
-                <p>
-                  Once you have updated the Crazyflie firmware, you will NEED to use the following syntax in your Cylon.js code to use it:
-                </p>
-                <pre class="CodeRay">connection <span class="symbol">:crazyflie</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:crazyflie</span>, <span class="symbol">:supports_hover</span> =&gt; <span class="predefined-constant">true</span>
+                <p>Once you have updated the Crazyflie firmware, you will NEED to use the following syntax in your Cylon.js code to use it:</p>
+                <pre class="CodeRay">...
 </pre>
-                <p>
-                  If you do not add :supports_hover =&gt; true to your connection code to the Crazyflie, it will go crazy out of control as you as you try to connect to it. You have been warned...
-                </p>
+                <p>If you do not add :supports_hover =&gt; true to your connection code to the Crazyflie, it will go crazy out of control as you as you try to connect to it. You have been warned...</p>
               </section><section class="drivers"><h2>Drivers</h2>
-                <p>
-                  There is currently only one driver for the Crazyflie, as listed below.
-                </p>
+                <p>There is currently only one driver for the Crazyflie, as listed below.</p>
                 <div class="hardware">
                   <div class="devices">
                     <a class="device" href="/documentation/drivers/crazyflie" title="Crazyflie Flight Control">

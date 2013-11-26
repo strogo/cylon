@@ -53,32 +53,114 @@
                   Allows user to interact with Cylon.js devices using a Pebble smart watch.
                 </p>
               </section><section class="how-to"><h2>How to establish a connection and setup the driver</h2>
-                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">Cylon.js</span><span class="delimiter">'</span></span>
-connection <span class="symbol">:pebble</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:pebble</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">/dev/rfcomm0</span><span class="delimiter">"</span></span>, <span class="symbol">:id</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">378B</span><span class="delimiter">"</span></span>
-device <span class="symbol">:watch</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:pebble</span>
+                <h3>JavaScript</h3>
+                <pre class="CodeRay">Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
+
+
+Cylon.api({
+  <span class="key">host</span>: <span class="string"><span class="delimiter">'</span><span class="content">0.0.0.0</span><span class="delimiter">'</span></span>,
+  <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">8080</span><span class="delimiter">'</span></span>
+});
+
+robot = {
+  <span class="key">connection</span>: {
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>,
+    <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>
+  },
+  <span class="key">device</span>: {
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>,
+    <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>
+  },
 </pre>
-              </section><section class="public-methods"><h2>Public instance methods</h2>
-                <p>
-                  We're working on the documentation for the events for the Pebble smart watch. Thanks for your patience.
-                </p>
-                <h2>Public driver events</h2>
-                <p>
-                  We're working on the documentation for the events for the Pebble smart watch. Thanks for your patience.
-                </p>
-              </section><section class="how-to"><h2>How to use</h2>
-                <h3>Example receiving button events from a Pebble smart watch.</h3>
-                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">Cylon.js</span><span class="delimiter">'</span></span>
+                <h3>CoffeeScript</h3>
+                <pre class="CodeRay">Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>)
 
-connection <span class="symbol">:pebble</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:pebble</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">/dev/rfcomm0</span><span class="delimiter">"</span></span>, <span class="symbol">:id</span> =&gt; <span class="string"><span class="delimiter">"</span><span class="content">378B</span><span class="delimiter">"</span></span>
-device <span class="symbol">:watch</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:pebble</span>
+Cylon.api host: <span class="string"><span class="delimiter">'</span><span class="content">0.0.0.0</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">8080</span><span class="delimiter">'</span></span>
 
-work <span class="keyword">do</span>
-  on watch, <span class="symbol">:media_control</span> =&gt; <span class="symbol">:button_push</span>
-<span class="keyword">end</span>
+robot = 
+  connection:
+    name: <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>
 
-<span class="keyword">def</span> <span class="function">button_push</span>(caller, data)
-  puts data.button <span class="keyword">unless</span> data.nil?
-<span class="keyword">end</span>
+  device:
+    name: <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>
+...
+</pre>
+              </section><section class="public-methods"><h2>Commands</h2>
+                <dl class="methods">
+<dt>message</dt>
+                  <dd></dd>
+                  <dt>message_queue</dt>
+                  <dd></dd>
+                  <dt>last_message</dt>
+                  <dd></dd>
+                </dl>
+<h2>Events</h2>
+                <dl class="methods">
+<dt>Stop</dt>
+                  <dd>Stop the driver.</dd>
+                  <dt>start</dt>
+                  <dd>Sent when the device has been started and is ready to use.</dd>
+                </dl></section><section class="how-to"><h2>How to use</h2>
+                <h3>Example receiving message queue from a Pebble smart watch.</h3>
+                <h3>JavaScript</h3>
+                <pre class="CodeRay">Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
+
+Cylon.api({
+  <span class="key">host</span>: <span class="string"><span class="delimiter">'</span><span class="content">0.0.0.0</span><span class="delimiter">'</span></span>,
+  <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">8080</span><span class="delimiter">'</span></span>
+});
+
+robot = {
+  <span class="key">connection</span>: {
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>,
+    <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>
+  },
+  <span class="key">device</span>: {
+    <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>,
+    <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>
+  },
+  <span class="function">work</span>: <span class="keyword">function</span>(self) {
+    <span class="keyword">var</span> c;
+    c = <span class="integer">0</span>;
+    <span class="keyword">return</span> every(<span class="integer">1</span>..second(), <span class="keyword">function</span>() {
+      c++;
+      self.pebble.message_queue().push(c);
+      <span class="keyword">return</span> console.log(self.pebble.last_message());
+    });
+  }
+};
+
+bot = Object.create(robot);
+
+bot.name = <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>;
+
+Cylon.robot(Object.create(bot));
+
+Cylon.start();
+</pre>
+                <h3>CoffeeScript</h3>
+                <pre class="CodeRay">Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>)
+
+Cylon.api host: <span class="string"><span class="delimiter">'</span><span class="content">0.0.0.0</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">8080</span><span class="delimiter">'</span></span>
+
+robot = 
+  connection:
+    name: <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>
+
+  device:
+    name: <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>
+
+  work: (self) -&gt;
+    c = <span class="integer">0</span>
+    every <span class="integer">1</span>.second(), -&gt; 
+      c++
+      self.pebble.message_queue().push(c)
+      console.log(self.pebble.last_message())
+
+bot = Object.create(robot)
+bot.name = <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>
+Cylon.robot Object.create(bot)
+Cylon.start()
 </pre>
               </section><section class="compatability hardware"><h2>Works with:</h2>
                 <div class="devices">

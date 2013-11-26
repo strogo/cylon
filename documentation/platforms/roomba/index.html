@@ -51,40 +51,21 @@
       <div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/roomba.jpg"><p>
-                  The Roomba is a simple robot that usually cleans floors.
-                </p>
+              <section class="intro"><img class="display" src="/images/roomba.jpg"><p>The Roomba is a simple robot that usually cleans floors.</p>
                 <p>
                   For more info about the Roomba platform click
                   <a target="blank" href="http://www.irobot.com/us/learn/Educators/Create.aspx">here</a>.
                 </p>
               </section><section class="how-to"><h2>How to install</h2>
-                <p>
-                  Installing Cylon.js with roomba support is pretty easy using ruby gems.
-                </p>
-                <pre class="CodeRay">gem install Cylon.js-roomba
+                <p>Installing Cylon.js with roomba support is pretty easy using ruby gems.</p>
+                <pre class="CodeRay">npm install Cylon.js-roomba
 </pre>
                 <h2>How to use</h2>
-                <p>
-                  This small program controls a Roomba.
-                </p>
-                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">Cylon.js</span><span class="delimiter">'</span></span>
-
-connection <span class="symbol">:roomba</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:roomba</span>, <span class="symbol">:port</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyUSB0</span><span class="delimiter">'</span></span>
-device <span class="symbol">:roomba</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:roomba</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:roomba</span>
-
-work <span class="keyword">do</span>
-  roomba.safe_mode
-  roomba.nudge_left
-  roomba.nudge_right
-  roomba.nudge_right
-  roomba.nudge_left
-<span class="keyword">end</span>
+                <p>This small program controls a Roomba.</p>
+                <pre class="CodeRay">...
 </pre>
               </section><section class="drivers"><h2>Drivers</h2>
-                <p>
-                  There is only one driver for the Roomba platform, as listed below.
-                </p>
+                <p>There is only one driver for the Roomba platform, as listed below.</p>
                 <div class="hardware">
                   <div class="devices">
                     <a class="device" href="/documentation/drivers/roomba" title="Roomba">
