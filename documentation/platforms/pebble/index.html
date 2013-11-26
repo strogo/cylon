@@ -72,31 +72,41 @@ Cylon.api({
   <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">8080</span><span class="delimiter">'</span></span>
 });
 
-robot = {
-  <span class="key">connection</span>: {
+PebbleRobot = (<span class="keyword">function</span>() {
+
+  <span class="keyword">function</span> <span class="function">PebbleRobot</span>() {}
+
+  PebbleRobot.prototype.connection = {
     <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>,
     <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>
-  },
-  <span class="key">device</span>: {
+  };
+
+  PebbleRobot.prototype.device = {
     <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>,
     <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>
-  },
-  <span class="function">work</span>: <span class="keyword">function</span>(self) {
+  };
+
+  PebbleRobot.prototype.<span class="function">work</span> = <span class="keyword">function</span>(self) {
     <span class="keyword">var</span> c;
-    c = <span class="integer">0</span>;
+    c = <span class="integer">100</span>;
     <span class="keyword">return</span> every(<span class="integer">1</span>..second(), <span class="keyword">function</span>() {
+      <span class="keyword">var</span> str;
       c++;
-      self.pebble.message_queue().push(c);
+      str = <span class="string"><span class="delimiter">"</span><span class="content">c: </span><span class="delimiter">"</span></span> + c;
+      self.pebble.message_queue().push(str);
       <span class="keyword">return</span> console.log(self.pebble.last_message());
     });
-  }
-};
+  };
 
-bot = Object.create(robot);
+  <span class="keyword">return</span> PebbleRobot;
+
+})();
+
+bot = <span class="keyword">new</span> PebbleRobot();
 
 bot.name = <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>;
 
-Cylon.robot(Object.create(bot));
+Cylon.robot(bot);
 
 Cylon.start();
 </pre>
@@ -105,7 +115,7 @@ Cylon.start();
 
 Cylon.api host: <span class="string"><span class="delimiter">'</span><span class="content">0.0.0.0</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">8080</span><span class="delimiter">'</span></span>
 
-robot = 
+<span class="reserved">class</span> PebbleRobot
   connection:
     name: <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>
 
@@ -113,15 +123,17 @@ robot =
     name: <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>
 
   work: (self) -&gt;
-    c = <span class="integer">0</span>
-    every <span class="integer">1</span>.second(), -&gt; 
+    c = <span class="integer">100</span>
+    every <span class="integer">1</span>.second(), -&gt;
       c++
-      self.pebble.message_queue().push(c)
+      str = <span class="string"><span class="delimiter">"</span><span class="content">c: #{c}</span><span class="delimiter">"</span></span>
+      self.pebble.message_queue().push(str)
       console.log(self.pebble.last_message())
 
-bot = Object.create(robot)
+bot = <span class="keyword">new</span> PebbleRobot()
 bot.name = <span class="string"><span class="delimiter">'</span><span class="content">pebble</span><span class="delimiter">'</span></span>
-Cylon.robot Object.create(bot)
+Cylon.robot bot
+
 Cylon.start()
 </pre>
                 <h2>How to connect</h2>
