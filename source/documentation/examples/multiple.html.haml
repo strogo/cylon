@@ -9,13 +9,7 @@ layout: page
 :javascript 
   $(document).ready(function(){
     $.getGithubFileByFilePath("hybridgroup", "cylon", "examples/analog_sensor.coffee", function(contentsLit) {
-      $("#repoGithub ").append(contentsLit);
-    });
-    $.getGithubFileByFilePath("hybridgroup", "cylon", "examples/analog_sensor.coffee", function(contentsJS) {
-      $("#repoGithub ").append(contentsJS);
-    });
-    $.getGithubFileByFilePath("hybridgroup", "cylon", "examples/analog_sensor.coffee", function(contentsCS) {
-      $("#repoGithub ").append(contentsCS);
+      $("#repoLit").append(contentsLit);
     });
   });
 
