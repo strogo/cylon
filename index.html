@@ -98,44 +98,53 @@
             <pre class="CodeRay">npm install cylon
 </pre>
             
-            <p>… and whichever <code>cylon</code> module is needed for your specific hardware (in this case, a <a href="http://gosphero.com">Sphero</a>):</p>
+            <p>Then install modules for whatever hardware support you want to use from your robot. For the example below, an Arduino using the Firmata protocol:</p>
             
-            <pre class="CodeRay">npm install cylon-sphero
+            <pre class="CodeRay">npm install cylon-firmata
 </pre>
-            
-            <p>Now write your robot code. Require Cylon.js, and create a robot:</p>
-            
-            <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
+            <h2>Examples</h2>
+            <p>The example below connects to an Arduino, and every second turns the LED either on, or off.</p>
+            <p>The example requires that the Arduino has the Firmata sketch installed, and that it is connected on the port <code>/dev/ttyACM0</code>. You need to install Firmata on your Arduino, and to change the <code>port</code> parameter to match the port that your system is actually using.</p>
+            <p>Make sure to upload the "Standard Firmata" sketch or an equivalent Firmata sketch to your Arduino first. Without that code running on the Arduino, Firmata can't communicate with Cylon. You can find the example sketch in your Arduino software under "Examples &gt; Firmata &gt; StandardFirmata".</p>
+            <h3>JavaScript:</h3>
+            <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">"</span><span class="content">cylon</span><span class="delimiter">"</span></span>);
 
 <span class="comment">// Initialize the robot</span>
 <span class="keyword">var</span> robot = Cylon.robot({
-</pre>
-            
-            <p>Then tell the robot code about your hardware to hook it up:</p>
-            
-            <pre class="CodeRay">  connection: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/rfcomm0</span><span class="delimiter">'</span></span>},
+  <span class="comment">// Change the port to the correct port for your Arduino.</span>
+  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span> },
+  <span class="key">device</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">13</span> },
 
-  <span class="key">device</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">ball</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">sphero</span><span class="delimiter">'</span></span>},
-</pre>
-            
-            <p>And tell it what work to do. This code tells the Sphero that every second, it should roll around in a random direction:</p>
-            
-            <pre class="CodeRay">  <span class="function">work</span>: <span class="keyword">function</span>(my) {
-    every((<span class="integer">1</span>).second(), <span class="keyword">function</span>() { 
-      my.ball.roll(<span class="integer">60</span>, Math.floor(Math.random() * <span class="integer">360</span>));
-    });
+  <span class="function">work</span>: <span class="keyword">function</span>(my) {
+    <span class="comment">// we do our thing here</span>
+    every((<span class="integer">1</span>).second(), <span class="keyword">function</span>() { my.led.toggle(); });
   }
 });
+
+<span class="comment">// start working</span>
+robot.start();
+</pre>
+            <h3>CoffeeScript:</h3>
+            <pre class="CodeRay">Cylon = require <span class="string"><span class="delimiter">"</span><span class="content">cylon</span><span class="delimiter">"</span></span>
+
+<span class="error">#</span> Initialize the robot
+robot = Cylon.robot
+  connection:
+    name: <span class="string"><span class="delimiter">'</span><span class="content">arduino</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">firmata</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">/dev/ttyACM0</span><span class="delimiter">'</span></span>
+
+  device:
+    name: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">led</span><span class="delimiter">'</span></span>, <span class="key">pin</span>: <span class="integer">13</span>
+
+  work: (my) -&gt;
+    <span class="error">#</span> we <span class="keyword">do</span> our thing here
+    every <span class="integer">1</span>.second(), -&gt; my.led.toggle()
+
+robot.start()
 </pre>
             
-            <p>Last, tell the robot to start. That's it!</p>
-            
-            <pre class="CodeRay">robot.start();
-</pre>
-            
-            <h2 id="getting-started">Getting Started</h2>
-            
-            <p>Ready to build JavaScript robots with Cylon.js? <a href="/documentation/getting-started">Get Started Here!</a></p>
+            <p>Note: before running any examples in the <code>examples/</code> dir from source, make sure to compile using <code>grunt coffee</code> first.</p>
+            <h2>Getting Started</h2>
+            <p>Ready to build JavaScript robots with Cylon.js? [Get Started Here!](/documentation/getting-started)</p>
             <h2>Hardware Support</h2>
             <p>
               Cylon.js has a extensible system for connecting to hardware devices. The following robotics and physical computing platforms are currently supported:
@@ -144,49 +153,71 @@
 <li>
                   <a target="_blank" href="http://ardrone2.parrot.com/">Ardrone</a>
                   &lt;==&gt;
-                  <a target="_blank" href="https://github.com/hybridgroup/cylon-ardrone">Cylon.js for ARDrone (Adaptor/Drivers)</a>
+                  <a target="_blank" href="https://github.com/hybridgroup/cylon-ardrone">Adaptor/Drivers</a>
                 </li>
                 <li>
                   <a target="_blank" href="http://www.arduino.cc/">Arduino</a>
                   &lt;==&gt;
-                  <a target="_blank" href="https://github.com/hybridgroup/cylon-firmata">Cylon.js for Firmata (Adaptor)</a>
+                  <a target="_blank" href="https://github.com/hybridgroup/cylon-firmata">Adaptor</a>
+                </li>
+                <li>
+                  <a target="_blank" href="http://www.bitcraze.se/">Crazyflie</a>
+                  &lt;==&gt;
+                  <a href="https://github.com/hybridgroup/cylon-crazyflie">Adaptor/Driver</a>
                 </li>
                 <li>
                   <a target="_blank" href="http://www.leapmotion.com/">Leap Motion</a>
                   &lt;==&gt;
-                  <a target="_blank" href="https://github.com/hybridgroup/cylon-leapmotion">Cylon.js for Leap Motion (Adaptor/Driver)</a>
+                  <a target="_blank" href="https://github.com/hybridgroup/cylon-leapmotion">Adaptor/Driver</a>
+                </li>
+                <li>
+                  <a target="_blank" href="https://getpebble.com/">Pebble</a>
+                  &lt;==&gt;
+                  <a target="_blank" href="https://github.com/hybridgroup/cylon-pebble">Adaptor/Driver</a>
                 </li>
                 <li>
                   <a target="_blank" href="http://www.raspberrypi.org/">Raspberry Pi</a>
                   &lt;==&gt;
-                  <a target="_blank" href="https://github.com/hybridgroup/cylon-raspi">Cylon.js for Raspberry Pi (Adaptor)</a>
+                  <a target="_blank" href="https://github.com/hybridgroup/cylon-raspi">Adaptor</a>
                 </li>
                 <li>
                   <a target="_blank" href="http://www.force.com/">Salesforce</a>
                   &lt;==&gt;
-                  <a target="_blank" href="https://github.com/hybridgroup/cylon-force">Cylon.js for Salesforce (Adaptor/Driver)</a>
+                  <a target="_blank" href="https://github.com/hybridgroup/cylon-force">Adaptor/Driver</a>
                 </li>
                 <li>
                   <a target="_blank" href="http://www.gosphero.com/">Sphero</a>
                   &lt;==&gt;
-                  <a target="_blank" href="https://github.com/hybridgroup/cylon-sphero">Cylon.js for Sphero (Adaptor/Driver)</a>
+                  <a target="_blank" href="https://github.com/hybridgroup/cylon-sphero">Adaptor/Driver</a>
                 </li>
               </ul>
-<p>Support for common shared device drivers, is provded using the General Purpose Input/Output (GPIO) module:</p>
+<p>Support for many devices that use General Purpose Input/Output (GPIO) have a shared set of drivers provded using the cylon-gpio module:</p>
             <ul>
 <li>
                 <a target="_blank" href="https://en.wikipedia.org/wiki/General_Purpose_Input/Output">GPIO</a>
                 &lt;==&gt;
-                <a target="_blank" href="https://github.com/hybridgroup/cylon-gpio">Cylon.js for GPIO (Drivers)</a>
-              </li>
+                <a target="_blank" href="https://github.com/hybridgroup/cylon-gpio">Drivers</a>
+                <ul>
+<li>Analog Sensor</li>
+                  <li>Button</li>
+                  <li>LED</li>
+                  <li>Motor</li>
+                  <li>Maxbotix Ultrasonic Range Finder</li>
+                  <li>Servo</li>
+                </ul>
+</li>
             </ul>
 <p>Support for devices that use Inter-Integrated Circuit (I2C) have a shared set of drivers provded using the cylon-i2c module:</p>
             <ul>
 <li>
                 <a target="_blank" href="https://en.wikipedia.org/wiki/I%C2%B2C">I2C</a>
                 &lt;==&gt;
-                <a target="_blank" href="https://github.com/hybridgroup/cylon-i2c">Cylon.js for I2C (Drivers)</a>
-              </li>
+                <a target="_blank" href="https://github.com/hybridgroup/cylon-i2c">Drivers</a>
+                <ul>
+<li>BlinkM</li>
+                  <li>HMC6352 Digital Compass</li>
+                </ul>
+</li>
             </ul>
 <p>More platforms and drivers are coming soon...</p>
             <h2 id="be-part-of-the-robot-evolution">Be Part Of The Robot Evolution</h2>

@@ -49,56 +49,92 @@
       <div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/crazyflie.jpg"><p>
+              <section class="intro"><img class="display" src="/images/crazyflie-flight.jpg"><p>
                   Allows user to send flight control commands to a Crazyflie micro-quadcopter. Flight control commands are those used to tell the Crazyflie to take off, land, and or any number of other autonomous flight manuvers.
                 </p>
               </section><section class="how-to"><h2>How to establish a connection and setup the driver</h2>
                 <p>
                   Communication with the Crazyflie's flight control interface takes place using a 2.4GHz radio connection. The Crazyflie is controlled from your computer using a Crazyradio, which is a custom USB 2.4GHz radio device.
                 </p>
-                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">Cylon.js</span><span class="delimiter">'</span></span>
-connection <span class="symbol">:crazyflie</span>, <span class="symbol">:adaptor</span> =&gt; <span class="symbol">:crazyflie</span>
-device <span class="symbol">:drone</span>, <span class="symbol">:driver</span> =&gt; <span class="symbol">:crazyflie</span>, <span class="symbol">:connection</span> =&gt; <span class="symbol">:crazyflie</span>, <span class="symbol">:interval</span> =&gt; <span class="float">0.1</span>
+                <h3>JavaScript</h3>
+                <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
+
+Cylon.robot({
+  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">crazyflie</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">crazyflie</span><span class="delimiter">'</span></span> },
+  <span class="key">device</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">drone</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">crazyflie</span><span class="delimiter">'</span></span>},
+...
+</pre>
+                <h3>CoffeeScript</h3>
+                <pre class="CodeRay">Cylon = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
+
+Cylon.robot
+  connection:
+    name: <span class="string"><span class="delimiter">'</span><span class="content">crazyflie</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">crazyflie</span><span class="delimiter">'</span></span>
+
+  device:
+    name: <span class="string"><span class="delimiter">'</span><span class="content">drone</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">crazyflie</span><span class="delimiter">'</span></span>
+...
 </pre>
               </section><section class="public-methods"><h2>Commands:</h2>
                 <dl class="methods">
-<dt>start</dt>
-                  <dd>Starts the crazyfly's motors and controls.</dd>
-                  <dt>stop</dt>
-                  <dd>Stops the crazyfly's motors.</dd>
-                  <dt>hover</dt>
-                  <dd>Makes the crazyflie hover in a position.</dd>
-                  <dt>land</dt>
+<dt>land</dt>
                   <dd>Initiates a landing sequence.</dd>
-                  <dt>take_off</dt>
+                  <dt>takeoff</dt>
                   <dd>Initiates take off sequence.</dd>
-                  <dt>up</dt>
-                  <dd>Orders crazy flie to go up.</dd>
-                  <dt>down</dt>
-                  <dd>Orders crazy flie to go down.</dd>
-                  <dt>left(deg)</dt>
-                  <dd>Orders crazyflie to go left the amount specified by deg (roll left).</dd>
-                  <dt>right(deg)</dt>
-                  <dd>Orders crazyflie to go right the amount specified by deg (roll right).</dd>
-                  <dt>forward(deg)</dt>
-                  <dd>Orders crazyflie to go forward the amount specified by deg (pitch forward).</dd>
-                  <dt>backward(deg)</dt>
-                  <dd>Orders crazyflie to go backward the amount specified by deg (pitch backward).</dd>
-                  <dt>turn_left(deg)</dt>
-                  <dd>Orders crazyflie to turn left the amount specified by deg (yaw left).</dd>
-                  <dt>turn_right(deg)</dt>
-                  <dd>Orders crazyflie to turn right the amount specified by deg (yaw right).</dd>
-                  <dt>power(deg)</dt>
-                  <dd>Sets thrust power to deg.</dd>
+                  <dt>setPitch</dt>
+                  <dd></dd>
+                  <dt>setYaw</dt>
+                  <dd></dd>
+                  <dt>setThrust</dt>
+                  <dd></dd>
+                  <dt>shutdown</dt>
+                  <dd>Shutdown the device.</dd>
                 </dl>
 <h2>Events:</h2>
                 <dl class="methods">
 <dt>start</dt>
                   <dd>Sent when the device has been started and is ready to use.</dd>
+                  <dt>stop</dt>
+                  <dd>Sent when the device has been stopped.</dd>
                 </dl></section><section class="how-to"><h2>How to use</h2>
-                <h3>Example of controlling a Crazyflie.</h3>
-                <pre class="CodeRay">require <span class="string"><span class="delimiter">'</span><span class="content">Cylon.js</span><span class="delimiter">'</span></span>
-...
+                <h3>Examples</h3>
+                <p>This small program causes the Crazyflie to takeoff for 10 seconds.</p>
+                <h3>JavaScript</h3>
+                <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
+
+Cylon.robot({
+  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">crazyflie</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">crazyflie</span><span class="delimiter">'</span></span> },
+  <span class="key">device</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">drone</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">crazyflie</span><span class="delimiter">'</span></span>},
+
+  <span class="function">work</span>: <span class="keyword">function</span>(my) {
+    my.drone.takeoff();
+    after((<span class="integer">10</span>).seconds(), <span class="keyword">function</span>() { 
+      my.drone.land();
+    });
+    after((<span class="integer">15</span>).seconds(), <span class="keyword">function</span>() { 
+      my.drone.stop();
+    });    
+  }
+}).start();
+</pre>
+                <h3>CoffeeScript</h3>
+                <pre class="CodeRay">Cylon = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
+
+Cylon.robot
+  connection:
+    name: <span class="string"><span class="delimiter">'</span><span class="content">crazyflie</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">crazyflie</span><span class="delimiter">'</span></span>
+
+  device:
+    name: <span class="string"><span class="delimiter">'</span><span class="content">drone</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">crazyflie</span><span class="delimiter">'</span></span>
+
+  work: (my) -&gt;
+    my.drone.takeoff()
+    after <span class="integer">10</span>.seconds(), -&gt;
+      my.drone.land()
+    after <span class="integer">15</span>.seconds(), -&gt;
+      my.drone.stop()
+
+.start()
 </pre>
               </section><section class="compatability hardware"><h2>Works with:</h2>
                 <div class="devices">

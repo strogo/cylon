@@ -44,7 +44,7 @@
         <div class="w">
           <h1 class="title">Crazyflie</h1>
           <h2 class="subtitle">
-<a href="https://github.com/hybridgroup/Cylon.js-crazyflie" class="repository">Repository</a> <a class href="https://github.com/hybridgroup/Cylon.js-crazyflie/issues">Issues</a>
+<a href="https://github.com/hybridgroup/cylon-crazyflie" class="repository">Repository</a> <a class href="https://github.com/hybridgroup/cylon-crazyflie/issues">Issues</a>
 </h2>
         </div>
       </div>
@@ -58,11 +58,46 @@
                 </p>
               </section><section class="how_to"><h2>How to install</h2>
                 <p>Installing Cylon.js with arduino support is pretty easy using ruby gems.</p>
-                <pre class="CodeRay">npm install Cylon.js-crazyflie
+                <pre class="CodeRay">npm install cylon-crazyflie
 </pre>
                 <h2>How to use</h2>
-                <p>This small program causes the Crazyflie to 'hop' up in the air for 1 second.</p>
-                <pre class="CodeRay">...
+                <p>This small program causes the Crazyflie to takeoff for 10 seconds.</p>
+                <h3>JavaScript</h3>
+                <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
+
+Cylon.robot({
+  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">crazyflie</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">crazyflie</span><span class="delimiter">'</span></span> },
+  <span class="key">device</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">drone</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">crazyflie</span><span class="delimiter">'</span></span>},
+
+  <span class="function">work</span>: <span class="keyword">function</span>(my) {
+    my.drone.takeoff();
+    after((<span class="integer">10</span>).seconds(), <span class="keyword">function</span>() { 
+      my.drone.land();
+    });
+    after((<span class="integer">15</span>).seconds(), <span class="keyword">function</span>() { 
+      my.drone.stop();
+    });    
+  }
+}).start();
+</pre>
+                <h3>CoffeeScript</h3>
+                <pre class="CodeRay">Cylon = require <span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>
+
+Cylon.robot
+  connection:
+    name: <span class="string"><span class="delimiter">'</span><span class="content">crazyflie</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">crazyflie</span><span class="delimiter">'</span></span>
+
+  device:
+    name: <span class="string"><span class="delimiter">'</span><span class="content">drone</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">crazyflie</span><span class="delimiter">'</span></span>
+
+  work: (my) -&gt;
+    my.drone.takeoff()
+    after <span class="integer">10</span>.seconds(), -&gt;
+      my.drone.land()
+    after <span class="integer">15</span>.seconds(), -&gt;
+      my.drone.stop()
+
+.start()
 </pre>
                 <h2>How to connect</h2>
                 <p>
@@ -73,25 +108,12 @@
                   If you are have a USB 3.0 port, you might run into this issue
                   <br><a href="http://stackoverflow.com/questions/17204253/crazyflie-usb-3-0-incompability">http://stackoverflow.com/questions/17204253/crazyflie-usb-3-0-incompability</a>
                 </p>
-                <h2>How to hover</h2>
-                <p>
-                  To use Crazyflie with the hover command, requires installing the
-                  <a href="https://bitbucket.org/omwdunkley/crazyflie-firmware">https://bitbucket.org/omwdunkley/crazyflie-firmware</a>
-                  fork of the Crazyflie firmware. The easiest way to currently do this, is to
-                  install the Crazyflie PC Client, download the 'hover' branch BIN file from here
-                  <a href="https://bitbucket.org/omwdunkley/crazyflie-firmware/downloads/cflie.bin">https://bitbucket.org/omwdunkley/crazyflie-firmware/downloads/cflie.bin</a>
-                  and then use the Crazyflie PC tools to update the Crazyflie firmware.
-                </p>
-                <p>Once you have updated the Crazyflie firmware, you will NEED to use the following syntax in your Cylon.js code to use it:</p>
-                <pre class="CodeRay">...
-</pre>
-                <p>If you do not add :supports_hover =&gt; true to your connection code to the Crazyflie, it will go crazy out of control as you as you try to connect to it. You have been warned...</p>
               </section><section class="drivers"><h2>Drivers</h2>
                 <p>There is currently only one driver for the Crazyflie, as listed below.</p>
                 <div class="hardware">
                   <div class="devices">
                     <a class="device" href="/documentation/drivers/crazyflie" title="Crazyflie Flight Control">
-                      <img src="/images/crazyflie.jpg"></a>
+                      <img src="/images/crazyflie-flight.jpg"></a>
                   </div>
                 </div>
               </section>

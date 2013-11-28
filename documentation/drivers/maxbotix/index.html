@@ -53,29 +53,35 @@
                   Provides tools to use maxbotix sonar (range finder).
                 </p>
               </section><section class="how-to"><h2>How to stablish a connection and setup the driver</h2>
-                <h3>For Arduino:</h3>
+                <h3>JavaScript</h3>
+                <pre class="CodeRay">comming soon
+</pre>
+                <h3>CoffeeScript</h3>
                 <pre class="CodeRay">comming soon
 </pre>
               </section><section class="public-methods"><h2>Commands:</h2>
                 <dl class="methods">
-<dt>range → distance_in_inches(float)</dt>
+<dt>analogValue</dt>
+                  <dd></dd>
+                  <dt>range</dt>
                   <dd>Returns the distance measured by the sonar in inches.</dd>
-                  <dt>range_cm → distance_in_cm(float)</dt>
+                  <dt>rangeCm</dt>
                   <dd>Returns the distance measured by the sonar in cm.</dd>
                 </dl></section><section class="public-events"><h2>Events:</h2>
                 <p>
                   The events will be triggered when the amount of time specified by the param :interval, when setting up the driver, passes.
                 </p>
                 <dl class="methods">
-<dt>range</dt>
-                  <dd>Gets triggered after :interval amount of time passes, everytime the range will be read and the event triggered.</dd>
+<dt>start</dt>
+                  <dd>Sent when the device has been started and is ready to use.</dd>
+                  <dt>stop</dt>
+                  <dd>Sent when the device has been stopped.</dd>
                 </dl>
 <h3>How to use events and call them on your drivers</h3>
                 <p>Pretty simple, when the connection and the driver have been setup (as explained above) you can call events on them as follows:</p>
                 <pre class="CodeRay">comming soon
 </pre>
-              </section><section class="how-to"><h2>How to use</h2>
-                <h3>Example: Setups a maxbotix driver and range event, displays the range every :interval amount of time.</h3>
+              </section><section class="how-to"><h2>Examples</h2>
                 <pre class="CodeRay">comming soon
 </pre>
               </section><section class="circuit"><h2>Circuit and Schematic</h2>
