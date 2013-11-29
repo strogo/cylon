@@ -1,0 +1,17 @@
+---
+title: Multiple Spheros with Cylon.js
+author: The Hybrid Group
+page_title: Multiple Spheros
+page_subtitle: "You can find the example <a href='https://github.com/hybridgroup/cylon/blob/master/examples/analog_sensor/analog_sensor.coffee' target='blanck' class='repository'>here</a>."
+layout: page
+---
+
+:javascript 
+  $(document).ready(function(){
+    $.getGithubFileByFilePath("hybridgroup", "cylon", "examples/analog_sensor/analog_sensor.coffee", function(contents) {
+      $("#repoGithub").append(contents);
+    });
+  });
+
+%h2 CoffeeScript
+#repoGithub
