@@ -73,17 +73,19 @@
                 <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
-  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">crazyflie</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">crazyflie</span><span class="delimiter">'</span></span> },
+  <span class="key">connection</span>: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">crazyflie</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">crazyflie</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">radio://1/10/250KPS</span><span class="delimiter">'</span></span> },
   <span class="key">device</span>: {<span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">drone</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">crazyflie</span><span class="delimiter">'</span></span>},
 
   <span class="function">work</span>: <span class="keyword">function</span>(my) {
-    my.drone.takeoff();
-    after((<span class="integer">10</span>).seconds(), <span class="keyword">function</span>() { 
-      my.drone.land();
+    my.drone.on(<span class="string"><span class="delimiter">'</span><span class="content">start</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
+      my.drone.takeoff();
+      after((<span class="integer">10</span>).seconds(), <span class="keyword">function</span>() { 
+        my.drone.land();
+      });
+      after((<span class="integer">15</span>).seconds(), <span class="keyword">function</span>() { 
+        my.drone.stop();
+      });
     });
-    after((<span class="integer">15</span>).seconds(), <span class="keyword">function</span>() { 
-      my.drone.stop();
-    });    
   }
 }).start();
 </pre>
@@ -92,17 +94,18 @@ Cylon.robot({
 
 Cylon.robot
   connection:
-    name: <span class="string"><span class="delimiter">'</span><span class="content">crazyflie</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">crazyflie</span><span class="delimiter">'</span></span>
+    name: <span class="string"><span class="delimiter">'</span><span class="content">crazyflie</span><span class="delimiter">'</span></span>, <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">crazyflie</span><span class="delimiter">'</span></span>, <span class="key">port</span>: <span class="string"><span class="delimiter">"</span><span class="content">radio://1/10/250KPS</span><span class="delimiter">"</span></span>
 
   device:
     name: <span class="string"><span class="delimiter">'</span><span class="content">drone</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">crazyflie</span><span class="delimiter">'</span></span>
 
   work: (my) -&gt;
-    my.drone.takeoff()
-    after <span class="integer">10</span>.seconds(), -&gt;
-      my.drone.land()
-    after <span class="integer">15</span>.seconds(), -&gt;
-      my.drone.stop()
+    my.drone.on <span class="string"><span class="delimiter">'</span><span class="content">start</span><span class="delimiter">'</span></span>, -&gt;
+      my.drone.takeoff()
+      after <span class="integer">10</span>.seconds(), -&gt;
+        my.drone.land()
+      after <span class="integer">15</span>.seconds(), -&gt;
+        my.drone.stop()
 
 .start()
 </pre>
