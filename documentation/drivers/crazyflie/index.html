@@ -81,14 +81,18 @@ Cylon.robot
                   <dd>Initiates a landing sequence.</dd>
                   <dt>takeoff</dt>
                   <dd>Initiates take off sequence.</dd>
+                  <dt>hover</dt>
+                  <dd>Makes the crazyflie hover in a position.</dd>
                   <dt>setPitch</dt>
-                  <dd></dd>
+                  <dd>Orders crazyflie to go forward or backward by the amount specified by deg.</dd>
                   <dt>setYaw</dt>
-                  <dd></dd>
+                  <dd>Orders crazyflie to turn left or right by the amount specified by deg.</dd>
                   <dt>setThrust</dt>
-                  <dd></dd>
+                  <dd>Orders crazyflie to accelerate.</dd>
                   <dt>shutdown</dt>
                   <dd>Shutdown the device.</dd>
+                  <dt>setParam(param, value)</dt>
+                  <dd>Set the parameters for crazyflie.</dd>
                 </dl>
 <h2>Events:</h2>
                 <dl class="methods">
@@ -96,6 +100,8 @@ Cylon.robot
                   <dd>Sent when the device has been started and is ready to use.</dd>
                   <dt>stop</dt>
                   <dd>Sent when the device has been stopped.</dd>
+                  <dt>setParam(param, value)</dt>
+                  <dd>Set the parameters for crazyflie.</dd>
                 </dl></section><section class="how-to"><h2>How to use</h2>
                 <h3>Examples</h3>
                 <p>This small program causes the Crazyflie to takeoff for 10 seconds.</p>

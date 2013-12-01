@@ -53,13 +53,20 @@
           <section class="content full"><div class="documentation">
               <section class="intro"><img class="display" src="/images/crazyflie.jpg"><p>You can use Cylon.js with the Crazyflie micro-quadcopter.</p>
                 <p>
-                  For more info about Crazyflie click
-                  <a target="blank" href="http://www.bitcraze.se/">here</a>.
+                  This module provides an adaptor and drivers for the Crazyflie nanocopter
+                  <a target="blanck" href="http://www.bitcraze.se/">(http://www.bitcraze.se/)</a>
+                  . It uses the Aerogel node module
+                  <a target="blanck" href="https://github.com/ceejbot/aerogel">(https://github.com/ceejbot/aerogel)</a>
+                  created by @ceejbot thank you!
                 </p>
               </section><section class="how_to"><h2>How to install</h2>
-                <p>Installing Cylon.js with arduino support is pretty easy using ruby gems.</p>
+                <p>Install the module with:</p>
                 <pre class="CodeRay">npm install cylon-crazyflie
 </pre>
+                <p>
+                  You will also need to install the latest beta of firmware to the Crazyflie itself to use the 'hover' mode from
+                  <a target="blanck" href="https://bitbucket.org/bitcraze/crazyflie-firmware/downloads/Crazyflie_2013.11-beta1.bin">https://bitbucket.org/bitcraze/crazyflie-firmware/downloads/Crazyflie_2013.11-beta1.bin</a>
+                </p>
                 <h2>How to use</h2>
                 <p>This small program causes the Crazyflie to takeoff for 10 seconds.</p>
                 <h3>JavaScript</h3>
@@ -98,6 +105,9 @@ Cylon.robot
       my.drone.stop()
 
 .start()
+</pre>
+                <h2>Hover Mode</h2>
+                <pre class="CodeRay">my.drone.setParam(<span class="string"><span class="delimiter">'</span><span class="content">flightmode.althold</span><span class="delimiter">'</span></span>, <span class="predefined-constant">true</span>);
 </pre>
                 <h2>How to connect</h2>
                 <p>

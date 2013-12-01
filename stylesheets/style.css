@@ -1310,28 +1310,28 @@ body {
 h3, h4, h5, ul, ol {
   color: #523d47; }
 
-/* line 13, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_base.sass */
-a {
+/* line 14, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_base.sass */
+a:hover {
   color: #580a25; }
-  /* line 15, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_base.sass */
-  a, a:visited {
-    color: #9e162e; }
+/* line 16, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_base.sass */
+a, a:visited {
+  color: #9e162e; }
 
 @media only screen and (max-width: 767px) {
-  /* line 17, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_base.sass */
+  /* line 18, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_base.sass */
   pre {
     white-space: pre;
     overflow: scroll;
     word-wrap: normal; } }
 
-/* line 21, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_base.sass */
+/* line 22, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_base.sass */
 .anchors-blue, .app-footer a, .hero a, .page-title a, .anchors-blue:active, .app-footer a:active, .hero a:active, .page-title a:active, .anchors-blue:visited, .app-footer a:visited, .hero a:visited, .page-title a:visited {
   color: #fffbda; }
-/* line 23, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_base.sass */
+/* line 24, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_base.sass */
 .anchors-blue:hover, .app-footer a:hover, .hero a:hover, .page-title a:hover {
   color: white; }
 
-/* line 26, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_base.sass */
+/* line 27, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/shared/_base.sass */
 .notice {
   background: white;
   padding: 20px 25px; }
