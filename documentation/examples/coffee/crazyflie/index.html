@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<meta content="A Cylon.JS code example" name="description">
+<meta content="The Hybrid Group" name="author">
+<title>Cylon.JS Example - Crazyflie</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700" rel="stylesheet" type="text/css">
+<link href="/stylesheets/style.css" rel="stylesheet">
+<link href="/favicon.ico" rel="shortcut icon" type="image/gif">
+<script>
+      $(document).ready(function() {
+        $('header .subtitle').hover(function() {
+          $('.easter', this).show();
+          $('.main', this).hide();
+        }, function () {
+          $('.easter', this).hide();
+          $('.main', this).show();
+        });
+      });
+    </script>
+</head>
+<body>
+    <div class="app">
+      <div class="w">
+        <header class="app-header" role="banner"><div class="display">
+            <h1 class="cylon-logo">
+              <a href="/">Cylon</a>
+            </h1>
+          </div>
+          <span class="menu">
+            <a href="/documentation" class="item">Docs</a>
+            <a href="/hardware" class="item">Hardware</a>
+            
+            <a href="/blog" class="item">Blog</a>
+            <a class="item" target="blanck" href="https://github.com/hybridgroup/cylon/">Github</a>
+          </span>
+        </header>
+</div>
+      <div class="page-title">
+        <div class="w">
+          <h1 class="title">Example: Crazyflie</h1>
+          <h2 class="subtitle">You can find more versions of this example <a href="https://github.com/hybridgroup/cylon/tree/master/examples/crazyflie" target="blank" class="repository">here.</a>
+</h2>
+        </div>
+      </div>
+      <div class="container">
+        <div class="main" role="main">
+          <section class="content full"><h1 id="crazyflie">Crazyflie</h1>
+            
+            <p>For this Cylon demo, we're going to connect to a Crazyflie, and then make it
+            take off and land. Before we get started, make sure you've got the
+            <code>cylon-crazyflie</code> adaptor installed.</p>
+            
+            <p>To start us off, let's import Cylon:</p>
+            
+            <pre class="CodeRay">Cylon = require '../..'
+</pre>
+            
+            <p>Now that we've got that set up, we can start defining our robot:</p>
+            
+            <pre class="CodeRay">Cylon.robot
+</pre>
+            
+            <p>We'll be using one connection and one device for this robot, both using the
+            crazyflie adaptor. We'll be connecting to the Crazyflie using the CrazyRadio.</p>
+            
+            <pre class="CodeRay">  connection:
+    name: 'crazyflie', adaptor: 'crazyflie', port: "radio://1/10/250KPS"
+
+  device:
+    name: 'drone', driver: 'crazyflie'
+</pre>
+            
+            <p>With the parts in place, we can start defining our robot's work.</p>
+            
+            <pre class="CodeRay">  work: (my) -&gt;
+</pre>
+            
+            <p>When our drone is ready, we'll make it takeoff. After ten seconds, we'll tell it
+            to land, and five seconds after that to stop.</p>
+            
+            <pre class="CodeRay">    my.drone.on 'start', -&gt;
+      my.drone.takeoff()
+      after 10.seconds(), -&gt; my.drone.land()
+      after 15.seconds(), -&gt; my.drone.stop()
+</pre>
+            
+            <p>With all that done, we can start up the robot and get the Crazyflie flying:</p>
+            
+            <pre class="CodeRay">.start()
+</pre>
+          </section>
+</div>
+      </div>
+    </div>
+    <footer class="app-footer"><div class="w">
+        <div class="copyright">
+          © Copyright 2012-2013
+          <a href="http://hybridgroup.com">The Hybrid Group.</a>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

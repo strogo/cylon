@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<meta content="A Cylon.JS code example" name="description">
+<meta content="The Hybrid Group" name="author">
+<title>Cylon.JS Example - LED Brightness</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700" rel="stylesheet" type="text/css">
+<link href="/stylesheets/style.css" rel="stylesheet">
+<link href="/favicon.ico" rel="shortcut icon" type="image/gif">
+<script>
+      $(document).ready(function() {
+        $('header .subtitle').hover(function() {
+          $('.easter', this).show();
+          $('.main', this).hide();
+        }, function () {
+          $('.easter', this).hide();
+          $('.main', this).show();
+        });
+      });
+    </script>
+</head>
+<body>
+    <div class="app">
+      <div class="w">
+        <header class="app-header" role="banner"><div class="display">
+            <h1 class="cylon-logo">
+              <a href="/">Cylon</a>
+            </h1>
+          </div>
+          <span class="menu">
+            <a href="/documentation" class="item">Docs</a>
+            <a href="/hardware" class="item">Hardware</a>
+            
+            <a href="/blog" class="item">Blog</a>
+            <a class="item" target="blanck" href="https://github.com/hybridgroup/cylon/">Github</a>
+          </span>
+        </header>
+</div>
+      <div class="page-title">
+        <div class="w">
+          <h1 class="title">Example: LED Brightness</h1>
+          <h2 class="subtitle">You can find more versions of this example <a href="https://github.com/hybridgroup/cylon/tree/master/examples/led_brightness" target="blank" class="repository">here.</a>
+</h2>
+        </div>
+      </div>
+      <div class="container">
+        <div class="main" role="main">
+          <section class="content full"><h1 id="led-brightness">LED Brightness</h1>
+            
+            <p>For this example, we'll be using an LED on an Arduino board, and modifying it's
+            brightness to make it fade in and out. Before we start, make sure you've got the
+            <code>cylon-arduino</code> module installed.</p>
+            
+            <p>Let's start by importing Cylon:</p>
+            
+            <pre class="CodeRay">Cylon = require '../..'
+</pre>
+            
+            <p>Once we've got that, we can start defining our robot:</p>
+            
+            <pre class="CodeRay">Cylon.robot
+</pre>
+            
+            <p>We'll be using an Arduino, and communicating over the Firmata protocol. As well,
+            we'll let our robot know about the LED we'll be modifying, on pin #3 of the
+            Arduino.</p>
+            
+            <pre class="CodeRay">  connection: { name: 'arduino', adaptor: 'firmata', port: '/dev/ttyACM0' }
+  device: { name: 'led', driver: 'led', pin: 3 }
+</pre>
+            
+            <p>Next up, we'll define our robot's work:</p>
+            
+            <pre class="CodeRay">  work: (my) -&gt;
+</pre>
+            
+            <p>We'll set some variables here: brightness will represent the LED's brightness,
+            from 1-255, and 'fade' will be the brightness change on each tick.</p>
+            
+            <pre class="CodeRay">    brightness = 0
+    fade = 5
+</pre>
+            
+            <p>Every 50 milliseconds, we'll be incrementing the brightness by <code>fade</code>'s value,
+            setting the LED to that brightness, and reversing <code>fade</code>'s value if brightness
+            hits 0 or 255.</p>
+            
+            <pre class="CodeRay">    every 0.05.seconds(), -&gt;
+      brightness += fade
+      my.led.brightness(brightness)
+      fade = -fade if (brightness is 0) or (brightness is 255)
+</pre>
+            
+            <p>And with that done, we can now start our robot.</p>
+            
+            <pre class="CodeRay">.start()
+</pre>
+          </section>
+</div>
+      </div>
+    </div>
+    <footer class="app-footer"><div class="w">
+        <div class="copyright">
+          © Copyright 2012-2013
+          <a href="http://hybridgroup.com">The Hybrid Group.</a>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

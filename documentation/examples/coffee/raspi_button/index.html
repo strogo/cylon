@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<meta content="A Cylon.JS code example" name="description">
+<meta content="The Hybrid Group" name="author">
+<title>Cylon.JS Example - Raspberry Pi - Button</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700" rel="stylesheet" type="text/css">
+<link href="/stylesheets/style.css" rel="stylesheet">
+<link href="/favicon.ico" rel="shortcut icon" type="image/gif">
+<script>
+      $(document).ready(function() {
+        $('header .subtitle').hover(function() {
+          $('.easter', this).show();
+          $('.main', this).hide();
+        }, function () {
+          $('.easter', this).hide();
+          $('.main', this).show();
+        });
+      });
+    </script>
+</head>
+<body>
+    <div class="app">
+      <div class="w">
+        <header class="app-header" role="banner"><div class="display">
+            <h1 class="cylon-logo">
+              <a href="/">Cylon</a>
+            </h1>
+          </div>
+          <span class="menu">
+            <a href="/documentation" class="item">Docs</a>
+            <a href="/hardware" class="item">Hardware</a>
+            
+            <a href="/blog" class="item">Blog</a>
+            <a class="item" target="blanck" href="https://github.com/hybridgroup/cylon/">Github</a>
+          </span>
+        </header>
+</div>
+      <div class="page-title">
+        <div class="w">
+          <h1 class="title">Example: Raspberry Pi - Button</h1>
+          <h2 class="subtitle">You can find more versions of this example <a href="https://github.com/hybridgroup/cylon/tree/master/examples/raspi_button" target="blank" class="repository">here.</a>
+</h2>
+        </div>
+      </div>
+      <div class="container">
+        <div class="main" role="main">
+          <section class="content full"><h1 id="raspberry-pi---button">Raspberry Pi - Button</h1>
+            
+            <p>For this example, we're going to toggle a LED every time a button is pressed.
+            Both of these devices will be hooked up to a Raspberry Pi.</p>
+            
+            <p>Before you get started, make sure you have the <code>cylon-raspi</code> module installed.</p>
+            
+            <p>First, let's import Cylon:</p>
+            
+            <pre class="CodeRay">Cylon = require '../..'
+</pre>
+            
+            <p>With Cylon imported, we can now start defining our robot.</p>
+            
+            <pre class="CodeRay">Cylon.robot
+</pre>
+            
+            <p>Our robot has one connection, to the Raspberry Pi the hardware will be running
+            on. For hardware, we're keeping it simple. A LED on pin 11, and a button on pin
+            7.</p>
+            
+            <pre class="CodeRay">  connection: { name: 'raspi', adaptor: 'raspi' }
+
+  devices: [
+    {name: 'led', driver: 'led', pin: 11},
+    {name: 'button', driver: 'button', pin: 7}
+  ]
+</pre>
+            
+            <p>With the hardware defined, we can get to the work our robot will perform. And as
+            you can see, it's enormously complex:</p>
+            
+            <pre class="CodeRay">  work: (my) -&gt;
+    my.button.on 'push', -&gt; my.led.toggle()
+</pre>
+            
+            <p>Essentially, when the robot's button emits the 'push' event (when it's pressed),
+            the LED will be told to toggle.</p>
+            
+            <p>And voila! We now have a basic light switch. All we need to do now is tell the
+            robot to start:</p>
+            
+            <pre class="CodeRay">.start()
+</pre>
+          </section>
+</div>
+      </div>
+    </div>
+    <footer class="app-footer"><div class="w">
+        <div class="copyright">
+          © Copyright 2012-2013
+          <a href="http://hybridgroup.com">The Hybrid Group.</a>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

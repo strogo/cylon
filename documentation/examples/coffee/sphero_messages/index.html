@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<meta content="A Cylon.JS code example" name="description">
+<meta content="The Hybrid Group" name="author">
+<title>Cylon.JS Example - Sphero Messages</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700" rel="stylesheet" type="text/css">
+<link href="/stylesheets/style.css" rel="stylesheet">
+<link href="/favicon.ico" rel="shortcut icon" type="image/gif">
+<script>
+      $(document).ready(function() {
+        $('header .subtitle').hover(function() {
+          $('.easter', this).show();
+          $('.main', this).hide();
+        }, function () {
+          $('.easter', this).hide();
+          $('.main', this).show();
+        });
+      });
+    </script>
+</head>
+<body>
+    <div class="app">
+      <div class="w">
+        <header class="app-header" role="banner"><div class="display">
+            <h1 class="cylon-logo">
+              <a href="/">Cylon</a>
+            </h1>
+          </div>
+          <span class="menu">
+            <a href="/documentation" class="item">Docs</a>
+            <a href="/hardware" class="item">Hardware</a>
+            
+            <a href="/blog" class="item">Blog</a>
+            <a class="item" target="blanck" href="https://github.com/hybridgroup/cylon/">Github</a>
+          </span>
+        </header>
+</div>
+      <div class="page-title">
+        <div class="w">
+          <h1 class="title">Example: Sphero Messages</h1>
+          <h2 class="subtitle">You can find more versions of this example <a href="https://github.com/hybridgroup/cylon/tree/master/examples/sphero_messages" target="blank" class="repository">here.</a>
+</h2>
+        </div>
+      </div>
+      <div class="container">
+        <div class="main" role="main">
+          <section class="content full"><h1 id="sphero-messages">Sphero Messages</h1>
+            
+            <p>For this Cylon example, we're going to hook up to a Sphero, and respond to
+            a number of events the Sphero adaptor is capable of emitting. Before we get
+            started, make sure you've got the <code>cylon-sphero</code> module installed.</p>
+            
+            <p>To get started, let's import the Cylon module:</p>
+            
+            <pre class="CodeRay">Cylon = require '../..'
+</pre>
+            
+            <p>With that set up, we can start defining our robot:</p>
+            
+            <pre class="CodeRay">Cylon.robot
+</pre>
+            
+            <p>As with other Sphero examples, we'll have one connection and one device, both
+            the same Sphero.</p>
+            
+            <pre class="CodeRay">  connection: { name: 'sphero', adaptor: 'sphero', port: '/dev/rfcomm0' }
+  device: { name: 'sphero', driver: 'sphero' }
+</pre>
+            
+            <p>And now we can start defining our robot's work.</p>
+            
+            <pre class="CodeRay">  work: (me) -&gt;
+</pre>
+            
+            <p>When the Sphero's connected, we want to set up collision detection and change
+            it's color.</p>
+            
+            <pre class="CodeRay">    me.sphero.on 'connect', -&gt;
+      Logger.info "Setting up Collision Detection..."
+      me.sphero.detectCollisions()
+      me.sphero.setRGB 0x00FF00
+</pre>
+            
+            <p>When the Sphero emits an 'update' event, we want to log the data it's provided
+            to us:</p>
+            
+            <pre class="CodeRay">    me.sphero.on 'update', (data) -&gt;
+      Logger.info "Update event eventName: \1data} "
+      Logger.info "Update event args: "
+      Logger.info data
+</pre>
+            
+            <p>Similarly, when we get a message from the Sphero, we want to log the data, but
+            we'll also change it's color while we're at it.</p>
+            
+            <pre class="CodeRay">    me.sphero.on 'message', (data) -&gt;
+      me.sphero.setRGB 0x0000FF
+      Logger.info "Message:"
+      Logger.info data
+</pre>
+            
+            <p>In the event of a collision, we want to change the color of the Sphero again, as
+            well as logging the data provided by the collision event.</p>
+            
+            <pre class="CodeRay">    me.sphero.on 'collision', (data) -&gt;
+      me.sphero.setRGB 0xFF0000
+      Logger.info "Collision:"
+      Logger.info data
+</pre>
+            
+            <p>And, last but not least, when we get a notification event we want to record it's
+            data and change the color.</p>
+            
+            <pre class="CodeRay">    me.sphero.on 'notification', (data) -&gt;
+      me.sphero.setRGB 0xFF0000
+      Logger.info "Notification:"
+      Logger.info data
+</pre>
+            
+            <p>And with all that done, we can finally start the robot.</p>
+            
+            <pre class="CodeRay">.start()
+</pre>
+          </section>
+</div>
+      </div>
+    </div>
+    <footer class="app-footer"><div class="w">
+        <div class="copyright">
+          © Copyright 2012-2013
+          <a href="http://hybridgroup.com">The Hybrid Group.</a>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

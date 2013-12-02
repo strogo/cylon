@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<meta content="A Cylon.JS code example" name="description">
+<meta content="The Hybrid Group" name="author">
+<title>Cylon.JS Example - Analog Sensor</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700" rel="stylesheet" type="text/css">
+<link href="/stylesheets/style.css" rel="stylesheet">
+<link href="/favicon.ico" rel="shortcut icon" type="image/gif">
+<script>
+      $(document).ready(function() {
+        $('header .subtitle').hover(function() {
+          $('.easter', this).show();
+          $('.main', this).hide();
+        }, function () {
+          $('.easter', this).hide();
+          $('.main', this).show();
+        });
+      });
+    </script>
+</head>
+<body>
+    <div class="app">
+      <div class="w">
+        <header class="app-header" role="banner"><div class="display">
+            <h1 class="cylon-logo">
+              <a href="/">Cylon</a>
+            </h1>
+          </div>
+          <span class="menu">
+            <a href="/documentation" class="item">Docs</a>
+            <a href="/hardware" class="item">Hardware</a>
+            
+            <a href="/blog" class="item">Blog</a>
+            <a class="item" target="blanck" href="https://github.com/hybridgroup/cylon/">Github</a>
+          </span>
+        </header>
+</div>
+      <div class="page-title">
+        <div class="w">
+          <h1 class="title">Example: Analog Sensor</h1>
+          <h2 class="subtitle">You can find more versions of this example <a href="https://github.com/hybridgroup/cylon/tree/master/examples/analog_sensor" target="blank" class="repository">here.</a>
+</h2>
+        </div>
+      </div>
+      <div class="container">
+        <div class="main" role="main">
+          <section class="content full"><h1 id="analog-sensor">Analog Sensor</h1>
+            
+            <p>A quick example of using an Arduino's analog sensor with Cylon. The program will
+            log to the console when the sensor has hit it's upper and lower limits.</p>
+            
+            <p>Before you run this program, make sure you have the <code>cylon-firmata</code> module
+            installed.</p>
+            
+            <p>First, let's load up Cylon:</p>
+            
+            <pre class="CodeRay">Cylon = require '../..'
+</pre>
+            
+            <p>Now that we have Cylon imported, we can start defining our robot</p>
+            
+            <pre class="CodeRay">Cylon.robot
+</pre>
+            
+            <p>Let's define the connection to our Arduino:</p>
+            
+            <pre class="CodeRay">  connection:
+    name: "arduino"
+    adaptor: "firmata"
+    port: "/dev/ttyACM0"
+</pre>
+            
+            <p>Now we can define the analog sensor we're going to use, along with it's upper
+            and lower limits:</p>
+            
+            <pre class="CodeRay">  device:
+    name: 'sensor'
+    driver: 'analogSensor'
+    pin: 0
+    upperLimit: 900
+    lowerLimit: 100
+</pre>
+            
+            <p>Now that Cylon knows about the necessary hardware we're going to be using, we'll
+            tell it what work we want to do:</p>
+            
+            <pre class="CodeRay">  work: (my) -&gt;
+    my.sensor.on 'upperLimit', (val) -&gt;
+      Logger.info "Upper limit reached: \1val}"
+
+    my.sensor.on 'lowerLimit', (val) -&gt;
+      Logger.info "Lower limit reached: \1val}"
+</pre>
+            
+            <p>Now that our robot knows what work to do, and the work it will be doing that
+            hardware with, we can start it:</p>
+            
+            <pre class="CodeRay">.start()
+</pre>
+          </section>
+</div>
+      </div>
+    </div>
+    <footer class="app-footer"><div class="w">
+        <div class="copyright">
+          © Copyright 2012-2013
+          <a href="http://hybridgroup.com">The Hybrid Group.</a>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

@@ -188,6 +188,28 @@ Cylon.robot
 }
 </pre>
             
+            <h3 id="get-robotsrobotnamecommands">GET /robots/:robotname/commands</h3>
+            
+            <p>Given a robot's name, returns JSON information about the commands belonging to
+            the requested Robot:</p>
+            
+            <pre class="CodeRay">[
+  "detectCollisions",
+  "roll",
+  "setColor",
+  "setRGB",
+  "stop"
+]
+</pre>
+            
+            <h3 id="post-robotsrobotnamecommandscommandname">POST /robots/:robotname/commands/:commandname</h3>
+            
+            <p>Given a robot name, commands, and command name, executes a robot's command
+            and returns the result.</p>
+            
+            <pre class="CodeRay">// example pending
+</pre>
+            
             <h3 id="get-robotsrobotnamedevices">GET /robots/:robotname/devices</h3>
             
             <p>Given a robot's name, returns JSON information about the devices belonging to

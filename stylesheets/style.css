@@ -1824,14 +1824,18 @@ a, a:visited {
   text-align: left; }
 
 /* line 27, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_documentation.sass */
+.documentation.examples table .links {
+  text-align: center; }
+
+/* line 31, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_documentation.sass */
 .clear {
   clear: both; }
 
-/* line 29, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_documentation.sass */
+/* line 33, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_documentation.sass */
 .image-size-300 {
   width: 200px; }
 
-/* line 33, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_documentation.sass */
+/* line 37, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_documentation.sass */
 .methods dt {
   font-weight: bold;
   background: white;
@@ -1841,16 +1845,16 @@ a, a:visited {
   font-family: Inconsolata, Menlo, Monaco, "Bitstream Vera Sans Mono", "Courier New", monospace;
   font-size: 17px;
   border: aliceblue; }
-/* line 42, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_documentation.sass */
+/* line 46, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_documentation.sass */
 .methods dd {
   margin-bottom: 29px;
   padding-left: 10px; }
 
-/* line 46, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_documentation.sass */
+/* line 50, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_documentation.sass */
 .colors {
   width: 23%;
   float: left; }
-  /* line 49, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_documentation.sass */
+  /* line 53, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_documentation.sass */
   .colors dt {
     font-weight: bold;
     padding: 5px;
@@ -1859,11 +1863,11 @@ a, a:visited {
     font-size: 15px;
     border: aliceblue;
     margin-top: 15px; }
-  /* line 57, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_documentation.sass */
+  /* line 61, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_documentation.sass */
   .colors dd {
     margin-bottom: 20px;
     padding-left: 5px; }
-    /* line 60, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_documentation.sass */
+    /* line 64, /home/ron/Development/cylonjs/cylonjs.com/source/stylesheets/elements/_documentation.sass */
     .colors dd p {
       float: left;
       margin-left: 5px; }
