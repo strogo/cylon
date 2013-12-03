@@ -79,27 +79,23 @@
           <div class="aside right">
             <img src="images/cylon.png">
 </div>
-          <section class="content"><h2 id="about">About</h2>
-            
+          <section class="content"><h2>About</h2>
             <p>Cylon.js is a JavaScript framework for robotics and physical computing using Node.js.</p>
-            
             <p>It provides a simple, yet powerful way to create solutions that incorporate multiple, different hardware devices at the same time.</p>
-            
-            <p>Want to use Ruby on robots? Check out our sister project Artoo <a href="http://artoo.io">(http://artoo.io)</a>.</p>
-            
-            <p>Want to use the Go programming language to power your robots? Check out our sister project Gobot <a href="http://gobot.io">(http://gobot.io)</a>.</p>
-            
-            <h2 id="meet-the-code">Meet The Code</h2>
-            
+            <p>
+              Want to use Ruby on robots? Check out our sister project Artoo
+              <a target="blank" href="http://artoo.io">(http://artoo.io)</a>
+            </p>
+            <p>
+              Want to use the Go programming language to power your robots? Check out our sister project Gobot
+              <a target="blank" href="http://gobot.io">(http://gobot.io)</a>
+            </p>
+            <h2>Meet The Code</h2>
             <p>Cylon.js’s makes commanding robots incredibly simple and fun.</p>
-            
-            <p>All you need to get started is the <code>cylon</code> module:</p>
-            
+            <p>All you need to get started is the `cylon` module:</p>
             <pre class="CodeRay">npm install cylon
 </pre>
-            
             <p>Then install modules for whatever hardware support you want to use from your robot. For the example below, an Arduino using the Firmata protocol:</p>
-            
             <pre class="CodeRay">npm install cylon-firmata
 </pre>
             <h2>Examples</h2>
@@ -223,8 +219,36 @@ robot.start()
 </li>
             </ul>
 <p>More platforms and drivers are coming soon...</p>
-            <h2 id="be-part-of-the-robot-evolution">Be Part Of The Robot Evolution</h2>
-            
+            <h2>CLI</h2>
+            <p>Cylon has a Command Line Interface (CLI) so you can access important features right from the command line.</p>
+            <pre class="CodeRay">Usage: cylon [command] [options]
+
+Commands:
+
+  generate &lt;name&gt;        Generates a new adaptor
+
+Options:
+
+  -h, --help     output usage information
+  -V, --version  output the version number
+</pre>
+            <h2>Generator</h2>
+            <p>Want to integrate a hardware device we don't have Cylon support for yet? There's a generator for that!</p>
+            <p>You can easily generate a new skeleton Cylon adaptor to help you get started. Simply run the cylon generate command, and the generator will create a new directory with all of the files in place for your new adaptor module.</p>
+            <pre class="CodeRay">$ cylon generate awesome_device
+Creating cylon-awesome_device adaptor.
+Compiling templates.
+
+$ ls ./cylon-awesome_device
+Gruntfile.js
+LICENSE
+README.md
+dist/
+package.json
+src/
+test/
+</pre>
+            <h2>Be Part Of The Robot Evolution</h2>
             <ul>
 <li>Code on Github:   <a href="https://github.com/hybridgroup/cylon">https://github.com/hybridgroup/cylon</a>
 </li>
