@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<meta content="A Cylon.JS code example" name="description">
+<meta content="The Hybrid Group" name="author">
+<title>Cylon.JS Example - Spark - Blink</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700" rel="stylesheet" type="text/css">
+<link href="/stylesheets/style.css" rel="stylesheet">
+<link href="/favicon.ico" rel="shortcut icon" type="image/gif">
+<script>
+      $(document).ready(function() {
+        $('header .subtitle').hover(function() {
+          $('.easter', this).show();
+          $('.main', this).hide();
+        }, function () {
+          $('.easter', this).hide();
+          $('.main', this).show();
+        });
+      });
+    </script>
+</head>
+<body>
+    <div class="app">
+      <div class="w">
+        <header class="app-header" role="banner"><div class="display">
+            <h1 class="cylon-logo">
+              <a href="/">Cylon</a>
+            </h1>
+          </div>
+          <span class="menu">
+            <a href="/documentation" class="item">Docs</a>
+            <a href="/hardware" class="item">Hardware</a>
+            
+            <a href="/blog" class="item">Blog</a>
+            <a class="item" target="blanck" href="https://github.com/hybridgroup/cylon/">Github</a>
+          </span>
+        </header>
+</div>
+      <div class="page-title">
+        <div class="w">
+          <h1 class="title">Example: Spark - Blink</h1>
+          <h2 class="subtitle">You can find more versions of this example <a href="https://github.com/hybridgroup/cylon/tree/master/examples/spark_blink" target="blank" class="repository">here.</a>
+</h2>
+        </div>
+      </div>
+      <div class="container">
+        <div class="main" role="main">
+          <section class="content full"><h1 id="spark---blink">Spark - Blink</h1>
+            
+            <p>For this example, we're going to connect to a Spark Core and make the LED on
+            pin D7 blink on a 1-second interval. Before we start, make sure you've got the
+            <code>cylon-spark</code> module installed.</p>
+            
+            <p>First, let's make sure to load the Cylon module:</p>
+            
+            <pre class="CodeRay">Cylon = require 'cylon'
+</pre>
+            
+            <p>After we've got that done, we can start defining our robot:</p>
+            
+            <pre class="CodeRay">Cylon.robot
+</pre>
+            
+            <p>We'll have a singular connection to a Spark Core, using the
+            previously-mentioned <code>cylon-spark</code> module. We'll also have one device, the LED
+            on pin D7.</p>
+            
+            <pre class="CodeRay">  connection:
+    name: 'spark', adaptor: 'spark', deviceId: '', accessToken: ''
+
+  device:
+    name: 'led', driver: 'led', pin: 'D7'
+</pre>
+            
+            <p>Those are all the components for our robot, so next we'll define the work. All
+            we're going to do for this example is tell the LED to toggle every second.</p>
+            
+            <pre class="CodeRay">  work: (my) -&gt;
+    every 1.second(), -&gt; my.led.toggle()
+</pre>
+            
+            <p>And with all those pieces in place, we can tell the robot to get started:</p>
+            
+            <pre class="CodeRay">.start()
+</pre>
+          </section>
+</div>
+      </div>
+    </div>
+    <footer class="app-footer"><div class="w">
+        <div class="copyright">
+          © Copyright 2012-2013
+          <a href="http://hybridgroup.com">The Hybrid Group.</a>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>
