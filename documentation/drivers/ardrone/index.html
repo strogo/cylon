@@ -110,9 +110,9 @@ Cylon.robot
                     Causes the drone to bank to the right, controls the roll, which is a horizontal movement using the camera as a reference point.
                     <p><code>speed</code>can be a value from <code>0</code> to <code>1</code>.</p>
                   </dd>
-                  <dt>front(speed)</dt>
+                  <dt>front(speed) | forward(speed)</dt>
                   <dd>
-                    Causes the drone to bank to the front, controls the pitch, which a horizontal movement using the camera as a reference point.
+                    Causes the drone to bank forward, controls the pitch, which a horizontal movement using the camera as a reference point.
                     <p><code>speed</code> can be a value from <code>0</code> to <code>1</code>.</p>
                   </dd>
                   <dt>back(speed)</dt>
@@ -145,6 +145,26 @@ Cylon.robot
 <span class="string"><span class="delimiter">'</span><span class="content">yawDance</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">phiDance</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">thetaDance</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">vzDance</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">wave</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">phiThetaMixed</span><span class="delimiter">'</span></span>,
 <span class="string"><span class="delimiter">'</span><span class="content">doublePhiThetaMixed</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">flipAhead</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">flipBehind</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">flipLeft</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">flipRight</span><span class="delimiter">'</span></span>]
 </pre>
+                  </dd>
+                  <dt>frontFlip</dt>
+                  <dd>
+                    <p>Tells the drone to do a front-flip. Alias of <code>animate('flipAhead', 150)</code>.</p>
+                  </dd>
+                  <dt>backFlip</dt>
+                  <dd>
+                    <p>Tells the drone to do a back-flip. Alias of <code>animate('flipBehind', 150)</code>.</p>
+                  </dd>
+                  <dt>leftFlip</dt>
+                  <dd>
+                    <p>Tells the drone to do a left-flip. Alias of <code>animate('flipLeft', 150)</code>.</p>
+                  </dd>
+                  <dt>rightFlip</dt>
+                  <dd>
+                    <p>Tells the drone to do a right-flip. Alias of <code>animate('flipRight', 150)</code>.</p>
+                  </dd>
+                  <dt>wave</dt>
+                  <dd>
+                    <p>Tells the drone to do a wave. Alias of <code>animate('wave', 750)</code>.</p>
                   </dd>
                   <dt>animateLeds(animation, hz, duration)</dt>
                   <dd>
