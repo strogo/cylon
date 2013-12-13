@@ -8,26 +8,15 @@
 <meta content="Cylon.js is a JavaScript framework for robotics and physical computing using Node.js. It provides a simple, but powerful DSL (domain-specific language) for robots and physical computing." name="description">
 <meta content="The Hybrid Group" name="author">
 <title>CylonJS</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><link href="http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700" rel="stylesheet" type="text/css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><!-- %link{href: "http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700", rel: "stylesheet", type: "text/css"} --><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/stylesheets/style.css" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
-<script>
-      $(document).ready(function() {
-        $('header .subtitle').hover(function() {
-          $('.easter', this).show();
-          $('.main', this).hide();
-        }, function () {
-          $('.easter', this).hide();
-          $('.main', this).show();
-        });
-      });
-    </script>
 </head>
 <body>
     <div class="app">
       <div class="w">
         <header class="app-header" role="banner"><div class="display">
-            <h1 class="cylon-logo">
+            <h1 class="app-logo">
               <a href="/">Cylon</a>
             </h1>
           </div>
@@ -76,34 +65,32 @@
       </div>
       <div class="container">
         <div class="main" role="main">
-          <div class="aside right">
-            <img src="images/cylon.png">
-</div>
-          <section class="content"><h2>About</h2>
-            <p>Cylon.js is a JavaScript framework for robotics and physical computing using Node.js.</p>
-            <p>It provides a simple, yet powerful way to create solutions that incorporate multiple, different hardware devices at the same time.</p>
-            <p>
-              Want to use Ruby on robots? Check out our sister project Artoo
-              <a target="blank" href="http://artoo.io">(http://artoo.io)</a>
-            </p>
-            <p>
-              Want to use the Go programming language to power your robots? Check out our sister project Gobot
-              <a target="blank" href="http://gobot.io">(http://gobot.io)</a>
-            </p>
-            <h2>Meet The Code</h2>
-            <p>Cylon.js’s makes commanding robots incredibly simple and fun.</p>
-            <p>All you need to get started is the `cylon` module:</p>
-            <pre class="CodeRay">npm install cylon
+          <section class="content"><div class="index_content">
+              <h2>About</h2>
+              <p>Cylon.js is a JavaScript framework for robotics and physical computing using Node.js.</p>
+              <p>It provides a simple, yet powerful way to create solutions that incorporate multiple, different hardware devices at the same time.</p>
+              <p>
+                Want to use Ruby on robots? Check out our sister project Artoo
+                <a target="blank" href="http://artoo.io">(http://artoo.io)</a>
+              </p>
+              <p>
+                Want to use the Go programming language to power your robots? Check out our sister project Gobot
+                <a target="blank" href="http://gobot.io">(http://gobot.io)</a>
+              </p>
+              <h2>Meet The Code</h2>
+              <p>Cylon.js’s makes commanding robots incredibly simple and fun.</p>
+              <p>All you need to get started is the `cylon` module:</p>
+              <pre class="CodeRay">npm install cylon
 </pre>
-            <p>Then install modules for whatever hardware support you want to use from your robot. For the example below, an Arduino using the Firmata protocol:</p>
-            <pre class="CodeRay">npm install cylon-firmata
+              <p>Then install modules for whatever hardware support you want to use from your robot. For the example below, an Arduino using the Firmata protocol:</p>
+              <pre class="CodeRay">npm install cylon-firmata
 </pre>
-            <h2>Examples</h2>
-            <p>The example below connects to an Arduino, and every second turns the LED either on, or off.</p>
-            <p>The example requires that the Arduino has the Firmata sketch installed, and that it is connected on the port <code>/dev/ttyACM0</code>. You need to install Firmata on your Arduino, and to change the <code>port</code> parameter to match the port that your system is actually using.</p>
-            <p>Make sure to upload the "Standard Firmata" sketch or an equivalent Firmata sketch to your Arduino first. Without that code running on the Arduino, Firmata can't communicate with Cylon. You can find the example sketch in your Arduino software under "Examples &gt; Firmata &gt; StandardFirmata".</p>
-            <h3>JavaScript:</h3>
-            <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">"</span><span class="content">cylon</span><span class="delimiter">"</span></span>);
+              <h2>Examples</h2>
+              <p>The example below connects to an Arduino, and every second turns the LED either on, or off.</p>
+              <p>The example requires that the Arduino has the Firmata sketch installed, and that it is connected on the port <code>/dev/ttyACM0</code>. You need to install Firmata on your Arduino, and to change the <code>port</code> parameter to match the port that your system is actually using.</p>
+              <p>Make sure to upload the "Standard Firmata" sketch or an equivalent Firmata sketch to your Arduino first. Without that code running on the Arduino, Firmata can't communicate with Cylon. You can find the example sketch in your Arduino software under "Examples &gt; Firmata &gt; StandardFirmata".</p>
+              <h3>JavaScript:</h3>
+              <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">"</span><span class="content">cylon</span><span class="delimiter">"</span></span>);
 
 <span class="comment">// Initialize the robot</span>
 <span class="keyword">var</span> robot = Cylon.robot({
@@ -120,8 +107,8 @@
 <span class="comment">// start working</span>
 robot.start();
 </pre>
-            <h3>CoffeeScript:</h3>
-            <pre class="CodeRay">Cylon = require <span class="string"><span class="delimiter">"</span><span class="content">cylon</span><span class="delimiter">"</span></span>
+              <h3>CoffeeScript:</h3>
+              <pre class="CodeRay">Cylon = require <span class="string"><span class="delimiter">"</span><span class="content">cylon</span><span class="delimiter">"</span></span>
 
 <span class="error">#</span> Initialize the robot
 robot = Cylon.robot
@@ -137,101 +124,101 @@ robot = Cylon.robot
 
 robot.start()
 </pre>
-            
-            <p>Note: before running any examples in the <code>examples/</code> dir from source, make sure to compile using <code>grunt coffee</code> first.</p>
-            <h2>Getting Started</h2>
-            <p>
-              Ready to build JavaScript robots with Cylon.js?
-              <a href="/documentation/getting-started">Get Started Here!</a>
-            </p>
-            <h2>Hardware Support</h2>
-            <p>
-              Cylon.js has a extensible system for connecting to hardware devices. The following robotics and physical computing platforms are currently supported:
+              
+              <p>Note: before running any examples in the <code>examples/</code> dir from source, make sure to compile using <code>grunt coffee</code> first.</p>
+              <h2>Getting Started</h2>
+              <p>
+                Ready to build JavaScript robots with Cylon.js?
+                <a href="/documentation/getting-started">Get Started Here!</a>
               </p>
+              <h2>Hardware Support</h2>
+              <p>
+                Cylon.js has a extensible system for connecting to hardware devices. The following robotics and physical computing platforms are currently supported:
+                </p>
 <ul>
 <li>
-                  <a target="_blank" href="http://ardrone2.parrot.com/">Ardrone</a>
-                  &lt;==&gt;
-                  <a target="_blank" href="https://github.com/hybridgroup/cylon-ardrone">Adaptor/Drivers</a>
-                </li>
-                <li>
-                  <a target="_blank" href="http://www.arduino.cc/">Arduino</a>
-                  &lt;==&gt;
-                  <a target="_blank" href="https://github.com/hybridgroup/cylon-firmata">Adaptor</a>
-                </li>
-                <li>
-                  <a target="_blank" href="http://beagleboard.org/Products/BeagleBone+Black/">Beaglebone Black</a>
-                  &lt;==&gt;
-                  <a target="_blank" href="https://github.com/hybridgroup/cylon-beaglebone">Adaptor</a>
-                </li>
-                <li>
-                  <a target="_blank" href="http://www.bitcraze.se/">Crazyflie</a>
-                  &lt;==&gt;
-                  <a href="https://github.com/hybridgroup/cylon-crazyflie">Adaptor/Driver</a>
-                </li>
-                <li>
-                  <a target="_blank" href="http://www.leapmotion.com/">Leap Motion</a>
-                  &lt;==&gt;
-                  <a target="_blank" href="https://github.com/hybridgroup/cylon-leapmotion">Adaptor/Driver</a>
-                </li>
-                <li>
-                  <a target="_blank" href="https://getpebble.com/">Pebble</a>
-                  &lt;==&gt;
-                  <a target="_blank" href="https://github.com/hybridgroup/cylon-pebble">Adaptor/Driver</a>
-                </li>
-                <li>
-                  <a target="_blank" href="http://www.raspberrypi.org/">Raspberry Pi</a>
-                  &lt;==&gt;
-                  <a target="_blank" href="https://github.com/hybridgroup/cylon-raspi">Adaptor</a>
-                </li>
-                <li>
-                  <a target="_blank" href="http://www.force.com/">Salesforce</a>
-                  &lt;==&gt;
-                  <a target="_blank" href="https://github.com/hybridgroup/cylon-force">Adaptor/Driver</a>
-                </li>
-                <li>
-                  <a target="_blank" href="https://www.spark.io/">Spark</a>
-                  &lt;==&gt;
-                  <a target="_blank" href="https://github.com/hybridgroup/cylon-spark">Adaptor</a>
-                </li>
-                <li>
-                  <a target="_blank" href="http://www.gosphero.com/">Sphero</a>
-                  &lt;==&gt;
-                  <a target="_blank" href="https://github.com/hybridgroup/cylon-sphero">Adaptor/Driver</a>
-                </li>
-              </ul>
+                    <a target="_blank" href="http://ardrone2.parrot.com/">Ardrone</a>
+                    &lt;==&gt;
+                    <a target="_blank" href="https://github.com/hybridgroup/cylon-ardrone">Adaptor/Drivers</a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="http://www.arduino.cc/">Arduino</a>
+                    &lt;==&gt;
+                    <a target="_blank" href="https://github.com/hybridgroup/cylon-firmata">Adaptor</a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="http://beagleboard.org/Products/BeagleBone+Black/">Beaglebone Black</a>
+                    &lt;==&gt;
+                    <a target="_blank" href="https://github.com/hybridgroup/cylon-beaglebone">Adaptor</a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="http://www.bitcraze.se/">Crazyflie</a>
+                    &lt;==&gt;
+                    <a href="https://github.com/hybridgroup/cylon-crazyflie">Adaptor/Driver</a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="http://www.leapmotion.com/">Leap Motion</a>
+                    &lt;==&gt;
+                    <a target="_blank" href="https://github.com/hybridgroup/cylon-leapmotion">Adaptor/Driver</a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="https://getpebble.com/">Pebble</a>
+                    &lt;==&gt;
+                    <a target="_blank" href="https://github.com/hybridgroup/cylon-pebble">Adaptor/Driver</a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="http://www.raspberrypi.org/">Raspberry Pi</a>
+                    &lt;==&gt;
+                    <a target="_blank" href="https://github.com/hybridgroup/cylon-raspi">Adaptor</a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="http://www.force.com/">Salesforce</a>
+                    &lt;==&gt;
+                    <a target="_blank" href="https://github.com/hybridgroup/cylon-force">Adaptor/Driver</a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="https://www.spark.io/">Spark</a>
+                    &lt;==&gt;
+                    <a target="_blank" href="https://github.com/hybridgroup/cylon-spark">Adaptor</a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="http://www.gosphero.com/">Sphero</a>
+                    &lt;==&gt;
+                    <a target="_blank" href="https://github.com/hybridgroup/cylon-sphero">Adaptor/Driver</a>
+                  </li>
+                </ul>
 <p>Support for many devices that use General Purpose Input/Output (GPIO) have a shared set of drivers provded using the cylon-gpio module:</p>
-            <ul>
+              <ul>
 <li>
-                <a target="_blank" href="https://en.wikipedia.org/wiki/General_Purpose_Input/Output">GPIO</a>
-                &lt;==&gt;
-                <a target="_blank" href="https://github.com/hybridgroup/cylon-gpio">Drivers</a>
-                <ul>
+                  <a target="_blank" href="https://en.wikipedia.org/wiki/General_Purpose_Input/Output">GPIO</a>
+                  &lt;==&gt;
+                  <a target="_blank" href="https://github.com/hybridgroup/cylon-gpio">Drivers</a>
+                  <ul>
 <li>Analog Sensor</li>
-                  <li>Button</li>
-                  <li>LED</li>
-                  <li>Motor</li>
-                  <li>Maxbotix Ultrasonic Range Finder</li>
-                  <li>Servo</li>
-                </ul>
+                    <li>Button</li>
+                    <li>LED</li>
+                    <li>Motor</li>
+                    <li>Maxbotix Ultrasonic Range Finder</li>
+                    <li>Servo</li>
+                  </ul>
 </li>
-            </ul>
+              </ul>
 <p>Support for devices that use Inter-Integrated Circuit (I2C) have a shared set of drivers provded using the cylon-i2c module:</p>
-            <ul>
+              <ul>
 <li>
-                <a target="_blank" href="https://en.wikipedia.org/wiki/I%C2%B2C">I2C</a>
-                &lt;==&gt;
-                <a target="_blank" href="https://github.com/hybridgroup/cylon-i2c">Drivers</a>
-                <ul>
+                  <a target="_blank" href="https://en.wikipedia.org/wiki/I%C2%B2C">I2C</a>
+                  &lt;==&gt;
+                  <a target="_blank" href="https://github.com/hybridgroup/cylon-i2c">Drivers</a>
+                  <ul>
 <li>BlinkM</li>
-                  <li>HMC6352 Digital Compass</li>
-                </ul>
+                    <li>HMC6352 Digital Compass</li>
+                  </ul>
 </li>
-            </ul>
+              </ul>
 <p>More platforms and drivers are coming soon...</p>
-            <h2>CLI</h2>
-            <p>Cylon has a Command Line Interface (CLI) so you can access important features right from the command line.</p>
-            <pre class="CodeRay">Usage: cylon [command] [options]
+              <h2>CLI</h2>
+              <p>Cylon has a Command Line Interface (CLI) so you can access important features right from the command line.</p>
+              <pre class="CodeRay">Usage: cylon [command] [options]
 
 Commands:
 
@@ -242,10 +229,10 @@ Options:
   -h, --help     output usage information
   -V, --version  output the version number
 </pre>
-            <h2>Generator</h2>
-            <p>Want to integrate a hardware device we don't have Cylon support for yet? There's a generator for that!</p>
-            <p>You can easily generate a new skeleton Cylon adaptor to help you get started. Simply run the cylon generate command, and the generator will create a new directory with all of the files in place for your new adaptor module.</p>
-            <pre class="CodeRay">$ cylon generate awesome_device
+              <h2>Generator</h2>
+              <p>Want to integrate a hardware device we don't have Cylon support for yet? There's a generator for that!</p>
+              <p>You can easily generate a new skeleton Cylon adaptor to help you get started. Simply run the cylon generate command, and the generator will create a new directory with all of the files in place for your new adaptor module.</p>
+              <pre class="CodeRay">$ cylon generate awesome_device
 Creating cylon-awesome_device adaptor.
 Compiling templates.
 
@@ -258,15 +245,19 @@ package.json
 src/
 test/
 </pre>
-            <h2>Be Part Of The Robot Evolution</h2>
-            <ul>
+              <h2>Be Part Of The Robot Evolution</h2>
+              <ul>
 <li>Code on Github:   <a href="https://github.com/hybridgroup/cylon">https://github.com/hybridgroup/cylon</a>
 </li>
-              <li>Join us on IRC:   <code>#cylon @ irc.freenode.net</code>
+                <li>Join us on IRC:   <code>#cylon @ irc.freenode.net</code>
 </li>
-              <li>Join us on our <a href="https://trello.com/b/l1aEuqMU/cylon">Trello Board</a>.</li>
-            </ul></section>
+                <li>Join us on our <a href="https://trello.com/b/l1aEuqMU/cylon">Trello Board</a>.</li>
+              </ul>
 </div>
+          </section><div class="aside right">
+            <img src="images/cylon.png">
+</div>
+        </div>
       </div>
     </div>
     <footer class="app-footer"><div class="w">
