@@ -43,7 +43,7 @@
                 </p>
               </section><section class="how-to"><h2>How to establish a connection and setup the driver</h2>
                 <h3>JavaScript</h3>
-                <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
+                <pre class="CodeRay">Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
   <span class="key">connection</span>: {
@@ -51,11 +51,10 @@ Cylon.robot({
     <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">leapmotion</span><span class="delimiter">'</span></span>,
     <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:6437</span><span class="delimiter">'</span></span>
   },
-
   <span class="key">device</span>: {
     <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">leapmotion</span><span class="delimiter">'</span></span>,
     <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">leapmotion</span><span class="delimiter">'</span></span>
-  }
+  },
  ... 
 </pre>
                 <h3>CoffeeScript</h3>
@@ -79,8 +78,9 @@ Cylon.robot
                   <dt>start</dt>
                   <dd>Sent when the device has been started and is ready to use.</dd>
                 </dl></section><section class="how-to"><h2>How to use</h2>
+                <p>Example receiving hand gesture events from a Leap Motion.</p>
                 <h3>JavaScript</h3>
-                <pre class="CodeRay"><span class="keyword">var</span> Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
+                <pre class="CodeRay">Cylon = require(<span class="string"><span class="delimiter">'</span><span class="content">cylon</span><span class="delimiter">'</span></span>);
 
 Cylon.robot({
   <span class="key">connection</span>: {
@@ -88,35 +88,13 @@ Cylon.robot({
     <span class="key">adaptor</span>: <span class="string"><span class="delimiter">'</span><span class="content">leapmotion</span><span class="delimiter">'</span></span>,
     <span class="key">port</span>: <span class="string"><span class="delimiter">'</span><span class="content">127.0.0.1:6437</span><span class="delimiter">'</span></span>
   },
-
   <span class="key">device</span>: {
     <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">leapmotion</span><span class="delimiter">'</span></span>,
     <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">leapmotion</span><span class="delimiter">'</span></span>
   },
-
   <span class="function">work</span>: <span class="keyword">function</span>(my) {
-    my.leapmotion.on(<span class="string"><span class="delimiter">'</span><span class="content">connect</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
-      Logger.info(<span class="string"><span class="delimiter">"</span><span class="content">Connected</span><span class="delimiter">"</span></span>);
-    });
-
-    my.leapmotion.on(<span class="string"><span class="delimiter">'</span><span class="content">start</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>() {
-      Logger.info(<span class="string"><span class="delimiter">"</span><span class="content">Started</span><span class="delimiter">"</span></span>);
-    });
-
-    my.leapmotion.on(<span class="string"><span class="delimiter">'</span><span class="content">frame</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(frame) {
-      Logger.info(frame.toString());
-    });
-
-    my.leapmotion.on(<span class="string"><span class="delimiter">'</span><span class="content">hand</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(hand) {
-      Logger.info(hand.toString());
-    });
-
-    my.leapmotion.on(<span class="string"><span class="delimiter">'</span><span class="content">pointable</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(pointable) {
-      Logger.info(pointable.toString());
-    });
-
-    my.leapmotion.on(<span class="string"><span class="delimiter">'</span><span class="content">gesture</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(gesture) {
-      Logger.info(gesture.toString());
+    <span class="keyword">return</span> my.leapmotion.on(<span class="string"><span class="delimiter">'</span><span class="content">gesture</span><span class="delimiter">'</span></span>, <span class="keyword">function</span>(gesture) {
+      <span class="keyword">return</span> Logger.info(gesture);
     });
   }
 }).start();
@@ -129,17 +107,8 @@ Cylon.robot
   device: { <span class="key">name</span>: <span class="string"><span class="delimiter">'</span><span class="content">leapmotion</span><span class="delimiter">'</span></span>, <span class="key">driver</span>: <span class="string"><span class="delimiter">'</span><span class="content">leapmotion</span><span class="delimiter">'</span></span> }
 
   work: (my) -&gt;
-    my.leapmotion.on <span class="string"><span class="delimiter">'</span><span class="content">connect</span><span class="delimiter">'</span></span>, -&gt;
-      Logger.info <span class="string"><span class="delimiter">"</span><span class="content">Connected</span><span class="delimiter">"</span></span>
-
-    my.leapmotion.on <span class="string"><span class="delimiter">'</span><span class="content">start</span><span class="delimiter">'</span></span>, -&gt;
-      Logger.info <span class="string"><span class="delimiter">"</span><span class="content">Started</span><span class="delimiter">"</span></span>
-
-    events = [<span class="string"><span class="delimiter">"</span><span class="content">frame</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">hand</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">pointable</span><span class="delimiter">"</span></span>, <span class="string"><span class="delimiter">"</span><span class="content">gesture</span><span class="delimiter">"</span></span>]
-
-    <span class="keyword">for</span> event <span class="keyword">in</span> events
-      my.leapmotion.on event, (payload) -&gt;
-        Logger.info payload.toString()
+    my.leapmotion.on <span class="string"><span class="delimiter">'</span><span class="content">gesture</span><span class="delimiter">'</span></span>, (gesture) -&gt;
+      Logger.info gesture
 
 .start()
 </pre>
