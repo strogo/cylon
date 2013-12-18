@@ -1,5 +1,5 @@
 ---
-title: Cylon.js Tutorials
+title: Cylon.js Tutorials - Blink
 author: The Hybrid Group
 page_title: Blink
 page_subtitle: Made by Humans, for Humans.
@@ -13,27 +13,61 @@ layout: page
   \/ Blink
 
 %section.app-code
-
-  %h3 Example: Arduino with LED and a button
   :markdown
     To use this example, you must first run `npm install cylon-firmata`
-  %h4 JavaScript
+  %p For this very basic Cylon example, we're just going to hook up to an Arduino and blink an LED on it with a button.
+  %p To get started, let's load up Cylon:
   :markdown
         :::javascript
-       
-        var Cylon = require('cylon');
+        Cylon = require 'cylon'
+  %p With Cylon loaded, we can now define our basic robot.
+  :markdown
+        :::javascript
+        Cylon = require 'cylon'
 
-        Cylon.robot({
-          connection: { name: 'arduino', adaptor: 'firmata', port: '/dev/ttyACM0' },
-          devices: [{name: 'led', driver: 'led', pin: 13},
-                    {name: 'button', driver: 'button', pin: 2}],
+        Cylon.robot
+  :markdown
+    Our robot has one connection, to an Arduino using the `cylon-firmata` adaptor:
+  :markdown
+        :::javascript
+        Cylon = require 'cylon'
 
-          work: function(my) {
-            my.button.on('push', function() {my.led.toggle()});
-          }
-        }).start();
+        Cylon.robot
+          connection:
+            name: 'arduino', adaptor: 'firmata', port: '/dev/ttyACM0'
+  %p Our robot also has two devices (or at least only the ones that we're concerned about), an LED on pin 13 and a button on pin 2.
+  :markdown
+        :::javascript
+        Cylon = require 'cylon'
 
-  %h4 CoffeeScript
+        Cylon.robot
+          connection:
+            name: 'arduino', adaptor: 'firmata', port: '/dev/ttyACM0'
+
+          devices:
+            [
+              {name: 'led', driver: 'led', pin: 13},
+              {name: 'button', driver: 'button', pin: 2}
+            ]
+  %p Next, we'll define the robot's work, which will be toggling the LED every time we push the button:
+  :markdown
+        :::javascript
+        Cylon = require 'cylon'
+
+        Cylon.robot
+          connection:
+            name: 'arduino', adaptor: 'firmata', port: '/dev/ttyACM0'
+
+          devices:
+            [
+              {name: 'led', driver: 'led', pin: 13},
+              {name: 'button', driver: 'button', pin: 2}
+            ]
+
+          work: (my) ->
+            my.button.on 'push', -> my.led.toggle()
+
+  %p And that's all the parts of our robot. All that's left is to start it.
   :markdown
         :::javascript
         Cylon = require 'cylon'
@@ -52,3 +86,21 @@ layout: page
             my.button.on 'push', -> my.led.toggle()
 
         .start()
+
+  %h4 JavaScript example: Arduino with LED and a button
+
+  :markdown
+        :::javascript
+       
+        var Cylon = require('cylon');
+
+        Cylon.robot({
+          connection: { name: 'arduino', adaptor: 'firmata', port: '/dev/ttyACM0' },
+          devices: [{name: 'led', driver: 'led', pin: 13},
+                    {name: 'button', driver: 'button', pin: 2}],
+
+          work: function(my) {
+            my.button.on('push', function() {my.led.toggle()});
+          }
+        }).start();
+
