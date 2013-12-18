@@ -13,8 +13,42 @@ layout: page
   \/ Hello World
 
 %section.app-code
-  %h3 Example: Hello
-  %h4 JavaScript
+  %p For this exceedingly simple example, we're going to define a robot that has no devices, no connections, and just demonstrates the tools for performing work on an interval, and after a timeout.
+
+  %p Let's start by importing Cylon:
+  :markdown
+        :::javascript
+        Cylon = require 'cylon'
+  %p Now we can define our robot:
+  :markdown
+        :::javascript
+        Cylon = require 'cylon'
+
+        Cylon.robot
+
+  %p For work, it's going to print a message to the console every second.
+  :markdown
+        :::javascript
+        Cylon = require 'cylon'
+
+        Cylon.robot
+          work: ->
+            every 1.second(), ->
+              Logger.info("Hello, human!")
+
+  %p Simple as can be. Now that we're done, let's start the robot:
+  :markdown
+        :::javascript
+        Cylon = require 'cylon'
+
+        Cylon.robot
+          work: ->
+            every 1.second(), ->
+              Logger.info("Hello, human!")
+              
+        .start()
+
+  %h3 JavaScript example: Hello
   :markdown
         :::javascript
         var Cylon = require('cylon');
@@ -27,14 +61,4 @@ layout: page
           }
         }).start();
 
-  %h4 CoffeeScript
-  :markdown
-        :::javascript
-        Cylon = require 'cylon'
-
-        Cylon.robot
-          work: ->
-            every 1.second(), ->
-              Logger.info("Hello, human!")
-
-        .start()
+  
