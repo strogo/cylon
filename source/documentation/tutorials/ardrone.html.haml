@@ -1,0 +1,62 @@
+---
+title: Cylon.js Tutorials
+author: The Hybrid Group
+page_title: Ardrone
+page_subtitle: Made by Humans, for Humans.
+layout: page
+---
+
+%small.breadcrumb
+  = link_to "Documentation", "/documentation"
+  \/ 
+  = link_to "Tutorials", "/documentation/tutorials" 
+  \/ ARDrone
+
+%section.app-code
+
+  %h3 Parrot ARDrone 2.0
+  :markdown
+    To use this example, you must first run `npm install cylon-ardrone`
+  %h4 JavaScript
+  :markdown
+        :::javascript
+        var Cylon = require('cylon');
+
+        Cylon.robot({
+          connection: {name: 'ardrone', adaptor: 'ardrone', port: '192.168.1.1'},
+          device: {name: 'drone', driver: 'ardrone'},
+          work: function(my) {
+            my.drone.takeoff();
+
+            after((10).seconds(), function() {
+              my.drone.land();
+            }
+
+            after((15).seconds(), function() {
+              my.drone.stop();
+            }
+          }
+        }).start();
+
+  %h4 CoffeeScript 
+  :markdown
+        :::javascript
+        Cylon = require 'cylon'
+
+        Cylon.robot
+          connection:
+            name: 'ardrone', adaptor: 'ardrone', port: '192.168.1.1'
+
+          device:
+            name: 'drone', driver: 'ardrone'
+
+          work: (my) ->
+            my.drone.takeoff()
+
+            after 10.seconds(), ->
+              my.drone.land()
+
+            after 15.seconds(), ->
+              my.drone.stop()
+
+        .start()

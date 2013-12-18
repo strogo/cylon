@@ -1,0 +1,54 @@
+---
+title: Cylon.js Tutorials
+author: The Hybrid Group
+page_title: Blink
+page_subtitle: Made by Humans, for Humans.
+layout: page
+---
+
+%small.breadcrumb
+  = link_to "Documentation", "/documentation"
+  \/ 
+  = link_to "Tutorials", "/documentation/tutorials" 
+  \/ Blink
+
+%section.app-code
+
+  %h3 Example: Arduino with LED and a button
+  :markdown
+    To use this example, you must first run `npm install cylon-firmata`
+  %h4 JavaScript
+  :markdown
+        :::javascript
+       
+        var Cylon = require('cylon');
+
+        Cylon.robot({
+          connection: { name: 'arduino', adaptor: 'firmata', port: '/dev/ttyACM0' },
+          devices: [{name: 'led', driver: 'led', pin: 13},
+                    {name: 'button', driver: 'button', pin: 2}],
+
+          work: function(my) {
+            my.button.on('push', function() {my.led.toggle()});
+          }
+        }).start();
+
+  %h4 CoffeeScript
+  :markdown
+        :::javascript
+        Cylon = require 'cylon'
+
+        Cylon.robot
+          connection:
+            name: 'arduino', adaptor: 'firmata', port: '/dev/ttyACM0'
+
+          devices:
+            [
+              {name: 'led', driver: 'led', pin: 13},
+              {name: 'button', driver: 'button', pin: 2}
+            ]
+
+          work: (my) ->
+            my.button.on 'push', -> my.led.toggle()
+
+        .start()
