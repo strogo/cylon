@@ -1,26 +1,32 @@
 Cylon = require '../..'
 
 Cylon.robot
-  connection: { name: 'arduino', adaptor: 'firmata', port: '/dev/ttyACM0' }
+  connection:
+    name: 'arduino', adaptor: 'firmata', port: '/dev/ttyACM0'
 
-  device: { name: 'blinkm', driver: 'blinkm' }
+  device:
+    name: 'blinkm', driver: 'blinkm'
 
   work: (my) ->
     my.blinkm.on 'start', ->
-      my.blinkm.version (version) ->
+      my.blinkm.stopScript()
+      my.blinkm.goToRGB(255, 0, 0)
+      my.blinkm.getFirmware((version) ->
         Logger.info "Started BlinkM version #{version}"
+      )
 
-      my.blinkm.off()
+      my.blinkm.goToRGB(0,0,0)
+
+      my.blinkm.getRGBColor((data) ->
+        console.log("Starting Color: #{ data }")
+      )
+
       lit = false
 
-      every 1.second(), ->
-        if lit
-          lit = false
-          Logger.info 'on'
-          my.blinkm.rgb 0xaa, 0, 0
-        else
-          lit = true
-          Logger.info 'off'
-          my.blinkm.rgb 0, 0, 0
+      every 2.second(), () ->
+        my.blinkm.getRGBColor((data) ->
+          console.log("Current Color: #{ data }")
+        )
+        my.blinkm.fadeToRandomRGB(128, 128, 128)
 
 .start()
