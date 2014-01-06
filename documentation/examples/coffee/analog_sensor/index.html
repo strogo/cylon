@@ -80,10 +80,10 @@
             
             <pre class="CodeRay">  work: (my) -&gt;
     my.sensor.on 'upperLimit', (val) -&gt;
-      Logger.info "Upper limit reached: \1val}"
+      Logger.info "Upper limit reached: #{val}"
 
     my.sensor.on 'lowerLimit', (val) -&gt;
-      Logger.info "Lower limit reached: \1val}"
+      Logger.info "Lower limit reached: #{val}"
 </pre>
             
             <p>Now that our robot knows what work to do, and the work it will be doing that
@@ -97,7 +97,7 @@
     </div>
     <footer class="app-footer"><div class="w">
         <div class="copyright">
-          © Copyright 2012-2013
+          © Copyright 2012-2014
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>

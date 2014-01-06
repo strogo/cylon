@@ -82,10 +82,10 @@ sphero.on 'error', -&gt; console.log 'EVENT ERROR!'
             accompanying data to the console as well:</p>
             
             <pre class="CodeRay">sphero.on 'notification', (packet) -&gt;
-  console.log "Packet contents: \1packet}"
+  console.log "Packet contents: #{packet}"
 
 sphero.on 'message', (packet) -&gt;
-  console.log "Packet contents: \1packet}"
+  console.log "Packet contents: #{packet}"
 </pre>
             
             <p>And that wraps up our event listeners. All that's left to do is open
@@ -99,7 +99,7 @@ sphero.on 'message', (packet) -&gt;
     </div>
     <footer class="app-footer"><div class="w">
         <div class="copyright">
-          © Copyright 2012-2013
+          © Copyright 2012-2014
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
