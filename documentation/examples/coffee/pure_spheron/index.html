@@ -8,17 +8,42 @@
 <meta content="A Cylon.JS code example" name="description">
 <meta content="The Hybrid Group" name="author">
 <title>Cylon.JS Example - Pure Spheron</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><!-- %link{href: "http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700", rel: "stylesheet", type: "text/css"} --><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/stylesheets/style.css" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
-</head>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+
+  _gaq.push(['_setAccount', "UA-46433484-2"]);
+
+
+
+
+
+
+
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></head>
 <body>
+    
     <div class="app">
       <div class="w">
         <header class="app-header" role="banner"><div class="display">
             <h1 class="app-logo">
               <a href="/">Cylon</a>
             </h1>
+            <span class="subtitle">
+              <div class="main"></div>
+            </span>
           </div>
           <span class="menu">
             <a href="/documentation" class="item">Docs</a>
@@ -38,61 +63,63 @@
       </div>
       <div class="container">
         <div class="main" role="main">
-          <section class="content full"><h1 id="pure-spheron">Pure Spheron</h1>
-            
-            <p>Here's an example of communicating with a Sphero solely using Spheron. Before
-            you get started, make sure you've installed the <code>spheron</code> module with NPM.</p>
-            
-            <p>First, let's make sure we've got Spheron loaded:</p>
-            
-            <pre class="CodeRay">spheron = require 'spheron'
+          <section class="content full"><div class="documentation">
+              <h1 id="pure-spheron">Pure Spheron</h1>
+              
+              <p>Here's an example of communicating with a Sphero solely using Spheron. Before
+              you get started, make sure you've installed the <code>spheron</code> module with NPM.</p>
+              
+              <p>First, let's make sure we've got Spheron loaded:</p>
+              
+              <pre class="CodeRay">spheron = require 'spheron'
 </pre>
-            
-            <p>Next, we'll get our colors from Spheron's toolbelt:</p>
-            
-            <pre class="CodeRay">COLORS = spheron.toolbelt.COLORS
+              
+              <p>Next, we'll get our colors from Spheron's toolbelt:</p>
+              
+              <pre class="CodeRay">COLORS = spheron.toolbelt.COLORS
 </pre>
-            
-            <p>Let's also keep a reference to the port we'll be using to talk to the Sphero, as
-            well as the Sphero connection itself:</p>
-            
-            <pre class="CodeRay">sphero = spheron.sphero()
+              
+              <p>Let's also keep a reference to the port we'll be using to talk to the Sphero, as
+              well as the Sphero connection itself:</p>
+              
+              <pre class="CodeRay">sphero = spheron.sphero()
 spheroPort = "/dev/rfcomm0"
 </pre>
-            
-            <p>Now let's define the event listeners for our Sphero. When the connection is
-            opened, the sphero will let us know about it, and change it's color to green,
-            along with enabling collision detection.</p>
-            
-            <pre class="CodeRay">sphero.on 'open', -&gt;
+              
+              <p>Now let's define the event listeners for our Sphero. When the connection is
+              opened, the sphero will let us know about it, and change it's color to green,
+              along with enabling collision detection.</p>
+              
+              <pre class="CodeRay">sphero.on 'open', -&gt;
   console.log 'EVENT OPEN!'
   sphero.configureCollisionDetection 0x01, 0x20, 0x20, 0x20, 0x20, 0x50
   sphero.setRGB COLORS.GREEN, false
 </pre>
-            
-            <p>The rest are basic events, logging that a <code>close</code>, <code>error</code>, or <code>end</code> event has
-            been fired:</p>
-            
-            <pre class="CodeRay">sphero.on 'close', -&gt; console.log 'EVENT CLOSE!'
+              
+              <p>The rest are basic events, logging that a <code>close</code>, <code>error</code>, or <code>end</code> event has
+              been fired:</p>
+              
+              <pre class="CodeRay">sphero.on 'close', -&gt; console.log 'EVENT CLOSE!'
 sphero.on 'end', -&gt; console.log 'EVENT END!'
 sphero.on 'error', -&gt; console.log 'EVENT ERROR!'
 </pre>
-            
-            <p>For the <code>notification</code> and <code>message</code> events, though, we're going to log their
-            accompanying data to the console as well:</p>
-            
-            <pre class="CodeRay">sphero.on 'notification', (packet) -&gt;
+              
+              <p>For the <code>notification</code> and <code>message</code> events, though, we're going to log their
+              accompanying data to the console as well:</p>
+              
+              <pre class="CodeRay">sphero.on 'notification', (packet) -&gt;
   console.log "Packet contents: #{packet}"
 
 sphero.on 'message', (packet) -&gt;
   console.log "Packet contents: #{packet}"
 </pre>
-            
-            <p>And that wraps up our event listeners. All that's left to do is open
-            a connection to the Sphero:</p>
-            
-            <pre class="CodeRay">sphero.open spheroPort
+              
+              <p>And that wraps up our event listeners. All that's left to do is open
+              a connection to the Sphero:</p>
+              
+              <pre class="CodeRay">sphero.open spheroPort
 </pre>
+            </div>
           </section>
 </div>
       </div>
@@ -103,14 +130,6 @@ sphero.on 'message', (packet) -&gt;
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
-    </footer><script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      
-      ga('create', 'UA-46433484-2', 'cylonjs.com');
-      ga('send', 'pageview');
-    </script>
+    </footer>
 </body>
 </html>

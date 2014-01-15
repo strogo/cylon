@@ -8,17 +8,42 @@
 <meta content="Cylon.js is a JavaScript framework for robotics and physical computing using Node.js. It provides a simple, but powerful DSL (domain-specific language) for robots and physical computing." name="description">
 <meta content="The Hybrid Group" name="author">
 <title>CylonJS</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><!-- %link{href: "http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700", rel: "stylesheet", type: "text/css"} --><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/stylesheets/style.css" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
-</head>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+
+  _gaq.push(['_setAccount', "UA-46433484-2"]);
+
+
+
+
+
+
+
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></head>
 <body>
+    
     <div class="app">
       <div class="w">
         <header class="app-header" role="banner"><div class="display">
             <h1 class="app-logo">
               <a href="/">Cylon</a>
             </h1>
+            <span class="subtitle">
+              <div class="main"></div>
+            </span>
           </div>
           <span class="menu">
             <a href="/documentation" class="item">Docs</a>
@@ -32,18 +57,12 @@
       <div class="hero">
         <div class="container">
           <h1 class="title">
-            <!-- It is time to have Robots and JavaScript -->
-            <!-- %br -->
-            <!-- working together. -->
             JavaScript Robotics, By Your Command
           </h1>
           <h2 class="subtitle">
-            Cylon.js makes robotics
-            <a href="/documentation/getting-started" class="item">Simple</a>
-            and
-            <a href="/documentation/platforms" class="item">Extensible.</a>
+            Cylon.js makes robotics  <a href="/documentation/getting-started">Simple</a> and <a href="/documentation/platforms">Extensible</a>
           </h2>
-          <a class="cta" href="/documentation/getting-started">Get Started</a>
+          <a href="/documentation/getting-started" class="cta"> Get Started</a>
         </div>
       </div>
       <div class="social">
@@ -154,12 +173,27 @@ robot.start()
                   <li>
                     <a target="_blank" href="http://www.bitcraze.se/">Crazyflie</a>
                     &lt;==&gt;
-                    <a href="https://github.com/hybridgroup/cylon-crazyflie">Adaptor/Driver</a>
+                    <a target="_blank" href="https://github.com/hybridgroup/cylon-crazyflie">Adaptor/Driver</a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="http://en.wikipedia.org/wiki/Joystick">Joystick</a>
+                    &lt;==&gt;
+                    <a target="_blank" href="https://github.com/hybridgroup/cylon-joystick">Adaptor/Driver</a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="http://en.wikipedia.org/wiki/Computer_keyboard">Keyboard</a>
+                    &lt;==&gt;
+                    <a target="_blank" href="https://github.com/hybridgroup/cylon-keyboard">Adaptor/Driver</a>
                   </li>
                   <li>
                     <a target="_blank" href="http://www.leapmotion.com/">Leap Motion</a>
                     &lt;==&gt;
                     <a target="_blank" href="https://github.com/hybridgroup/cylon-leapmotion">Adaptor/Driver</a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="http://opencv.org/">OpenCV</a>
+                    &lt;==&gt;
+                    <a href="https://github.com/hybridgroup/cylon-opencv">Adaptor</a>
                   </li>
                   <li>
                     <a target="_blank" href="https://getpebble.com/">Pebble</a>
@@ -187,7 +221,7 @@ robot.start()
                     <a target="_blank" href="https://github.com/hybridgroup/cylon-sphero">Adaptor/Driver</a>
                   </li>
                 </ul>
-<p>Support for many devices that use General Purpose Input/Output (GPIO) have a shared set of drivers provded using the cylon-gpio module:</p>
+<p>Support for many devices that use General Purpose Input/Output (GPIO) have a shared set of drivers provided using the cylon-gpio module:</p>
               <ul>
 <li>
                   <a target="_blank" href="https://en.wikipedia.org/wiki/General_Purpose_Input/Output">GPIO</a>
@@ -256,25 +290,22 @@ test/
               </ul>
 </div>
           </section><div class="aside right">
-            <img src="images/cylon.png">
+            <img src="images/elements/cylon.png">
 </div>
         </div>
       </div>
-    </div>
+      <section class="catcher"><div class="w">
+          <h3 class="phrase">Ready to build the next big thing with JavaScript?</h3>
+          <a href="/documentation/getting-started" class="cta"> Get Started</a>
+        </div>
+      </section>
+</div>
     <footer class="app-footer"><div class="w">
         <div class="copyright">
           © Copyright 2012-2014
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
-    </footer><script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      
-      ga('create', 'UA-46433484-2', 'cylonjs.com');
-      ga('send', 'pageview');
-    </script>
+    </footer>
 </body>
 </html>

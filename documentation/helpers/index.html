@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<meta content="Cylon.js Helpers" name="description">
+<meta content="The Hybrid Group" name="author">
+<title>Helpers</title>
+<link href="/stylesheets/style.css" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
+<link href="/favicon.ico" rel="shortcut icon" type="image/gif">
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+
+  _gaq.push(['_setAccount', "UA-46433484-2"]);
+
+
+
+
+
+
+
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></head>
+<body>
+    
+    <div class="app">
+      <div class="w">
+        <header class="app-header" role="banner"><div class="display">
+            <h1 class="app-logo">
+              <a href="/">Cylon</a>
+            </h1>
+            <span class="subtitle">
+              <div class="main"></div>
+            </span>
+          </div>
+          <span class="menu">
+            <a href="/documentation" class="item">Docs</a>
+            <a href="/hardware" class="item">Hardware</a>
+            
+            <a href="/blog" class="item">Blog</a>
+            <a class="item" target="blanck" href="https://github.com/hybridgroup/cylon/">Github</a>
+          </span>
+        </header>
+</div>
+      <div class="page-title">
+        <div class="w">
+          <h1 class="title">Helpers</h1>
+          <h2 class="subtitle">Some helpful utility functions</h2>
+        </div>
+      </div>
+      <div class="container">
+        <div class="main" role="main">
+          <section class="content full"><div class="documentation">
+              <h2 id="everyinterval-action">every(interval, action)</h2>
+              
+              <p>Alias to Javascript's setInterval() function, combined with monkeypatches to
+              Number detailed below.</p>
+              
+              <ul>
+<li>
+<strong>interval</strong> - interval to run action on</li>
+                <li>
+<strong>action</strong> - action to perform on interval</li>
+              </ul>
+<p>Returns a setInterval</p>
+              
+              <h3 id="examples">Examples:</h3>
+              
+              <pre class="CodeRay">every 5.seconds(), -&gt;
+  console.log "Hello world! (and again in 5 seconds)"
+</pre>
+              
+              <h2 id="afterinterval-action">after(interval, action)</h2>
+              
+              <p>Alias to Javascript's setTimeout() function, combined with monkeypatches to
+              Number detailed below.</p>
+              
+              <ul>
+<li>
+<strong>interval</strong> - interval to run action after</li>
+                <li>
+<strong>action</strong> - action to perform after interval</li>
+              </ul>
+<p>Returns a setTimeout</p>
+              
+              <h3 id="examples-1">Examples:</h3>
+              
+              <pre class="CodeRay">after 10.seconds(), -&gt;
+  console.log "Hello world!"
+</pre>
+              
+              <h2 id="proxyfunctionstoobjectmethods-target-base--this-force--false">proxyFunctionsToObject(methods, target, base = this, force = false)</h2>
+              
+              <p>Proxies a list of methods from one object to another. It will not overwrite
+              existing methods unless told to.</p>
+              
+              <ul>
+<li>
+<strong>methods</strong> - array of functions to proxy</li>
+                <li>
+<strong>target</strong> - object to proxy the functions to</li>
+                <li>
+<strong>base</strong> - (optional) object that proxied functions will be declared on.
+              Defaults to <code>this</code>
+</li>
+                <li>
+<strong>force</strong> - (optional) boolean - whether or not to force method assignment.
+              Defaults to <code>false</code>
+</li>
+              </ul>
+<h3 id="examples-2">Examples:</h3>
+              
+              <pre class="CodeRay">class ProxyClass
+  reverse: (string) -&gt;
+    string.split('').reverse().join('')
+
+class BaseClass
+  constructor: -&gt;
+    @proxy = new ProxyClass
+    proxyFunctionsToObject ['reverse'], @proxy
+
+klass = new BaseClass
+klass.reverse("Hello, World!")
+#=&gt; !dlroW ,olleH
+</pre>
+              
+              <h2 id="numberseconds">Number::seconds</h2>
+              
+              <p>A monkey-patch to Number that allows for using numbers to represent time in
+              terms of seconds.</p>
+              
+              <p>Note that while using this in Javascript, you have to use it in one of these
+              ways:</p>
+              
+              <pre class="CodeRay"><span class="integer">10</span>..seconds()
+<span class="comment">// or</span>
+(<span class="integer">10</span>).seconds()
+</pre>
+              
+              <p>Otherwise, the Javascript interpreter will get confused and think you're
+              trying to represent a float.</p>
+              
+              <p>In CoffeeScript you can use <code>10.seconds()</code>, as the compiler will turn it into 
+              <code>10..seconds()</code> for you.</p>
+              
+              <p>Returns a Number representing the time in milliseconds</p>
+              
+              <h3 id="examples-3">Examples:</h3>
+              
+              <pre class="CodeRay">10.seconds()
+#=&gt; 10000
+</pre>
+              
+              <h2 id="numbersecond">Number::second</h2>
+              
+              <p>Aliases to <code>Number::seconds</code>. See that method for more information</p>
+              
+              <p>Returns a Number representing the time in milliseconds</p>
+              
+              <h3 id="examples-4">Examples:</h3>
+              
+              <pre class="CodeRay">1.second()
+#=&gt; 1000
+</pre>
+              
+              <h2 id="numberfromscalestart-end">Number::fromScale(start, end)</h2>
+              
+              <p>Monkey-patch on Number, converts a value from an old number scale (start, end)
+              to (0..1) scale.</p>
+              
+              <ul>
+<li>
+<strong>start</strong> - starting number of the scale</li>
+                <li>
+<strong>end</strong> - top number number of the scale</li>
+              </ul>
+<p>Returns a number representing the scaled value.</p>
+              
+              <h3 id="examples-5">Examples:</h3>
+              
+              <pre class="CodeRay">150.fromScale(0, 200)
+#=&gt; 0.75
+
+5.fromScale(0, 10)
+#=&gt; 0.5
+</pre>
+              
+              <h2 id="numbertoscalestart-end">Number::toScale(start, end)</h2>
+              
+              <p>Monkey-patch on Number, converts a value from (0..1) scale to a new (start,
+              end) scale.</p>
+              
+              <ul>
+<li>
+<strong>start</strong> - starting number of the scale</li>
+                <li>
+<strong>end</strong> - top number number of the scale</li>
+              </ul>
+<p>This can be chained together with <code>Number::fromScale</code> to quickly and handily
+              convert numbers between scales. e.g</p>
+              
+              <pre class="CodeRay">100.fromScale(0, 200).toScale(0, 100)
+#=&gt; 50
+</pre>
+              
+              <p>Returns a number representing the scaled value.</p>
+              
+              <h3 id="examples-6">Examples:</h3>
+              
+              <pre class="CodeRay">0.75.toScale(0, 200)
+#=&gt; 150
+
+0.5.toScale(0, 10)
+#=&gt; 5
+</pre>
+            </div>
+          </section>
+</div>
+      </div>
+    </div>
+    <footer class="app-footer"><div class="w">
+        <div class="copyright">
+          © Copyright 2012-2014
+          <a href="http://hybridgroup.com">The Hybrid Group.</a>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

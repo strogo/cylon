@@ -8,17 +8,42 @@
 <meta content="A Cylon.JS code example" name="description">
 <meta content="The Hybrid Group" name="author">
 <title>Cylon.JS Example - Sphero</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><!-- %link{href: "http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700", rel: "stylesheet", type: "text/css"} --><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/stylesheets/style.css" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
-</head>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+
+  _gaq.push(['_setAccount', "UA-46433484-2"]);
+
+
+
+
+
+
+
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></head>
 <body>
+    
     <div class="app">
       <div class="w">
         <header class="app-header" role="banner"><div class="display">
             <h1 class="app-logo">
               <a href="/">Cylon</a>
             </h1>
+            <span class="subtitle">
+              <div class="main"></div>
+            </span>
           </div>
           <span class="menu">
             <a href="/documentation" class="item">Docs</a>
@@ -38,40 +63,42 @@
       </div>
       <div class="container">
         <div class="main" role="main">
-          <section class="content full"><h1 id="sphero">Sphero</h1>
-            
-            <p>For this Cylon example, we're going to politely ask a Sphero to roll in a random
-            direction, and to change it's direction every second. Before we get started,
-            make sure you've got the <code>cylon-sphero</code> module installed.</p>
-            
-            <p>First, let's import Cylon:</p>
-            
-            <pre class="CodeRay">Cylon = require 'cylon'
+          <section class="content full"><div class="documentation">
+              <h1 id="sphero">Sphero</h1>
+              
+              <p>For this Cylon example, we're going to politely ask a Sphero to roll in a random
+              direction, and to change it's direction every second. Before we get started,
+              make sure you've got the <code>cylon-sphero</code> module installed.</p>
+              
+              <p>First, let's import Cylon:</p>
+              
+              <pre class="CodeRay">Cylon = require 'cylon'
 </pre>
-            
-            <p>With that done, we can now start defining our robot:</p>
-            
-            <pre class="CodeRay">Cylon.robot
+              
+              <p>With that done, we can now start defining our robot:</p>
+              
+              <pre class="CodeRay">Cylon.robot
 </pre>
-            
-            <p>We'll be using one connection and one device, both the Sphero.</p>
-            
-            <pre class="CodeRay">  connection: { name: 'sphero', adaptor: 'sphero', port: '/dev/rfcomm0' }
+              
+              <p>We'll be using one connection and one device, both the Sphero.</p>
+              
+              <pre class="CodeRay">  connection: { name: 'sphero', adaptor: 'sphero', port: '/dev/rfcomm0' }
   device: { name: 'sphero', driver: 'sphero' }
 </pre>
-            
-            <p>The work for this robot is pretty straight-forward. Every second, we're going to
-            tell the Sphero to roll at speed <code>60</code>, in a random direction.</p>
-            
-            <pre class="CodeRay">  work: (me) -&gt;
+              
+              <p>The work for this robot is pretty straight-forward. Every second, we're going to
+              tell the Sphero to roll at speed <code>60</code>, in a random direction.</p>
+              
+              <pre class="CodeRay">  work: (me) -&gt;
     every 1.second(), -&gt;
       me.sphero.roll 60, Math.floor(Math.random() * 360)
 </pre>
-            
-            <p>Simple enough. And with that done, we can now tell the robot to start working:</p>
-            
-            <pre class="CodeRay">.start()
+              
+              <p>Simple enough. And with that done, we can now tell the robot to start working:</p>
+              
+              <pre class="CodeRay">.start()
 </pre>
+            </div>
           </section>
 </div>
       </div>
@@ -82,14 +109,6 @@
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
-    </footer><script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      
-      ga('create', 'UA-46433484-2', 'cylonjs.com');
-      ga('send', 'pageview');
-    </script>
+    </footer>
 </body>
 </html>

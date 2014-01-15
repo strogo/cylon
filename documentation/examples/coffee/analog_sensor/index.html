@@ -8,17 +8,42 @@
 <meta content="A Cylon.JS code example" name="description">
 <meta content="The Hybrid Group" name="author">
 <title>Cylon.JS Example - Analog Sensor</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><!-- %link{href: "http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700", rel: "stylesheet", type: "text/css"} --><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/stylesheets/style.css" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
-</head>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+
+  _gaq.push(['_setAccount', "UA-46433484-2"]);
+
+
+
+
+
+
+
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></head>
 <body>
+    
     <div class="app">
       <div class="w">
         <header class="app-header" role="banner"><div class="display">
             <h1 class="app-logo">
               <a href="/">Cylon</a>
             </h1>
+            <span class="subtitle">
+              <div class="main"></div>
+            </span>
           </div>
           <span class="menu">
             <a href="/documentation" class="item">Docs</a>
@@ -38,59 +63,61 @@
       </div>
       <div class="container">
         <div class="main" role="main">
-          <section class="content full"><h1 id="analog-sensor">Analog Sensor</h1>
-            
-            <p>A quick example of using an Arduino's analog sensor with Cylon. The program will
-            log to the console when the sensor has hit it's upper and lower limits.</p>
-            
-            <p>Before you run this program, make sure you have the <code>cylon-firmata</code> module
-            installed.</p>
-            
-            <p>First, let's load up Cylon:</p>
-            
-            <pre class="CodeRay">Cylon = require 'cylon'
+          <section class="content full"><div class="documentation">
+              <h1 id="analog-sensor">Analog Sensor</h1>
+              
+              <p>A quick example of using an Arduino's analog sensor with Cylon. The program will
+              log to the console when the sensor has hit it's upper and lower limits.</p>
+              
+              <p>Before you run this program, make sure you have the <code>cylon-firmata</code> module
+              installed.</p>
+              
+              <p>First, let's load up Cylon:</p>
+              
+              <pre class="CodeRay">Cylon = require 'cylon'
 </pre>
-            
-            <p>Now that we have Cylon imported, we can start defining our robot</p>
-            
-            <pre class="CodeRay">Cylon.robot
+              
+              <p>Now that we have Cylon imported, we can start defining our robot</p>
+              
+              <pre class="CodeRay">Cylon.robot
 </pre>
-            
-            <p>Let's define the connection to our Arduino:</p>
-            
-            <pre class="CodeRay">  connection:
+              
+              <p>Let's define the connection to our Arduino:</p>
+              
+              <pre class="CodeRay">  connection:
     name: "arduino"
     adaptor: "firmata"
     port: "/dev/ttyACM0"
 </pre>
-            
-            <p>Now we can define the analog sensor we're going to use, along with it's upper
-            and lower limits:</p>
-            
-            <pre class="CodeRay">  device:
+              
+              <p>Now we can define the analog sensor we're going to use, along with it's upper
+              and lower limits:</p>
+              
+              <pre class="CodeRay">  device:
     name: 'sensor'
     driver: 'analogSensor'
     pin: 0
     upperLimit: 900
     lowerLimit: 100
 </pre>
-            
-            <p>Now that Cylon knows about the necessary hardware we're going to be using, we'll
-            tell it what work we want to do:</p>
-            
-            <pre class="CodeRay">  work: (my) -&gt;
+              
+              <p>Now that Cylon knows about the necessary hardware we're going to be using, we'll
+              tell it what work we want to do:</p>
+              
+              <pre class="CodeRay">  work: (my) -&gt;
     my.sensor.on 'upperLimit', (val) -&gt;
-      Logger.info "Upper limit reached: #{val}"
+      console.log "Upper limit reached: #{val}"
 
     my.sensor.on 'lowerLimit', (val) -&gt;
-      Logger.info "Lower limit reached: #{val}"
+      console.log "Lower limit reached: #{val}"
 </pre>
-            
-            <p>Now that our robot knows what work to do, and the work it will be doing that
-            hardware with, we can start it:</p>
-            
-            <pre class="CodeRay">.start()
+              
+              <p>Now that our robot knows what work to do, and the work it will be doing that
+              hardware with, we can start it:</p>
+              
+              <pre class="CodeRay">.start()
 </pre>
+            </div>
           </section>
 </div>
       </div>
@@ -101,14 +128,6 @@
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
-    </footer><script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      
-      ga('create', 'UA-46433484-2', 'cylonjs.com');
-      ga('send', 'pageview');
-    </script>
+    </footer>
 </body>
 </html>

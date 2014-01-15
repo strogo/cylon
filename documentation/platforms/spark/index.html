@@ -8,17 +8,42 @@
 <meta name="description">
 <meta content="The Hybrid Group" name="author">
 <title>Spark with Cylon.js</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><!-- %link{href: "http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,700", rel: "stylesheet", type: "text/css"} --><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/stylesheets/style.css" rel="stylesheet">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script src="/javascripts/script.js"></script><link href="//fonts.googleapis.com/css?family=Inconsolata:400,700%7CMontserrat:700" rel="stylesheet">
 <link href="/favicon.ico" rel="shortcut icon" type="image/gif">
-</head>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+
+  _gaq.push(['_setAccount', "UA-46433484-2"]);
+
+
+
+
+
+
+
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script></head>
 <body>
+    
     <div class="app">
       <div class="w">
         <header class="app-header" role="banner"><div class="display">
             <h1 class="app-logo">
               <a href="/">Cylon</a>
             </h1>
+            <span class="subtitle">
+              <div class="main"></div>
+            </span>
           </div>
           <span class="menu">
             <a href="/documentation" class="item">Docs</a>
@@ -40,7 +65,7 @@
       <div class="container">
         <div class="main" role="main">
           <section class="content full"><div class="documentation">
-              <section class="intro"><img class="display" src="/images/spark.jpg"><p>The Spark Core contains a Wi-Fi connected microcontroller. Once it connects to a Wi-Fi network, it automatically connects with a central server (the "Spark Cloud") and stays connected so it can be controlled from external systems, such as a Cylon.js program.</p>
+              <section class="intro"><img class="display" src="/images/devices/spark.jpg"><p>The Spark Core contains a Wi-Fi connected microcontroller. Once it connects to a Wi-Fi network, it automatically connects with a central server (the "Spark Cloud") and stays connected so it can be controlled from external systems, such as a Cylon.js program.</p>
                 <p>
                   For more info about the Spark platform go to
                   <a target="blank" href="https://www.spark.io/">https://www.spark.io/</a>.
@@ -81,21 +106,30 @@ Cylon.robot
               </section><section class="drivers"><h2>Drivers</h2>
                 <p>Available drivers for the spark platform are listed below, the drivers contain detailed documentation and examples of what kinds of physical computing (using Cylon.js and Node.js) you can be doing:</p>
                 <div class="hardware">
+                  <h2>GPIO Drivers</h2>
                   <div class="devices">
+                    <!-- /Drivers all -->
+                    <!-- // Analog Sensor -->
                     <a class="device" href="/documentation/drivers/analog-sensor" title="Analog Sensor">
-                      <img src="/images/analog-sensor.jpg"></a>
-                    <a class="device" href="/documentation/drivers/continuous-servo" title="Continuous Servo">
-                      <img src="/images/continuous-servo.jpg"></a>
+                      <img src="/images/devices/analog-sensor.jpg"></a>
+                    <!-- // Button -->
                     <a class="device" href="/documentation/drivers/button" title="Button">
-                      <img src="/images/button.jpg"></a>
+                      <img src="/images/devices/button.jpg"></a>
+                    <!-- // Continuos Servo -->
+                    <a class="device" href="/documentation/drivers/continuous-servo" title="Continuous Servo">
+                      <img src="/images/devices/continuous-servo.jpg"></a>
+                    <!-- // LED -->
                     <a class="device" href="/documentation/drivers/led" title="LED">
-                      <img src="/images/LED.jpg"></a>
+                      <img src="/images/devices/LED.jpg"></a>
+                    <!-- // Maxbotix -->
                     <a class="device" href="/documentation/drivers/maxbotix" title="Maxbotix Range Finder">
-                      <img src="/images/maxbotix.jpg"></a>
+                      <img src="/images/devices/maxbotix.jpg"></a>
+                    <!-- // Motor -->
                     <a class="device" href="/documentation/drivers/motor" title="Motor">
-                      <img src="/images/motor.jpg"></a>
+                      <img src="/images/devices/motor.jpg"></a>
+                    <!-- // Servo -->
                     <a class="device" href="/documentation/drivers/servo" title="Servo">
-                      <img src="/images/servo.jpg"></a>
+                      <img src="/images/devices/servo.jpg"></a>
                   </div>
                 </div>
               </section>
@@ -110,14 +144,6 @@ Cylon.robot
           <a href="http://hybridgroup.com">The Hybrid Group.</a>
         </div>
       </div>
-    </footer><script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      
-      ga('create', 'UA-46433484-2', 'cylonjs.com');
-      ga('send', 'pageview');
-    </script>
+    </footer>
 </body>
 </html>
